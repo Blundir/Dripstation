@@ -43,12 +43,9 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "U" = (
-/obj/structure/bed/abductor{
-	desc = "A bed to get a tan on.";
-	name = "tanning bed"
-	},
 /obj/item/clothing/glasses/sunglasses,
 /obj/machinery/light/floor,
+/obj/structure/table/wood/fancy/black,
 /turf/open/floor/plating,
 /area/template_noop)
 

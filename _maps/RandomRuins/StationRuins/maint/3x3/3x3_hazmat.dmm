@@ -28,7 +28,6 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "f" = (
-/obj/machinery/washing_machine,
 /obj/machinery/light/small{
 	dir = 4;
 	icon_state = "bulb"

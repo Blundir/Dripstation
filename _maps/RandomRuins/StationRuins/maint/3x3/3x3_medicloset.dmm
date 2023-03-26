@@ -46,12 +46,12 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "i" = (
-/obj/item/clothing/gloves/color/latex/nitrile,
 /obj/structure/rack,
 /obj/item/clothing/suit/toggle/labcoat,
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/clothing/mask/surgical,
 /obj/item/clothing/mask/breath/medical,
+/obj/item/clothing/gloves/color/latex,
 /turf/open/floor/plating{
 	icon_state = "platingdmg2"
 	},

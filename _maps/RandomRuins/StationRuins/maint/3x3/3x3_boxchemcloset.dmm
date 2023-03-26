@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "c" = (
-/obj/structure/closet/secure_closet/medical1,
+/obj/structure/closet/firecloset,
 /turf/open/floor/plating,
 /area/template_noop)
 "d" = (
@@ -16,7 +16,7 @@
 /area/template_noop)
 "j" = (
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/closet/secure_closet/chemical/heisenberg,
+/obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/plating,
 /area/template_noop)
 "k" = (
@@ -26,7 +26,6 @@
 /area/template_noop)
 "H" = (
 /obj/effect/decal/cleanable/vomit/old,
-/obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/plating,
 /area/template_noop)
 

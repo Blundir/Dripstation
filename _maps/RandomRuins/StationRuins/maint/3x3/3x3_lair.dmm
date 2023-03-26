@@ -8,7 +8,6 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "m" = (
-/obj/item/reagent_containers/blood/random,
 /obj/structure/table_frame,
 /turf/open/floor/plating,
 /area/template_noop)

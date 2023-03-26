@@ -24,7 +24,6 @@
 	},
 /obj/item/restraints/handcuffs/cable,
 /obj/item/restraints/handcuffs/cable,
-/obj/item/reagent_containers/blood/random,
 /turf/open/floor/plating,
 /area/template_noop)
 "S" = (

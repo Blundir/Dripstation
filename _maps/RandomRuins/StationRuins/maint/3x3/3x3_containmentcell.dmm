@@ -16,6 +16,10 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/template_noop)
+"G" = (
+/obj/item/clothing/under/rank/prisoner,
+/turf/open/floor/plating,
+/area/template_noop)
 "I" = (
 /obj/structure/toilet/secret{
 	secret_type = /obj/item/crowbar/large
@@ -30,7 +34,7 @@ a
 a
 "}
 (2,1,1) = {"
-a
+G
 k
 a
 "}

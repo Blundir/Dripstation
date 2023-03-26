@@ -16,16 +16,12 @@
 /area/template_noop)
 "i" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/syringe/antiviral,
-/obj/item/reagent_containers/glass/bottle/random_virus{
-	pixel_x = -9;
-	pixel_y = 3
-	},
 /obj/item/reagent_containers/food/drinks/soda_cans/canned_laughter{
 	pixel_x = -2;
 	pixel_y = 9
 	},
 /obj/item/reagent_containers/glass/bottle/mutagen,
+/obj/item/reagent_containers/syringe,
 /turf/open/floor/plating,
 /area/template_noop)
 "l" = (
