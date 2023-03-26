@@ -14,6 +14,8 @@
 	var/allowed_buildtypes = NONE
 	/// Name of the lathe in the UI
 	var/department_tag = "Unidentified"
+	/// What color is this machine's stripe? Leave null to not have a stripe.
+	var/stripe_color = null
 
 	var/list/datum/design/cached_designs
 	var/list/datum/design/matching_designs
@@ -374,3 +376,16 @@
 
 	l += "</tr></table></div>"
 	return l
+
+/obj/machinery/rnd/production/update_icon()
+	. = ..()
+	cut_overlays()
+	if(stripe_color)
+		var/mutable_appearance/stripe = mutable_appearance('icons/obj/machines/research.dmi', "protolate_stripe")
+		stripe.color = stripe_color
+		if(!panel_open)
+			cut_overlays()
+			stripe.icon_state = "protolathe_stripe"
+		else
+			stripe.icon_state = "protolathe_stripe_t"
+		add_overlay(stripe)
