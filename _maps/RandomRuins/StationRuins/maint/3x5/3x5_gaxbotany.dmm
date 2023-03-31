@@ -12,15 +12,16 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 5
 	},
+/obj/machinery/vending/hydronutrients,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "s" = (
-/obj/machinery/chem_dispenser/mutagensaltpeter,
-/obj/item/reagent_containers/glass/bucket,
+/obj/machinery/hydroponics/constructable,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "C" = (
-/obj/machinery/hydroponics/constructable,
+/obj/item/reagent_containers/glass/bucket,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/template_noop)
 "G" = (

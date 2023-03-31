@@ -35,7 +35,6 @@
 /area/template_noop)
 "s" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/gun/ballistic/shotgun/doublebarrel/improvised,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
