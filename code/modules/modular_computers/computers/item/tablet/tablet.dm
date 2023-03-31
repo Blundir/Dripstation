@@ -64,7 +64,7 @@
 	..()
 	if (!isnull(variants))
 		if(!finish_color)
-			finish_color = pick(variants)
+			finish_color = "basic"
 		icon_state = "[icon_state_base]-[finish_color]"
 		icon_state_unpowered = "[icon_state_base]-[finish_color]"
 		icon_state_powered = "[icon_state_base]-[finish_color]"

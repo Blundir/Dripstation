@@ -1,7 +1,7 @@
 /obj/item/modular_computer/tablet/pda
 	name = "\improper PDA"
 	icon = 'icons/obj/modular_pda.dmi'
-	icon_state = "pda-red"
+	icon_state = "pda-basic"
 	icon_state_base = "pda"
 	icon_state_unpowered = "pda"
 	icon_state_powered = "pda"

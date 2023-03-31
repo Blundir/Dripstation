@@ -2,7 +2,7 @@
 	filename = "ntnrc_client"
 	filedesc = "Chat Client"
 	category = PROGRAM_CATEGORY_MISC
-	program_icon_state = "command"
+	program_icon_state = "word"
 	extended_desc = "This program allows communication over NTNRC network"
 	size = 8
 	requires_ntnet = TRUE

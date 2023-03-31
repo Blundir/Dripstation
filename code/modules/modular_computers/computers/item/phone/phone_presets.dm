@@ -16,6 +16,7 @@
 								/obj/item/computer_hardware/card_slot)
 
 /obj/item/modular_computer/tablet/phone/preset/cargo
+	finish_color = "qm"
 	starting_components = list( /obj/item/computer_hardware/processor_unit/small,
 								/obj/item/stock_parts/cell/computer,
 								/obj/item/computer_hardware/hard_drive/small/pda,
@@ -43,7 +44,7 @@
 								/obj/item/computer_hardware/printer/mini)
 
 /obj/item/modular_computer/tablet/phone/preset/advanced/command/cap
-	finish_color = "yellow"
+	finish_color = "cap"
 	pen_type = /obj/item/pen/fountain/captain
 
 /obj/item/modular_computer/tablet/phone/preset/advanced/command/cap/Initialize()
@@ -54,10 +55,10 @@
 	starting_files = list(	new /datum/computer_file/program/budgetorders,
 							new /datum/computer_file/program/card_mod,
 							new /datum/computer_file/program/cargobounty)
-	finish_color = "brown"
+	finish_color = "hop"
 
 /obj/item/modular_computer/tablet/phone/preset/advanced/command/hos
-	finish_color = "red"
+	finish_color = "hos"
 
 /obj/item/modular_computer/tablet/phone/preset/advanced/command/ce
 	starting_components = list( /obj/item/computer_hardware/processor_unit/small,
@@ -71,17 +72,17 @@
 	starting_files = list(	new /datum/computer_file/program/budgetorders,
 							new /datum/computer_file/program/card_mod,
 							new /datum/computer_file/program/alarm_monitor)
-	finish_color = "orange"
+	finish_color = "ce"
 
 /obj/item/modular_computer/tablet/phone/preset/advanced/command/rd
 	starting_files = list(	new /datum/computer_file/program/budgetorders,
 							new /datum/computer_file/program/card_mod,
 							new /datum/computer_file/program/robocontrol)
-	finish_color = "purple"
+	finish_color = "rd"
 	pen_type = /obj/item/pen/fountain
 
 /obj/item/modular_computer/tablet/phone/preset/advanced/command/cmo
 	starting_files = list(	new /datum/computer_file/program/budgetorders,
 							new /datum/computer_file/program/card_mod,
 							new /datum/computer_file/program/crew_monitor)
-	finish_color = "white"
+	finish_color = "cmo"

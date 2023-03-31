@@ -679,6 +679,7 @@
 /obj/machinery/smartfridge/chemistry/virology
 	name = "smart virus storage"
 	desc = "A refrigerated storage unit for volatile sample storage."
+	icon_state = "virofridge"
 	max_n_of_items = 100
 	product_slogans = "Try not to spill these.;Use of level-3 biohazard equipment or higher is mandatory when operating this machine.;Whoops, I think I dropped one.;Storage solutions for any and all biohazardous material."
 

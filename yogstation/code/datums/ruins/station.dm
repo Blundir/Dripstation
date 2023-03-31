@@ -373,11 +373,6 @@
 	suffix = "3x3_deltajanniecloset.dmm"
 	name = "Maint deltajanniecloset"
 
-/datum/map_template/ruin/station/maint/threexthree/deltaorgantrade
-	id = "deltaorgantrade"
-	suffix = "3x3_deltaorgantrade.dmm"
-	name = "Maint deltaorgantrade"
-
 /datum/map_template/ruin/station/maint/threexthree/donutcapgun
 	id = "donutcapgun"
 	suffix = "3x3_donutcapgun.dmm"

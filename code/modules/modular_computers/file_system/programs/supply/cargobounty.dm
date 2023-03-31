@@ -2,7 +2,7 @@
 	filename = "bounty"
 	filedesc = "Nanotrasen Bounty Hunter"
 	category = PROGRAM_CATEGORY_SUPL
-	program_icon_state = "bountyboard"
+	program_icon_state = "bounty"
 	extended_desc = "A basic interface for supply personnel to check and claim bounties."
 	requires_ntnet = TRUE
 	transfer_access = ACCESS_CARGO
