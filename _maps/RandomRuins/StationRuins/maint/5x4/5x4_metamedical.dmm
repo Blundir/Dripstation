@@ -40,7 +40,6 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "j" = (
-/obj/item/reagent_containers/blood/random,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"

@@ -178,21 +178,13 @@
 /turf/open/floor/carpet,
 /area/template_noop)
 "P" = (
-/obj/item/hemostat,
-/obj/item/retractor,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/roller,
-/obj/item/tank/internals/anesthetic,
 /obj/structure/closet/cardboard,
-/obj/item/cautery,
 /obj/item/surgical_drapes,
 /obj/item/storage/firstaid,
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/morphine,
-/obj/item/stack/sheet/mineral/silver{
-	amount = 2
-	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/item/clothing/head/wig/random,
 /obj/item/radio,
@@ -223,7 +215,6 @@
 /area/template_noop)
 "Y" = (
 /obj/structure/table,
-/obj/item/retractor,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/cafeteria,
 /area/template_noop)

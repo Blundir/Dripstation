@@ -99,10 +99,6 @@
 "p" = (
 /obj/structure/table/wood,
 /obj/item/poster/random_contraband{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/poster/random_contraband{
 	pixel_x = -3;
 	pixel_y = -3
 	},

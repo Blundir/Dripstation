@@ -26,10 +26,6 @@
 /obj/structure/statue/petrified{
 	dir = 1
 	},
-/obj/item/bedsheet/captain{
-	dir = 1;
-	icon = 'icons/mob/neck.dmi'
-	},
 /turf/open/floor/plating,
 /area/template_noop)
 "t" = (
@@ -80,19 +76,7 @@
 /obj/structure/statue/petrified{
 	dir = 4
 	},
-/obj/item/melee/sabre{
-	armour_penetration = 0;
-	block_chance = 10;
-	color = "#808080";
-	desc = "A sword of ancient design. Strangely, the blade is made of stone....";
-	force = 6;
-	materials = list("$metal" = 1);
-	name = "ancient sabre";
-	pixel_x = 8;
-	pixel_y = 4;
-	sharpness = 0;
-	throwforce = 6
-	},
+/obj/item/twohanded/spear,
 /turf/open/floor/plating,
 /area/template_noop)
 "O" = (

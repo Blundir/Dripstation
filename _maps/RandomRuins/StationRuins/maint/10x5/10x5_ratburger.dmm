@@ -34,7 +34,6 @@
 /area/template_noop)
 "g" = (
 /obj/structure/window/reinforced/spawner/north,
-/obj/structure/reagent_dispensers/cooking_oil,
 /turf/open/floor/plasteel/cafeteria,
 /area/template_noop)
 "i" = (

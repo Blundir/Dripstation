@@ -78,7 +78,6 @@
 /obj/structure/closet/cardboard,
 /obj/item/storage/firstaid,
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/morphine,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/item/clothing/head/wig/random,
 /obj/item/radio,

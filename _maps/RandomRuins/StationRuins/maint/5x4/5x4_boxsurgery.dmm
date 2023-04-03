@@ -25,7 +25,6 @@
 "e" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/chair,
-/obj/item/reagent_containers/blood/random,
 /turf/open/floor/plating,
 /area/template_noop)
 "f" = (
@@ -41,7 +40,6 @@
 "l" = (
 /obj/structure/closet/wardrobe/white,
 /obj/item/clothing/shoes/jackboots,
-/obj/item/reagent_containers/blood/random,
 /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
 /turf/open/floor/plating,
 /area/template_noop)

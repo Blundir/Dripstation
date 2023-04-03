@@ -129,7 +129,6 @@
 "P" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/clothing/gloves/color/yellow,
 /mob/living/simple_animal/pet/dog/corgi/puppy{
 	desc = "It's a corgi puppy! It's covered in blood...";
 	name = "suspicious puppy"

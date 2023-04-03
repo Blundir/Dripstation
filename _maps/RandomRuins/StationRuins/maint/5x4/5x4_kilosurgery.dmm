@@ -177,15 +177,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/item/reagent_containers/blood/random{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/random{
-	pixel_x = -4;
-	pixel_y = -4
-	},
 /obj/item/rack_parts,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)

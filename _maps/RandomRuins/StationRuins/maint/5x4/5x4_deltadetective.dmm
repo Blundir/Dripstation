@@ -134,7 +134,7 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "Y" = (
-/obj/item/lighter,
+/obj/item/lighter/greyscale,
 /turf/open/floor/carpet/red,
 /area/template_noop)
 

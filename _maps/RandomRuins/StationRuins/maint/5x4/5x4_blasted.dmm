@@ -23,12 +23,6 @@
 	icon_state = "panelscorched"
 	},
 /area/template_noop)
-"p" = (
-/obj/machinery/bot_core/firebot,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/template_noop)
 "w" = (
 /obj/item/wallframe/firealarm{
 	pixel_y = 26
@@ -71,7 +65,7 @@ a
 "}
 (2,1,1) = {"
 m
-p
+m
 g
 m
 "}

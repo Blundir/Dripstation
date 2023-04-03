@@ -5,7 +5,6 @@
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/matter_bin,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/matter_bin/super,
 /turf/open/floor/plating,
 /area/template_noop)
 "b" = (
@@ -53,7 +52,6 @@
 /obj/item/stock_parts/scanning_module,
 /obj/item/stock_parts/scanning_module,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/scanning_module/phasic,
 /turf/open/floor/plating,
 /area/template_noop)
 "s" = (

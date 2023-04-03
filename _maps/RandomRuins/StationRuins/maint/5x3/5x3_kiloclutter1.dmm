@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "b" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest/old,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -56,13 +56,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
-"Q" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/neck/stethoscope,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/template_noop)
 "U" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/grille/broken,
@@ -87,6 +80,7 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/ears/headphones,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 
@@ -103,7 +97,7 @@ c
 (3,1,1) = {"
 c
 g
-Q
+c
 "}
 (4,1,1) = {"
 F

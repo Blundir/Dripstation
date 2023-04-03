@@ -14,15 +14,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/template_noop)
-"c" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/disk/nanite_program,
-/turf/open/floor/plating,
-/area/template_noop)
 "d" = (
-/obj/machinery/nanite_chamber,
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/frame/machine,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "e" = (
@@ -60,12 +55,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
-"j" = (
-/obj/machinery/nanite_program_hub,
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plasteel/dark,
-/area/template_noop)
 "k" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -83,16 +72,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
-"u" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/circuitboard/machine/nanite_programmer,
-/turf/open/floor/plating,
-/area/template_noop)
 "M" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet,
-/obj/item/nanite_scanner,
-/obj/item/disk/nanite_program,
 /turf/open/floor/plating,
 /area/template_noop)
 "O" = (
@@ -108,7 +90,6 @@
 	dir = 4;
 	icon_state = "tube-broken"
 	},
-/obj/item/disk/nanite_program,
 /turf/open/floor/plating,
 /area/template_noop)
 
@@ -116,10 +97,10 @@
 a
 b
 f
-j
+O
 "}
 (2,1,1) = {"
-c
+b
 b
 g
 k
@@ -133,7 +114,7 @@ l
 (4,1,1) = {"
 b
 e
-u
+b
 b
 "}
 (5,1,1) = {"

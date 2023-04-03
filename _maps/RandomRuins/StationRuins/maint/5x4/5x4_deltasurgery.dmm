@@ -112,7 +112,6 @@
 /area/template_noop)
 "n" = (
 /obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/random,
 /obj/item/reagent_containers/syringe/epinephrine{
 	pixel_y = 5
 	},

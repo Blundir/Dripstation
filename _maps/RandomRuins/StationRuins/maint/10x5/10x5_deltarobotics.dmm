@@ -56,7 +56,6 @@
 /area/template_noop)
 "k" = (
 /obj/structure/table/reinforced,
-/obj/item/mmi,
 /obj/item/assembly/prox_sensor,
 /turf/open/floor/plating,
 /area/template_noop)

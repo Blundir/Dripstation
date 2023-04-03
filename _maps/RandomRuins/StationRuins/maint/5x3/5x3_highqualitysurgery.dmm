@@ -47,8 +47,8 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "Z" = (
-/obj/structure/table/optable,
 /obj/item/bedsheet/random,
+/obj/structure/bed/roller,
 /turf/open/floor/plating,
 /area/template_noop)
 
