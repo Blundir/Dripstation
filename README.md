@@ -14,13 +14,13 @@
 ![b-a-d-g-e](https://forthebadge.com/images/badges/uses-git.svg)
 ![B.A.D.G.E.](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)
 
-[**Website**](https://yogstation.net)
+[**Website**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-[**Code**](https://github.com/yogstation13/yogstation)
+[**Code**](https://github.com/Blundir/Dripstation)
 
 [**Wiki**](https://wiki.yogstation.net)
 
-[**Discord**](https://discord.gg/0keg6hQH05Ha8OfO)
+[**Discord**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 [**Yogstation GitHub Guidelines**](https://github.com/yogstation13/Yogstation/blob/master/.github/CONTRIBUTING.md#yogstation-github-guidelines)
 

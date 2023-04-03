@@ -548,7 +548,7 @@
 	name = "spell book"
 	desc = "An unearthly tome that glows with power."
 	icon = 'icons/obj/library.dmi'
-	icon_state ="book"
+	icon_state = "spellbook"
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_TINY

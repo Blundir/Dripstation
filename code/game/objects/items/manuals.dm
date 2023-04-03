@@ -368,6 +368,9 @@
 	title = "Space Law"
 	page_link = "Space_Law"
 
+/obj/item/book/manual/wiki/security_space_law/elite
+	icon_state = "bookSpaceLawelite"
+
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
 	return OXYLOSS
@@ -437,7 +440,7 @@
 
 /obj/item/book/manual/wiki/experimentor
 	name = "Mentoring your Experiments"
-	icon_state = "rdbook"
+	icon_state = "rndbook"
 	author = "Dr. H.P. Kritz"
 	title = "Mentoring your Experiments"
 	page_link = "E.X.P.E.R.I-MENTOR"
@@ -459,49 +462,49 @@
 /obj/item/book/manual/wiki/cooking_to_serve_man
 	name = "To Serve Man"
 	desc = "It's a cookbook!"
-	icon_state ="cooked_book"
+	icon_state ="cook_book"
 	author = "the Kanamitan Empire"
 	title = "To Serve Man"
 	page_link = "Guide_to_food"
 
 /obj/item/book/manual/wiki/tcomms
 	name = "Subspace Telecommunications And You"
-	icon_state = "book3"
+	icon_state = "bookradio"
 	author = "Engineering Encyclopedia"
 	title = "Subspace Telecommunications And You"
 	page_link = "Guide_to_Telecommunications"
 
 /obj/item/book/manual/wiki/atmospherics
 	name = "Lexica Atmosia"
-	icon_state = "book5"
+	icon_state = "pipingbook"
 	author = "the City-state of Atmosia"
 	title = "Lexica Atmosia"
 	page_link = "Guide_to_Atmospherics"
 
 /obj/item/book/manual/wiki/medicine
 	name = "Medical Space Compendium, Volume 638"
-	icon_state = "book8"
+	icon_state = "medbook"
 	author = "Medical Journal"
 	title = "Medical Space Compendium, Volume 638"
 	page_link = "Guide_to_medicine"
 
 /obj/item/book/manual/wiki/surgery
 	name = "Brain Surgery for Dummies"
-	icon_state = "book4"
+	icon_state = "medbook"
 	author = "Dr. F. Fran"
 	title = "Brain Surgery for Dummies"
 	page_link = "Surgery"
 
 /obj/item/book/manual/wiki/grenades
 	name = "DIY Chemical Grenades"
-	icon_state = "book2"
+	icon_state = "chemgrenbook"
 	author = "W. Powell"
 	title = "DIY Chemical Grenades"
 	page_link = "Grenade"
 
 /obj/item/book/manual/wiki/toxins
 	name = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
-	icon_state = "book6"
+	icon_state = "rndbook"
 	author = "Cuban Pete"
 	title = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
 	page_link = "Guide_to_toxins"

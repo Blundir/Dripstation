@@ -188,7 +188,7 @@
 /datum/holiday/april_fools
 	name = APRIL_FOOLS
 	begin_day = 1
-	end_day = 5
+	end_day = 2
 	begin_month = APRIL
 	lobby_music = list(
 		"https://www.youtube.com/watch?v=5QtxOr4iSBY", // Gay Activity - Clive Richardson
