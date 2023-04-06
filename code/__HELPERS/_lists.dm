@@ -25,8 +25,12 @@
 //These methods don't null the list
 ///Use LAZYLISTDUPLICATE instead if you want it to null with no entries
 #define LAZYCOPY(L) (L ? L.Copy() : list() )
+///Like LAZYCOPY - copies an input list if the list has entries, If it doesn't the assigned list is nulled
+#define LAZYLISTDUPLICATE(L) (L ? L.Copy() : null )
 /// Consider LAZYNULL instead
 #define LAZYCLEARLIST(L) if(L) L.Cut()
+///Sets a list to null
+#define LAZYNULL(L) L = null
 ///Returns the list if it's actually a valid list, otherwise will initialize it
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 #define reverseList(L) reverseRange(L.Copy())

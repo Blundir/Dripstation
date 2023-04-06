@@ -261,6 +261,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
 
+	READ_FILE(S["loadout_list"] , loadout_list)
+
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
@@ -269,6 +271,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
+
+	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list))
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -312,6 +316,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"] , all_quirks)
+
+	WRITE_FILE(S["loadout_list"], loadout_list)
 
 	return TRUE
 
