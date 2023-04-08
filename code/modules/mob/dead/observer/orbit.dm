@@ -66,35 +66,43 @@
 
 		serialized["ref"] = REF(poi)
 
-		var/mob/M = poi
-		if (istype(M))
-			if (isobserver(M))
-				var/number_of_orbiters = length(M.get_all_orbiters())
-				if (number_of_orbiters)
-					serialized["orbiters"] = number_of_orbiters
-				ghosts += list(serialized)
-			else if (M.stat == DEAD)
-				dead += list(serialized)
-			else if (M.mind == null)
-				npcs += list(serialized)
-			else
-				var/number_of_orbiters = length(M.get_all_orbiters())
-				if (number_of_orbiters)
-					serialized["orbiters"] = number_of_orbiters
+		var/mob/mob_poi = poi
 
-				var/datum/mind/mind = M.mind
-				var/was_antagonist = FALSE
+		if(!istype(mob_poi))
+			misc += list(serialized)
+			continue
+		if(isobserver(mob_poi))
+			ghosts += list(serialized)
+			continue
+		if(mob_poi.stat == DEAD)
+			dead += list(serialized)
+			continue
+		if(mob_poi.mind == null)
+			npcs += list(serialized)
+			continue
 
-				for (var/_A in mind.antag_datums)
-					var/datum/antagonist/A = _A
-					if (A.show_to_ghosts)
-						was_antagonist = TRUE
-						serialized["antag"] = A.name
-						antagonists += list(serialized)
-						break
+		var/number_of_orbiters = length(mob_poi.get_all_orbiters())
+		if(number_of_orbiters)
+			serialized["orbiters"] = number_of_orbiters
 
-				if (!was_antagonist)
-					alive += list(serialized)
+
+		var/datum/mind/mind = mob_poi.mind
+		var/was_antagonist = FALSE
+
+		var/datum/job/located_job = SSjob.GetJob(mind.assigned_role)
+		if(located_job)
+			serialized["role_icon"] = "hud[ckey(located_job.title)]"
+
+		for(var/_A in mind.antag_datums)
+			var/datum/antagonist/A = _A
+			if(A.show_to_ghosts)
+				was_antagonist = TRUE
+				serialized["antag"] = A.name
+				antagonists += list(serialized)
+				break
+
+		if(!was_antagonist)
+			alive += list(serialized)
 		else
 			misc += list(serialized)
 
@@ -109,4 +117,16 @@
 /datum/orbit_menu/ui_assets()
 	. = ..() || list()
 	. += get_asset_datum(/datum/asset/simple/orbit)
+	. += get_asset_datum(/datum/asset/spritesheet/job_icons)
 
+/datum/asset/spritesheet/job_icons
+	name = "job-icon"
+
+
+/datum/asset/spritesheet/job_icons/create_spritesheets()
+	var/icon/I = icon('yogstation/icons/mob/hud.dmi')
+	// Get the job hud part
+	I.Crop(1, 17, 8, 24)
+	// Scale it up
+	I.Scale(16, 16)
+	InsertAll("job-icon", I)
