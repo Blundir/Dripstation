@@ -857,7 +857,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			target.playsound_local(source, 'sound/misc/compiler-failure.ogg', 50)
 		if("laughter")
 			if(prob(50))
-				target.playsound_local(source, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+				target.playsound_local(source, 'sound/voice/human/womanlaugh1.ogg', 50, 1)
 			else
 				target.playsound_local(source, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
 		if("creepy")

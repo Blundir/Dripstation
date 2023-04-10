@@ -6,19 +6,10 @@
 	message = "is strumming the air and headbanging like a safari chimp."
 	restraint_check = TRUE
 
-/datum/emote/living/carbon/blink
-	key = "blink"
-	key_third_person = "blinks"
-	message = "blinks."
-
-/datum/emote/living/carbon/blink_r
-	key = "blink_r"
-	message = "blinks rapidly."
-
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
-	message = "claps."
+	message = "хлопает."
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
@@ -37,7 +28,7 @@
 /datum/emote/living/carbon/crack
 	key = "crack"
 	key_third_person = "cracks"
-	message = "cracks their knuckles."
+	message = "хрустит костяшками."
 	sound = 'sound/misc/knuckles.ogg'
 	cooldown = 6 SECONDS
 
@@ -55,8 +46,8 @@
 /datum/emote/living/carbon/moan
 	key = "moan"
 	key_third_person = "moans"
-	message = "moans!"
-	message_mime = "appears to moan!"
+	message = "стонет!"
+	message_mime = "делает вид, что стонет!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/pointdown
@@ -113,12 +104,12 @@
 /datum/emote/living/carbon/wink
 	key = "wink"
 	key_third_person = "winks"
-	message = "winks."
+	message = "подмигивает."
 
 /datum/emote/living/snap
 	key = "snap"
 	key_third_person = "snaps"
-	message = "snaps their fingers."
+	message = "щёлкает пальцами."
 	message_param = "snaps their fingers at %t."
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)

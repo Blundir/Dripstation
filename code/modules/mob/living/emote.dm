@@ -7,25 +7,26 @@
 /datum/emote/living/blush
 	key = "blush"
 	key_third_person = "blushes"
-	message = "blushes."
+	message = "краснеет."
 
 /datum/emote/living/bow
 	key = "bow"
 	key_third_person = "bows"
-	message = "bows."
+	message = "делает поклон."
 	message_param = "bows to %t."
 	restraint_check = TRUE
 
 /datum/emote/living/burp
 	key = "burp"
 	key_third_person = "burps"
-	message = "burps."
+	message = "рыгает."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/choke
 	key = "choke"
 	key_third_person = "chokes"
-	message = "chokes!"
+	message = "подавился!"
+	message_female = "подавилась!"
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = SOFT_CRIT
 
@@ -35,16 +36,20 @@
 	message = "crosses their arms."
 	restraint_check = TRUE
 
+/datum/emote/living/shiver
+	key = "shiver"
+	message = "дрожит."
+
 /datum/emote/living/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
-	message = "chuckles."
+	message = "усмехается."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/collapse
 	key = "collapse"
 	key_third_person = "collapses"
-	message = "collapses!"
+	message = "теряет сознание!"
 
 /datum/emote/living/collapse/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -55,7 +60,8 @@
 /datum/emote/living/cough
 	key = "cough"
 	key_third_person = "coughs"
-	message = "coughs!"
+	message = "кашляет!"
+	message_mime = "бесшумно кашляет!"
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = SOFT_CRIT
 
@@ -67,8 +73,14 @@
 /datum/emote/living/dance
 	key = "dance"
 	key_third_person = "dances"
-	message = "dances around happily."
+	message = "радостно танцует."
 	restraint_check = TRUE
+
+/datum/emote/living/dance/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/L = user
+	if(. && isliving(user))
+		L.spin(10, 1)
 
 /datum/emote/living/deathgasp
 	key = "deathgasp"
@@ -100,7 +112,7 @@
 /datum/emote/living/drool
 	key = "drool"
 	key_third_person = "drools"
-	message = "drools."
+	message = "пускает слюни."
 
 /datum/emote/living/faint
 	key = "faint"
@@ -117,7 +129,7 @@
 /datum/emote/living/trip
 	key = "trip"
 	key_third_person = "trips"
-	message = "trips and falls!"
+	message = "спотыкается и падает!"
 
 /datum/emote/living/trip/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -128,7 +140,7 @@
 /datum/emote/living/flap
 	key = "flap"
 	key_third_person = "flaps"
-	message = "flaps their wings."
+	message = "хлопает крыльями."
 	restraint_check = TRUE
 	var/wing_time = 20
 
@@ -148,14 +160,14 @@
 /datum/emote/living/flap/aflap
 	key = "aflap"
 	key_third_person = "aflaps"
-	message = "flaps their wings ANGRILY!"
+	message = "ЗЛОБНО хлопает крыльями!"
 	restraint_check = TRUE
 	wing_time = 10
 
 /datum/emote/living/frown
 	key = "frown"
 	key_third_person = "frowns"
-	message = "frowns."
+	message = "хмурится."
 	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/gag
@@ -167,21 +179,37 @@
 /datum/emote/living/gasp
 	key = "gasp"
 	key_third_person = "gasps"
-	message = "gasps!"
+	message = "задыхается!"
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/giggle
 	key = "giggle"
 	key_third_person = "giggles"
-	message = "giggles."
-	message_mime = "giggles silently!"
+	message = "хихикает."
+	message_mime = "бесшумно хихикает!"
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/giggle/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/giggle/get_sound(mob/living/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/human_laugh = ishumanbasic(H) || iscatperson(H)
+		if(human_laugh && (!H.mind || !H.mind.miming))
+			if(user.gender == FEMALE)
+				return pick('sound/voice/human/womangiggle1.ogg', 'sound/voice/human/womangiggle2.ogg', 'sound/voice/human/womangiggle3.ogg')
+			else
+				return pick('sound/voice/human/mangiggle1.ogg', 'sound/voice/human/mangiggle2.ogg')
 
 /datum/emote/living/glare
 	key = "glare"
 	key_third_person = "glares"
-	message = "glares."
+	message = "пялится."
 	message_param = "glares at %t."
 
 /datum/emote/living/grin
@@ -192,8 +220,8 @@
 /datum/emote/living/groan
 	key = "groan"
 	key_third_person = "groans"
-	message = "groans!"
-	message_mime = "appears to groan!"
+	message = "стонет!"
+	message_mime = "делает вид, что стонет!"
 	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/grimace
@@ -219,7 +247,7 @@
 /datum/emote/living/jump
 	key = "jump"
 	key_third_person = "jumps"
-	message = "jumps!"
+	message = "прыгает!"
 	restraint_check = TRUE
 
 /datum/emote/living/kiss
@@ -231,8 +259,8 @@
 /datum/emote/living/laugh
 	key = "laugh"
 	key_third_person = "laughs"
-	message = "laughs."
-	message_mime = "laughs silently!"
+	message = "смеется."
+	message_mime = "бесшумно смеется!"
 	emote_type = EMOTE_AUDIBLE
 	cooldown = 3 SECONDS
 	vary = TRUE
@@ -249,20 +277,20 @@
 		var/human_laugh = ishumanbasic(H) || iscatperson(H)
 		if(human_laugh && (!H.mind || !H.mind.miming))
 			if(user.gender == FEMALE)
-				return 'sound/voice/human/womanlaugh.ogg'
+				return pick('sound/voice/human/womanlaugh1.ogg', 'sound/voice/human/womanlaugh2.ogg', 'sound/voice/human/womanlaugh3.ogg', 'sound/voice/human/womanlaugh4.ogg')
 			else
-				return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
+				return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg', 'sound/voice/human/manlaugh3.ogg')
 
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"
-	message = "looks."
+	message = "смотрит."
 	message_param = "looks at %t."
 
 /datum/emote/living/nod
 	key = "nod"
 	key_third_person = "nods"
-	message = "nods."
+	message = "кивает."
 	message_param = "nods at %t."
 	stat_allowed = SOFT_CRIT
 
@@ -289,14 +317,14 @@
 /datum/emote/living/pout
 	key = "pout"
 	key_third_person = "pouts"
-	message = "pouts."
+	message = "дуется."
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/scream
 	key = "scream"
 	key_third_person = "screams"
-	message = "screams."
-	message_mime = "acts out a scream!"
+	message = "кричит."
+	message_mime = "делает вид, что кричит!"
 	emote_type = EMOTE_AUDIBLE
 	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized scream.
 
@@ -313,19 +341,31 @@
 /datum/emote/living/shake
 	key = "shake"
 	key_third_person = "shakes"
-	message = "shakes their head."
+	message = "качает головой."
 	stat_allowed = SOFT_CRIT
-
-/datum/emote/living/shiver
-	key = "shiver"
-	key_third_person = "shiver"
-	message = "shivers."
 
 /datum/emote/living/sigh
 	key = "sigh"
 	key_third_person = "sighs"
-	message = "sighs."
+	message = "вздыхает."
+	message_mime = "бесшумно вздыхает."
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/sigh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/sigh/get_sound(mob/living/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/human_laugh = ishumanbasic(H) || iscatperson(H)
+		if(human_laugh && (!H.mind || !H.mind.miming))
+			if(user.gender == FEMALE)
+				return 'sound/voice/human/womansigh.ogg'
+			else
+				return 'sound/voice/human/mansigh.ogg'
 
 /datum/emote/living/sit
 	key = "sit"
@@ -335,12 +375,13 @@
 /datum/emote/living/smile
 	key = "smile"
 	key_third_person = "smiles"
-	message = "smiles."
+	message = "улыбается."
 
 /datum/emote/living/sneeze
 	key = "sneeze"
 	key_third_person = "sneezes"
-	message = "sneezes."
+	message = "чихает."
+	message_mime = "делает вид, что чихает."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/smug
@@ -351,21 +392,21 @@
 /datum/emote/living/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
-	message = "sniffs."
+	message = "шмыгает носом."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/snore
 	key = "snore"
 	key_third_person = "snores"
-	message = "snores."
-	message_mime = "sleeps soundly."
+	message = "храпит."
+	message_mime = "делает вид, что громко спит."
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/stare
 	key = "stare"
 	key_third_person = "stares"
-	message = "stares."
+	message = "пялится."
 	message_param = "stares at %t."
 
 /datum/emote/living/stretch
@@ -398,40 +439,41 @@
 /datum/emote/living/tremble
 	key = "tremble"
 	key_third_person = "trembles"
-	message = "trembles in fear!"
+	message = "трепещет!"
 	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/twitch
 	key = "twitch"
 	key_third_person = "twitches"
-	message = "twitches violently."
+	message = "сильно дергается."
 
 /datum/emote/living/twitch_s
 	key = "twitch_s"
-	message = "twitches."
+	message = "дергается."
 
 /datum/emote/living/wave
 	key = "wave"
 	key_third_person = "waves"
-	message = "waves."
+	message = "машет."
 
 /datum/emote/living/whimper
 	key = "whimper"
 	key_third_person = "whimpers"
-	message = "whimpers."
-	message_mime = "appears hurt."
+	message = "хнычет."
+	message_mime = "бесшумно хнычет."
 	stat_allowed = SOFT_CRIT
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/wsmile
 	key = "wsmile"
 	key_third_person = "wsmiles"
-	message = "smiles weakly."
+	message = "слегка улыбается."
 
 /datum/emote/living/yawn
 	key = "yawn"
 	key_third_person = "yawns"
-	message = "yawns."
+	message = "зевает."
+	message_mime = "бесшумно зевает."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/custom
@@ -565,3 +607,30 @@
 	message = "gives a thumbs up."
 	message_param = "gives a thumbs up to %t."
 	restraint_check = TRUE
+
+/datum/emote/living/blink
+	key = "blink"
+	key_third_person = "blinks"
+	message = "моргает."
+
+/datum/emote/living/blink_r
+	key = "blink_r"
+	key_third_person = "blinks rapidly"
+	message = "быстро моргает."
+
+/datum/emote/living/salute
+	key = "salute"
+	key_third_person = "salutes"
+	message = "салютует."
+
+/datum/emote/living/salute/get_sound(mob/living/user)
+	. = ..()
+	return 'sound/effects/salute.ogg'
+
+/datum/emote/living/cry
+	key = "cry"
+	key_third_person = "cries"
+	message = "плачет."
+	message_mime = "пускает слезу."
+
+

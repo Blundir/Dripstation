@@ -13,6 +13,8 @@
 	var/message_monkey = "" //Message displayed if the user is a monkey
 	var/message_ipc = "" // Message to display if the user is an IPC
 	var/message_simple = "" //Message to display if the user is a simple_animal
+	var/message_male = "" //for russian translation
+	var/message_female = ""
 	var/message_param = "" //Message to display if a param was given
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
@@ -24,7 +26,7 @@
 	var/sound //Sound to play when emote is called
 	var/vary = FALSE	//used for the honk borg emote
 	var/only_forced_audio = FALSE //can only code call this event instead of the player.
-	var/cooldown = 0.4 SECONDS
+	var/cooldown = 2 SECONDS
 
 /datum/emote/New()
 	if (ispath(mob_type_allowed_typecache))
@@ -125,6 +127,10 @@
 		. = message_ipc
 	else if(isanimal(user) && message_simple)
 		. = message_simple
+	else if(user.gender == MALE && message_male)
+		. = message_male
+	else if(user.gender == FEMALE && message_female)
+		. = message_female
 
 /datum/emote/proc/select_param(mob/user, params)
 	return replacetext(message_param, "%t", params)
