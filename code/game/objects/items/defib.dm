@@ -379,6 +379,7 @@
 	return OXYLOSS
 
 /obj/item/twohanded/shockpaddles/dropped(mob/user as mob)
+	. = ..()
 	if(user)
 		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
 		if(istype(O))
