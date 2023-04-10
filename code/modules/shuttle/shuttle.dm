@@ -485,7 +485,7 @@
 		old_area.turfs_to_uncontain += oldT
 		underlying_area.contents += oldT
 		underlying_area.contained_turfs += oldT
-		oldT.change_area(old_area, underlying_area)
+		oldT.transfer_area_lighting(old_area, underlying_area)
 		oldT.empty(FALSE)
 
 		// Here we locate the bottomost shuttle boundary and remove all turfs above it

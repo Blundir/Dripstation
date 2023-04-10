@@ -575,6 +575,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
   * Updates the area icon and calls power change on all machinees in the area
   */
 /area/proc/power_change()
+	SEND_SIGNAL(src, COMSIG_AREA_POWER_CHANGE)
 	for(var/obj/machinery/M in src)	// for each machine in the area
 		M.power_change()				// reverify power status (to update icons etc.)
 	update_icon()
@@ -617,6 +618,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			static_light += value
 		if(AREA_USAGE_STATIC_ENVIRON)
 			static_environ += value
+
+/area/proc/removeStaticPower(value, powerchannel)
+	switch(powerchannel)
+		if(AREA_USAGE_STATIC_START to AREA_USAGE_STATIC_END)
+			static_equip -= value
 
 /**
   * Clear all power usage in area

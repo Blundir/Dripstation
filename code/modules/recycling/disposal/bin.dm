@@ -361,6 +361,7 @@
 
 /obj/machinery/disposal/bin/update_icon()
 	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(stat & BROKEN)
 		pressure_charging = FALSE
 		flush = FALSE
@@ -377,12 +378,15 @@
 	//check for items in disposal - occupied light
 	if(contents.len > 0)
 		add_overlay("dispover-full")
+		SSvis_overlays.add_vis_overlay(src, icon, "dispover-full-glow", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 	//charging and ready light
 	if(pressure_charging)
 		add_overlay("dispover-charge")
+		SSvis_overlays.add_vis_overlay(src, icon, "dispover-charge-glow", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 	else if(full_pressure)
 		add_overlay("dispover-ready")
+		SSvis_overlays.add_vis_overlay(src, icon, "dispover-ready-glow", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 /obj/machinery/disposal/bin/proc/do_flush()
 	set waitfor = FALSE

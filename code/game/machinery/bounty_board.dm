@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(request_list)
 		add_overlay(icon_screen)
 		SSvis_overlays.add_vis_overlay(src, icon, icon_screen, layer, EMISSIVE_PLANE, dir)
 
-/obj/machinery/newscaster/power_change()
+/obj/machinery/bounty_board/power_change()
 	. = ..()
 	if(!.)
 		return // reduce unneeded light changes

@@ -254,6 +254,7 @@
 	var/bulb_vacuum_colour = "#4F82FF"	// colour of the light when air alarm is set to severe
 	var/bulb_vacuum_brightness = 8
 
+	var/light_mask = "overlay_tube" //mask for emissive lights
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
 	icon_state = "tube-broken"
@@ -267,6 +268,7 @@
 	brightness = 4
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb
+	light_mask = "overlay_bulb"
 
 /obj/machinery/light/small/broken
 	status = LIGHT_BROKEN
@@ -342,6 +344,7 @@
 
 /obj/machinery/light/update_icon()
 	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			if(forced_off)
@@ -350,14 +353,15 @@
 			var/area/A = get_area(src)
 			if(emergency_mode || (A && A.fire))
 				icon_state = "[base_state]_emergency"
+				SSvis_overlays.add_vis_overlay(src, icon, light_mask, EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 			else if (A && A.vacuum)
 				icon_state = "[base_state]_vacuum"
+				SSvis_overlays.add_vis_overlay(src, icon, light_mask, EMISSIVE_LAYER, EMISSIVE_PLANE, dir)				
 			else
 				icon_state = "[base_state]"
 				if(on && !forced_off)
-					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, layer, EMISSIVE_PLANE)
-					glowybit.alpha = clamp(light_power*250, 30, 200)
-					add_overlay(glowybit)
+					add_overlay('icons/obj/lighting_overlay.dmi', base_state)
+					SSvis_overlays.add_vis_overlay(src, icon, light_mask, layer, EMISSIVE_PLANE, dir)
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -941,6 +945,7 @@
 	layer = LOW_OBJ_LAYER
 	light_type = /obj/item/light/bulb
 	fitting = "floor bulb"
+	light_mask = "overlay_floor"
 
 /obj/item/floor_light
 	name = "floor light frame"

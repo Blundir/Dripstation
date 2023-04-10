@@ -54,12 +54,16 @@
 #define LIGHT_COLOR_GREEN      "#64C864"
 /// Electric green. rgb(0, 255, 0)
 #define LIGHT_COLOR_ELECTRIC_GREEN      "#00FF00"
+/// Vivid, slightly blue green. rgb(60, 240, 70)
+#define LIGHT_COLOR_VIVID_GREEN "#3CF046"
 /// Cold, diluted blue. rgb(100, 150, 250)
 #define LIGHT_COLOR_BLUE       "#6496FA"
 /// Light blueish green. rgb(125, 225, 175)
 #define LIGHT_COLOR_BLUEGREEN  "#7DE1AF"
 /// Diluted cyan. rgb(125, 225, 225)
 #define LIGHT_COLOR_CYAN       "#7DE1E1"
+/// Baby Blue rgb(0, 170, 220)
+#define LIGHT_COLOR_BABY_BLUE "#00AADC"
 /// More-saturated cyan. rgb(64, 206, 255)
 #define LIGHT_COLOR_LIGHT_CYAN "#40CEFF"
 /// Saturated blue. rgb(51, 117, 248)
@@ -90,6 +94,8 @@
 #define LIGHT_COLOR_LAVA       "#C48A18"
 /// Bright, non-saturated red. Leaning slightly towards pink for visibility. rgb(250, 100, 75)
 #define LIGHT_COLOR_FLARE      "#FA644B"
+/// Vivid red. Leans a bit darker to accentuate red colors and leave other channels a bit dry.  rgb(200, 25, 25)
+#define LIGHT_COLOR_INTENSE_RED "#C81919"
 /// Weird color, between yellow and green, very slimy. rgb(175, 200, 75)
 #define LIGHT_COLOR_SLIME_LAMP "#AFC84B"
 /// Extremely diluted yellow, close to skin color (for some reason). rgb(250, 225, 175)
