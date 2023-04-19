@@ -1,3 +1,11 @@
+/client/verb/mentor_wrapper()
+	set hidden = TRUE
+	set name = "msay"
+
+	var/message = input(src, null, "Mentor Chat \"text\"") as text|null
+	if (message)
+		cmd_mentor_say(message)
+
 /client/verb/cmd_mentor_say(msg as text)
 	set category = "Mentor"
 	set name = "MSay" //Gave this shit a shorter name so you only have to time out "msay" rather than "mentor say" to use it --NeoFite

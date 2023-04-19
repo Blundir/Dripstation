@@ -1,3 +1,8 @@
+/client/verb/looc_wrapper()
+	set hidden = TRUE
+	var/message = input("", "LOOC \"text\"") as null|text
+	looc(message)
+
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set category = "OOC"
