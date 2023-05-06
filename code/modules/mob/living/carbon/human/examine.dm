@@ -109,6 +109,10 @@
 	if(wear_id)
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."
 
+	//PDA
+	if(wear_pda)
+		. += "[t_He] [t_is] wearing [wear_pda.get_examine_string(user)]."
+
 	//Status effects
 	. += status_effect_examines()
 

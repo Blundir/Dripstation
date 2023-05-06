@@ -376,6 +376,8 @@
 		items += shoes
 	if(wear_id)
 		items += wear_id
+	if(wear_pda)
+		items += wear_pda
 	if(wear_suit)
 		items += wear_suit
 	if(w_uniform)

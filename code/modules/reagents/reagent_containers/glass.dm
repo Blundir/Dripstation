@@ -262,7 +262,7 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 75, ACID = 50) //Weak melee protection, because you can wear it on your head
 	slot_equipment_priority = list( \
-		SLOT_BACK, SLOT_WEAR_ID,\
+		SLOT_BACK, SLOT_WEAR_ID, SLOT_WEAR_PDA,\
 		SLOT_W_UNIFORM, SLOT_WEAR_SUIT,\
 		SLOT_WEAR_MASK, SLOT_HEAD, SLOT_NECK,\
 		SLOT_SHOES, SLOT_GLOVES,\

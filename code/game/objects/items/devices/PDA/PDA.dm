@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT | ITEM_SLOT_PDA
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	light_system = MOVABLE_LIGHT

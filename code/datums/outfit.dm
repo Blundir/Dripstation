@@ -53,6 +53,9 @@
 	/// Type path of item to go in the idcard slot
 	var/id = null
 
+	/// Type path of item to go in  the pda slot
+	var/pda = null
+
 	/// Type path of item for left pocket slot
 	var/l_pocket = null
 
@@ -182,6 +185,8 @@
 		H.equip_to_slot_or_del(SSwardrobe.provide_type(glasses, H), SLOT_GLASSES, TRUE)
 	if(id)
 		H.equip_to_slot_or_del(SSwardrobe.provide_type(id, H), SLOT_WEAR_ID, TRUE)
+	if(pda)
+		H.equip_to_slot_or_del(SSwardrobe.provide_type(pda, H), SLOT_WEAR_PDA, TRUE)
 	if(suit_store)
 		H.equip_to_slot_or_del(SSwardrobe.provide_type(suit_store, H), SLOT_S_STORE, TRUE)
 
@@ -251,6 +256,8 @@
 			I.add_fingerprint(H,1)
 	if(H.wear_id)
 		H.wear_id.add_fingerprint(H,1)
+	if(H.wear_pda)
+		H.wear_pda.add_fingerprint(H,1)
 	if(H.w_uniform)
 		H.w_uniform.add_fingerprint(H,1)
 	if(H.wear_suit)

@@ -78,7 +78,7 @@
 	icon_state_powered = "tablet"
 	icon_state_menu = "assign"
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT | ITEM_SLOT_PDA
 	comp_light_luminosity = 6.3
 	variants = null
 

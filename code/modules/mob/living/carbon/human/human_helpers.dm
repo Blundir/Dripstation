@@ -109,6 +109,10 @@
 		id_card = belt.GetID()
 		if(id_card)
 			return id_card
+	else if(wear_pda)
+		id_card = wear_pda.GetID()
+		if(id_card)
+			return id_card
 
 /mob/living/carbon/human/get_id_in_hand()
 	var/obj/item/held_item = get_active_held_item()
