@@ -45,7 +45,8 @@ const OrbitedButton = (props, context) => {
       })}>
       {job && (
         <Box inline
-          ml={1}
+          ml={0.1}
+          mr={0.6}
           style={{ "transform": "translateY(2.5px)" }}
           className={`job-icon16x16 job-icon-${job}`} />
       )}

@@ -37,6 +37,9 @@
 	data["explain_attack"] = TRUE
 	return data
 
+/datum/antagonist/slaughter/get_antag_name() // makes laughter demon in the same category with slaughter demon in orbit panel
+	return "Slaughter demon"
+
 /datum/antagonist/slaughter/laughter
 	name = "Laughter demon"
 	objective_verb = "Hug and Tickle"

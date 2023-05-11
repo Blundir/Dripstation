@@ -190,6 +190,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/proc/farewell()
 	return
 
+/// gets antag name for orbit category. Reasoning is described in each subtype
+/datum/antagonist/proc/get_antag_name()
+	return name
+
 /datum/antagonist/proc/give_antag_moodies()
 	if(!antag_moodlet)
 		return
