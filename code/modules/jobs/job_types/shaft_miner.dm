@@ -45,7 +45,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/mine
 
-	ears = /obj/item/radio/headset/headset_cargo/mining
+	r_ear = /obj/item/radio/headset/headset_cargo/mining
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	digitigrade_shoes = /obj/item/clothing/shoes/xeno_wraps/cargo
 	gloves = /obj/item/clothing/gloves/color/black

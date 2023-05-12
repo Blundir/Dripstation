@@ -474,7 +474,7 @@
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset/syndicate/alt
+	r_ear = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	id = /obj/item/card/id/syndicate
@@ -675,7 +675,7 @@
 	mask = /obj/item/clothing/mask/cigarette/pipe
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	ears = /obj/item/radio/headset
+	r_ear = /obj/item/radio/headset
 	id = /obj/item/card/id
 	implants = list(/obj/item/implant/teleporter/innkeeper) //stay at your inn please.
 	suit_store = /obj/item/gun/ballistic/shotgun/doublebarrel //emergency weapon, ice planets are dangerous, and customers can be too.

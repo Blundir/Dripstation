@@ -24,7 +24,7 @@
 	if(!d_type)
 		return 0
 	var/protection = 0
-	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, ears, wear_id, wear_pda, wear_neck) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, r_ear, l_ear, wear_id, wear_pda, wear_neck) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -40,7 +40,7 @@
 ///Get all the clothing on a specific body part
 /mob/living/carbon/human/proc/clothingonpart(obj/item/bodypart/def_zone)
 	var/list/covering_part = list()
-	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, ears, wear_id, wear_pda, wear_neck) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, r_ear, l_ear, wear_id, wear_pda, wear_neck) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -458,7 +458,7 @@
 				brute_loss = 30*(2 - round(bomb_armor/60, 0.05))	//0-83% damage reduction
 				burn_loss = brute_loss					//40-120 total combined brute + burn
 			damage_clothes(200 - bomb_armor, BRUTE, BOMB)
-			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
+			if(!istype(l_ear, /obj/item/clothing/ears/earmuffs) || !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				adjustEarDamage(30, 120)
 			if(bomb_armor < 60)
 				Unconscious(20)						//Sufficient protection will stop you from being knocked out
@@ -469,7 +469,7 @@
 			if(bomb_armor)
 				brute_loss = 12*(2 - round(bomb_armor/60, 0.05))	//4-24 damage total depending on bomb armor
 			damage_clothes(max(40 - bomb_armor, 0), BRUTE, BOMB)
-			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
+			if(!istype(l_ear, /obj/item/clothing/ears/earmuffs) || !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				adjustEarDamage(15,60)
 			Knockdown(max(120 - (bomb_armor * 2),0))	//60 bomb armor prevents knockdown entirely
 
@@ -595,8 +595,10 @@
 			. = get_bodypart(BODY_ZONE_HEAD)
 			if(.)
 				damaged += .
-			if(ears)
-				inventory_items_to_kill += ears
+			if(r_ear)
+				inventory_items_to_kill += r_ear
+			if(l_ear)
+				inventory_items_to_kill += l_ear
 
 	//CHEST//
 	if(!bodyzone_hit || bodyzone_hit == BODY_ZONE_CHEST)
@@ -967,8 +969,10 @@
 			head_clothes = head
 		if(head_clothes)
 			torn_items += head_clothes
-		else if(ears)
-			torn_items += ears
+		else if(r_ear)
+			torn_items += r_ear
+		else if(l_ear)
+			torn_items += l_ear
 
 	//CHEST//
 	if(!def_zone || def_zone == BODY_ZONE_CHEST)

@@ -84,7 +84,7 @@
 	suit = /obj/item/clothing/suit/nerdshirt
 	back = /obj/item/storage/backpack/holding
 	head = /obj/item/clothing/head/beanie/red
-	ears = /obj/item/clothing/ears/headphones
+	r_ear = /obj/item/clothing/ears/headphones
 	implants = list(/obj/item/implant/teleporter/gasclerk)
 	r_pocket = /obj/item/paper/gasstation_lore
 	l_pocket = /obj/item/flashlight/seclite

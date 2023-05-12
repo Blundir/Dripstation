@@ -47,7 +47,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/fountainpen/library
 
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/curator
 	uniform_skirt = /obj/item/clothing/under/rank/curator/skirt
 	l_hand = /obj/item/storage/bag/books

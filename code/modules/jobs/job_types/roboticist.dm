@@ -47,7 +47,7 @@
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/robo
 
 	belt = /obj/item/storage/belt/utility/full
-	ears = /obj/item/radio/headset/headset_sci
+	r_ear = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/roboticist
 	uniform_skirt = /obj/item/clothing/under/rank/roboticist/skirt
 	suit = /obj/item/clothing/suit/toggle/labcoat

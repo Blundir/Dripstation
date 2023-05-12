@@ -367,8 +367,10 @@
 	var/list/items = ..()
 	if(belt)
 		items += belt
-	if(ears)
-		items += ears
+	if(r_ear)
+		items += r_ear
+	if(l_ear)
+		items += l_ear
 	if(glasses)
 		items += glasses
 	if(gloves)
@@ -417,7 +419,8 @@
 	if(hidden_slots & HIDEEYES)
 		obscured |= SLOT_GLASSES
 	if(hidden_slots & HIDEEARS)
-		obscured |= SLOT_EARS
+		obscured |= SLOT_R_EAR
+		obscured |= SLOT_L_EAR
 	if(hidden_slots & HIDEGLOVES)
 		obscured |= SLOT_GLOVES
 	if(hidden_slots & HIDEJUMPSUIT)

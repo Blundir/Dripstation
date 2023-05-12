@@ -57,7 +57,7 @@
 	var/msg = "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>"
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(istype(H.ears, /obj/item/radio/headset))
+		if(istype(H.r_ear, /obj/item/radio/headset) || istype(H.l_ear, /obj/item/radio/headset))
 			msg = "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from Central Command.  Message as follows: [span_bold("Item request received. Your package is inbound, please stand back from the landing site.")] Message ends.\""
 	to_chat(M, msg)
 

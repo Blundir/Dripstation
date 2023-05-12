@@ -278,7 +278,7 @@ Credit where due:
 	uniform = /obj/item/clothing/under/chameleon/ratvar
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = /obj/item/storage/backpack
-	ears = /obj/item/radio/headset
+	r_ear = /obj/item/radio/headset
 	gloves = /obj/item/clothing/gloves/color/yellow //Take them off if you want
 	belt = /obj/item/storage/belt/utility/servant //Take this off and pour it into a toolbox if you want
 	backpack_contents = list(/obj/item/storage/box/engineer = 1, \

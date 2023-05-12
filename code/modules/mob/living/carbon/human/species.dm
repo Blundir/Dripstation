@@ -1172,8 +1172,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
-		if(SLOT_EARS)
-			if(H.ears && H.ears != I)
+		if(SLOT_R_EAR)
+			if(H.r_ear && H.r_ear != I)
+				return FALSE
+			if(!(I.slot_flags & ITEM_SLOT_EARS))
+				return FALSE
+			if(!H.get_bodypart(BODY_ZONE_HEAD))
+				return FALSE
+			return equip_delay_self_check(I, H, bypass_equip_delay_self)
+		if(SLOT_L_EAR)
+			if(H.l_ear && H.l_ear != I)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_EARS))
 				return FALSE
@@ -2100,8 +2108,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			burning_items += H.wear_mask
 		if(H.wear_neck && !(SLOT_NECK in obscured))
 			burning_items += H.wear_neck
-		if(H.ears && !(SLOT_EARS in obscured))
-			burning_items += H.ears
+		if(H.r_ear && !(SLOT_R_EAR in obscured))
+			burning_items += H.r_ear
+		if(H.l_ear && !(SLOT_L_EAR in obscured))
+			burning_items += H.l_ear
 		if(H.head)
 			burning_items += H.head
 

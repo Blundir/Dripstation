@@ -44,6 +44,6 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/jan
 
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/janitor
 	uniform_skirt = /obj/item/clothing/under/rank/janitor/skirt

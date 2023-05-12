@@ -52,12 +52,17 @@
 	return special_voice
 
 /mob/living/carbon/human/binarycheck()
-	if(ears)
-		var/obj/item/radio/headset/dongle = ears
-		if(!istype(dongle))
-			return FALSE
+	. = FALSE
+	var/obj/item/radio/headset/dongle
+	if(istype(l_ear, /obj/item/radio/headset))
+		dongle = l_ear
 		if(dongle.translate_binary)
-			return TRUE
+			. = TRUE
+
+	if(istype(r_ear, /obj/item/radio/headset))
+		dongle = r_ear
+		if(dongle.translate_binary)
+			. = TRUE
 
 /mob/living/carbon/human/radio(message, list/message_mods = list(), list/spans, language) //Poly has a copy of this, lazy bastard
 	. = ..()
@@ -65,16 +70,25 @@
 		return .
 
 	if(message_mods[MODE_HEADSET])
-		if(ears)
-			ears.talk_into(src, message, , spans, language, message_mods)
+		if(r_ear)
+			r_ear.talk_into(src, message, , spans, language, message_mods)
+			return ITALICS | REDUCE_RANGE
+		if(l_ear)
+			l_ear.talk_into(src, message, , spans, language, message_mods)
 			return ITALICS | REDUCE_RANGE
 	else if(message_mods[RADIO_EXTENSION] == MODE_DEPARTMENT)
-		if(ears)
-			ears.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
+		if(r_ear)
+			r_ear.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
+			return ITALICS | REDUCE_RANGE
+		if(l_ear)
+			l_ear.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
 			return ITALICS | REDUCE_RANGE
 	else if(GLOB.radiochannels[message_mods[RADIO_EXTENSION]])
-		if(ears)
-			ears.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
+		if(r_ear)
+			r_ear.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
+			return ITALICS | REDUCE_RANGE
+		if(l_ear)
+			l_ear.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
 			return ITALICS | REDUCE_RANGE
 	return 0
 

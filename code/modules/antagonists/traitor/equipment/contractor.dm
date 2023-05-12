@@ -187,7 +187,7 @@
 	belt = /obj/item/pda/chameleon
 	mask = /obj/item/clothing/mask/cigarette/syndicate
 	shoes = /obj/item/clothing/shoes/chameleon/noslip
-	ears = /obj/item/radio/headset/chameleon
+	r_ear = /obj/item/radio/headset/chameleon
 	id = /obj/item/card/id/syndicate
 	r_hand = /obj/item/storage/toolbox/syndicate
 

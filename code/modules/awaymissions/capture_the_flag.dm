@@ -478,7 +478,7 @@
 
 /datum/outfit/ctf
 	name = "CTF"
-	ears = /obj/item/radio/headset
+	r_ear = /obj/item/radio/headset
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/space/hardsuit/shielded/ctf
 	toggle_helmet = FALSE // see the whites of their eyes
@@ -503,7 +503,8 @@
 	no_drops += H.get_item_by_slot(SLOT_GLOVES)
 	no_drops += H.get_item_by_slot(SLOT_SHOES)
 	no_drops += H.get_item_by_slot(SLOT_W_UNIFORM)
-	no_drops += H.get_item_by_slot(SLOT_EARS)
+	no_drops += H.get_item_by_slot(SLOT_R_EAR)
+	no_drops += H.get_item_by_slot(SLOT_L_EAR)
 	for(var/i in no_drops)
 		var/obj/item/I = i
 		ADD_TRAIT(I, TRAIT_NODROP, CAPTURE_THE_FLAG_TRAIT)
@@ -534,7 +535,7 @@
 
 /datum/outfit/ctf/red/post_equip(mob/living/carbon/human/H)
 	..()
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.set_frequency(FREQ_CTF_RED)
 	R.freqlock = TRUE
 	R.independent = TRUE
@@ -542,7 +543,7 @@
 
 /datum/outfit/ctf/blue/post_equip(mob/living/carbon/human/H)
 	..()
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.set_frequency(FREQ_CTF_BLUE)
 	R.freqlock = TRUE
 	R.independent = TRUE

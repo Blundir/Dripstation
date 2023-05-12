@@ -236,8 +236,8 @@
 	var/mob/living/carbon/human/H = owner.current
 	if(!istype(master_mob) || !istype(H))
 		return
-	if(master_mob.ears)
-		H.equip_to_slot_or_del(new master_mob.ears.type, SLOT_EARS)
+	if(master_mob.r_ear)
+		H.equip_to_slot_or_del(new master_mob.r_ear.type, SLOT_R_EAR)
 	if(master_mob.w_uniform)
 		H.equip_to_slot_or_del(new master_mob.w_uniform.type, SLOT_W_UNIFORM)
 	if(master_mob.shoes)

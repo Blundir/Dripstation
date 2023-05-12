@@ -48,7 +48,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/clown
 
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	mask = /obj/item/clothing/mask/gas/clown_hat

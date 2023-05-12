@@ -52,7 +52,7 @@
 		/obj/item/modular_computer/laptop/preset/paramedic/mining_medic = 1)
 
 	belt = /obj/item/storage/belt/medical/mining
-	ears = /obj/item/radio/headset/headset_medcargo
+	r_ear = /obj/item/radio/headset/headset_medcargo
 	glasses = /obj/item/clothing/glasses/hud/health/meson
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	digitigrade_shoes = /obj/item/clothing/shoes/xeno_wraps/medical

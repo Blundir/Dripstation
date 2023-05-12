@@ -29,8 +29,10 @@
 			mask = item_path
 		if(SLOT_NECK)
 			neck = item_path
-		if(SLOT_EARS)
-			ears = item_path
+		if(SLOT_R_EAR)
+			r_ear = item_path
+		if(SLOT_L_EAR)
+			l_ear = item_path
 		if(SLOT_GLASSES)
 			glasses = item_path
 		if(SLOT_WEAR_ID)
@@ -71,7 +73,7 @@
 
 	//Copy equipment
 	var/list/result = list()
-	var/list/slots_to_check = list(SLOT_W_UNIFORM,SLOT_BACK,SLOT_WEAR_SUIT,SLOT_BELT,SLOT_GLOVES,SLOT_SHOES,SLOT_HEAD,SLOT_WEAR_MASK,SLOT_NECK,SLOT_EARS,SLOT_GLASSES,SLOT_WEAR_ID,SLOT_WEAR_PDA,SLOT_S_STORE,SLOT_L_STORE,SLOT_R_STORE)
+	var/list/slots_to_check = list(SLOT_W_UNIFORM,SLOT_BACK,SLOT_WEAR_SUIT,SLOT_BELT,SLOT_GLOVES,SLOT_SHOES,SLOT_HEAD,SLOT_WEAR_MASK,SLOT_NECK,SLOT_R_EAR,SLOT_L_EAR,SLOT_GLASSES,SLOT_WEAR_ID,SLOT_WEAR_PDA,SLOT_S_STORE,SLOT_L_STORE,SLOT_R_STORE)
 	for(var/s in slots_to_check)
 		var/obj/item/I = get_item_by_slot(s)
 		var/vedits = collect_vv(I)

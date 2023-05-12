@@ -38,7 +38,7 @@
 
 	uniform = /obj/item/clothing/under/yogs/tourist
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	ears = /obj/item/radio/headset
+	r_ear = /obj/item/radio/headset
 	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c20, /obj/item/stack/spacecash/c20, /obj/item/stack/spacecash/c20)
 	r_hand =  /obj/item/camera
 	l_pocket = /obj/item/camera_film

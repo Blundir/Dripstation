@@ -216,7 +216,7 @@
 	for(M in ohearers(7, T))
 		if(ishuman(M) && M.can_hear())
 			var/mob/living/carbon/human/H = M
-			if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
+			if(istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
 				continue
 		M.emote("flip")
 	flip_cooldown = world.time + 7

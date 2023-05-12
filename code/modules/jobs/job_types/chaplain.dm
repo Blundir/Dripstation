@@ -174,7 +174,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/chap
 
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/chaplain
 	uniform_skirt = /obj/item/clothing/under/rank/chaplain/skirt
 	backpack_contents = list(/obj/item/camera/spooky = 1)

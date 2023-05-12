@@ -101,8 +101,11 @@
 			. += span_warning("<B>[t_His] eyes are glowing an unnatural red!</B>")
 
 	//ears
-	if(ears && !(SLOT_EARS in obscured))
-		. += "[t_He] [t_has] [ears.get_examine_string(user)] on [t_his] ears."
+	if(r_ear && !(SLOT_R_EAR in obscured))
+		. += "[t_He] [t_has] [r_ear.get_examine_string(user)] on [t_his] ears."
+
+	if(l_ear && !(SLOT_L_EAR in obscured))
+		. += "[t_He] [t_has] [l_ear.get_examine_string(user)] on [t_his] ears."
 
 	//ID
 	if(wear_id)
@@ -591,8 +594,11 @@
 			. += span_warning("<B>[t_His] eyes are glowing an unnatural red!</B>")
 
 	//ears
-	if(ears && !(SLOT_EARS in obscured))
-		. += "[t_He] [t_has] [ears.get_examine_string(user)] on [t_his] ears."
+	if(r_ear && !(SLOT_R_EAR in obscured))
+		. += "[t_He] [t_has] [r_ear.get_examine_string(user)] on [t_his] ears."
+
+	if(l_ear && !(SLOT_L_EAR in obscured))
+		. += "[t_He] [t_has] [l_ear.get_examine_string(user)] on [t_his] ears."
 
 
 	var/list/msg = list("")

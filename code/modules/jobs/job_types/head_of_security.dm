@@ -63,7 +63,7 @@
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/hos
 
 	belt = /obj/item/storage/belt/security/chief/full
-	ears = /obj/item/radio/headset/heads/hos/alt
+	r_ear = /obj/item/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/head_of_security
 	uniform_skirt = /obj/item/clothing/under/rank/head_of_security/skirt
 	shoes = /obj/item/clothing/shoes/jackboots

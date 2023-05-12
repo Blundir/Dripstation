@@ -254,16 +254,27 @@ There are several things that need to be remembered:
 		return
 
 	if(client && hud_used)
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_EARS]
+		var/atom/movable/screen/inventory/inv
+		inv = hud_used.inv_slots[SLOT_R_EAR]
 		inv.update_icon()
 
-	if(ears)
-		ears.screen_loc = ui_ears	//move the item to the appropriate screen loc
+		inv = hud_used.inv_slots[SLOT_L_EAR]
+		inv.update_icon()
+
+	if(r_ear)
+		r_ear.screen_loc = ui_r_ear	//move the item to the appropriate screen loc
 		if(client && hud_used && hud_used.hud_shown)
 			if(hud_used.inventory_shown)			//if the inventory is open
-				client.screen += ears					//add it to the client's screen
-		update_observer_view(ears,1)
-		overlays_standing[EARS_LAYER] = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = 'icons/mob/clothing/ears/ears.dmi')
+				client.screen += r_ear					//add it to the client's screen
+		update_observer_view(r_ear,1)
+	if(l_ear)
+		l_ear.screen_loc = ui_l_ear	
+		if(client && hud_used && hud_used.hud_shown)
+			if(hud_used.inventory_shown)			
+				client.screen += l_ear					//copypasta
+		update_observer_view(l_ear,1)
+		overlays_standing[EARS_LAYER] = r_ear.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = 'icons/mob/clothing/ears/ears.dmi')
+		overlays_standing[EARS_LAYER] = l_ear.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = 'icons/mob/clothing/ears/ears.dmi')
 		var/mutable_appearance/ears_overlay = overlays_standing[EARS_LAYER]
 		if(OFFSET_EARS in dna.species.offset_features)
 			ears_overlay.pixel_x += dna.species.offset_features[OFFSET_EARS][1]

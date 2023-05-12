@@ -13,8 +13,10 @@
 /mob/living/carbon/human/reindex_screams()
 	..()
 	//More slots in humans.
-	if(ears)
-		add_screams(ears.alternate_screams)
+	if(r_ear)
+		add_screams(r_ear.alternate_screams)
+	if(l_ear)
+		add_screams(l_ear.alternate_screams)
 	if(wear_suit)
 		add_screams(wear_suit.alternate_screams)
 	if(w_uniform)
