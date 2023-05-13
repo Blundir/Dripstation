@@ -363,7 +363,7 @@
 	desc = "An aetherial halo that magically hovers above the head."
 	icon_state = "halo"
 	item_state = "halo"
-	layer = EARS_LAYER
+	layer = R_EAR_LAYER
 
 /obj/item/clothing/head/rainbow_flower
 	name = "Rainbow Flower"

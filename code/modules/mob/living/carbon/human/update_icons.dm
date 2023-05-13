@@ -248,7 +248,8 @@ There are several things that need to be remembered:
 
 
 /mob/living/carbon/human/update_inv_ears()
-	remove_overlay(EARS_LAYER)
+	remove_overlay(R_EAR_LAYER)
+	remove_overlay(L_EAR_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //decapitated
 		return
@@ -261,26 +262,36 @@ There are several things that need to be remembered:
 		inv = hud_used.inv_slots[SLOT_L_EAR]
 		inv.update_icon()
 
-	if(r_ear)
-		r_ear.screen_loc = ui_r_ear	//move the item to the appropriate screen loc
-		if(client && hud_used && hud_used.hud_shown)
-			if(hud_used.inventory_shown)			//if the inventory is open
-				client.screen += r_ear					//add it to the client's screen
-		update_observer_view(r_ear,1)
-	if(l_ear)
-		l_ear.screen_loc = ui_l_ear	
-		if(client && hud_used && hud_used.hud_shown)
-			if(hud_used.inventory_shown)			
-				client.screen += l_ear					//copypasta
-		update_observer_view(l_ear,1)
-		overlays_standing[EARS_LAYER] = r_ear.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = 'icons/mob/clothing/ears/ears.dmi')
-		overlays_standing[EARS_LAYER] = l_ear.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = 'icons/mob/clothing/ears/ears.dmi')
-		var/mutable_appearance/ears_overlay = overlays_standing[EARS_LAYER]
-		if(OFFSET_EARS in dna.species.offset_features)
-			ears_overlay.pixel_x += dna.species.offset_features[OFFSET_EARS][1]
-			ears_overlay.pixel_y += dna.species.offset_features[OFFSET_EARS][2]
-		overlays_standing[EARS_LAYER] = ears_overlay
-	apply_overlay(EARS_LAYER)
+	if(l_ear || r_ear)
+		if(l_ear)
+			if(client && hud_used && hud_used.hud_shown)
+				if(hud_used.inventory_shown)			//if the inventory is open ...
+					l_ear.screen_loc = ui_l_ear			//...draw the item in the inventory screen
+				client.screen += l_ear					//Either way, add the item to the HUD
+				update_observer_view(l_ear,1)
+
+			overlays_standing[L_EAR_LAYER] = l_ear.build_worn_icon(default_layer = L_EAR_LAYER, default_icon_file = 'icons/mob/clothing/ears/l_ear.dmi')
+			var/mutable_appearance/l_ear_overlay = overlays_standing[L_EAR_LAYER]
+			if(OFFSET_L_EAR in dna.species.offset_features)
+				l_ear_overlay.pixel_x += dna.species.offset_features[OFFSET_L_EAR][1]
+				l_ear_overlay.pixel_y += dna.species.offset_features[OFFSET_L_EAR][2]
+			overlays_standing[L_EAR_LAYER] = l_ear_overlay
+
+		if(r_ear)
+			if(client && hud_used && hud_used.hud_shown)
+				if(hud_used.inventory_shown)			//if the inventory is open ...
+					r_ear.screen_loc = ui_r_ear			//...draw the item in the inventory screen
+				client.screen += r_ear					//Either way, add the item to the HUD
+				update_observer_view(r_ear,1)
+
+			overlays_standing[R_EAR_LAYER] = r_ear.build_worn_icon(default_layer = R_EAR_LAYER, default_icon_file = 'icons/mob/clothing/ears/r_ear.dmi')
+			var/mutable_appearance/r_ear_overlay = overlays_standing[R_EAR_LAYER]
+			if(OFFSET_R_EAR in dna.species.offset_features)
+				r_ear_overlay.pixel_x += dna.species.offset_features[OFFSET_R_EAR][1]
+				r_ear_overlay.pixel_y += dna.species.offset_features[OFFSET_R_EAR][2]
+			overlays_standing[R_EAR_LAYER] = r_ear_overlay
+	apply_overlay(R_EAR_LAYER)
+	apply_overlay(L_EAR_LAYER)
 
 /mob/living/carbon/human/update_inv_neck()
 	remove_overlay(NECK_LAYER)
