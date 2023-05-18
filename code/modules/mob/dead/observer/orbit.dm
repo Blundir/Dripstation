@@ -103,6 +103,8 @@
 					serialized["antag"] = antag_team.get_team_name()
 				else
 					serialized["antag"] = A.get_antag_name()
+					if(mind.antag_hud_icon_state)
+						serialized["antag_icon"] = mind.antag_hud_icon_state
 				antagonists += list(serialized)
 				break
 
@@ -123,10 +125,13 @@
 	. = ..() || list()
 	. += get_asset_datum(/datum/asset/simple/orbit)
 	. += get_asset_datum(/datum/asset/spritesheet/job_icons)
+	. += get_asset_datum(/datum/asset/spritesheet/antag_hud)
 
 /datum/asset/spritesheet/job_icons
 	name = "job-icon"
 
+/datum/asset/spritesheet/antag_hud
+	name = "antag-hud"
 
 /datum/asset/spritesheet/job_icons/create_spritesheets()
 	var/icon/I = icon('yogstation/icons/mob/hud.dmi')
@@ -135,3 +140,11 @@
 	// Scale it up
 	I.Scale(16, 16)
 	InsertAll("job-icon", I)
+
+/datum/asset/spritesheet/antag_hud/create_spritesheets()
+	var/icon/I = icon('yogstation/icons/mob/hud.dmi')
+	// Get the antag hud part
+	I.Crop(25, 17, 32, 24)
+	// Scale it up
+	I.Scale(16, 16)
+	InsertAll("antag-hud", I)

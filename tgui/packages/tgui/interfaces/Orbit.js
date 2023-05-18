@@ -37,7 +37,7 @@ const compareNumberedText = (a, b) => {
 
 const OrbitedButton = (props, context) => {
   const { act } = useBackend(context);
-  const { color, thing, job } = props;
+  const { color, thing, job, antag } = props;
 
   return (
     <Button
@@ -52,6 +52,13 @@ const OrbitedButton = (props, context) => {
           ml={-0.5}
           style={{ "transform": "translateY(18.75%)" }}
           className={`job-icon16x16 job-icon-${job}`} />
+      )}
+      {antag && (
+        <Box inline
+          mr={0.5}
+          ml={job ? -0.25 : -0.5}
+          style={{ "transform": "translateY(18.75%)" }}
+          className={`antag-hud16x16 antag-hud-${antag}`} />
       )}
       {thing.name}
       {thing.orbiters && (
@@ -94,6 +101,7 @@ const OrbitSection = (props, context) => {
             color={color}
             thing={thing}
             job={thing.role_icon}
+            antag={thing.antag_icon}
           />
         )
       ))}
@@ -146,6 +154,7 @@ export const Orbit = (props, context) => {
   return (
     <Window
       title="Orbit"
+      theme="generic"
       width={350}
       height={700}>
       <Window.Content scrollable>
