@@ -2,7 +2,8 @@
 	name = "\improper Space Dragon"
 	roundend_category = "space dragons"
 	job_rank = ROLE_SPACE_DRAGON
-	show_in_antagpanel = FALSE
+	show_in_antagpanel = TRUE
+	show_to_ghosts = TRUE
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
 	/// All space carps created by this antagonist space dragon

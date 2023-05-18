@@ -88,7 +88,7 @@
 		var/obj/item/card/id/identification_card = mob_poi.get_idcard()
 		if(identification_card)
 			serialized["role_icon"] = "hud[ckey(identification_card.GetJobName())]"
-		else
+		else if(SSjob.name_occupations[mind.assigned_role])
 			var/datum/job/located_job = SSjob.GetJob(mind.assigned_role)
 			if(located_job)
 				serialized["role_icon"] = "hud[ckey(located_job.title)]"
