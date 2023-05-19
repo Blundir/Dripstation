@@ -106,6 +106,8 @@
 					if(mind.antag_hud_icon_state)
 						serialized["antag_icon"] = mind.antag_hud_icon_state
 				antagonists += list(serialized)
+			else if((user.client.has_antag_hud()) && mind.antag_hud_icon_state)
+				serialized["antag_icon"] = mind.antag_hud_icon_state
 				break
 
 		if(!was_antagonist)
