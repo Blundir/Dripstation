@@ -52,22 +52,23 @@
 #define SLOT_BELT			5
 #define SLOT_WEAR_ID		6
 #define SLOT_WEAR_PDA		7	
-#define SLOT_EARS			8
-#define SLOT_GLASSES		9
-#define SLOT_GLOVES			10
-#define SLOT_NECK			11
-#define SLOT_HEAD			12
-#define SLOT_SHOES			13
-#define SLOT_WEAR_SUIT		14
-#define SLOT_W_UNIFORM		15
-#define SLOT_L_STORE		16
-#define SLOT_R_STORE		17
-#define SLOT_S_STORE		18
-#define SLOT_IN_BACKPACK	19
-#define SLOT_LEGCUFFED		20
-#define SLOT_GENERC_DEXTROUS_STORAGE	21
+#define SLOT_R_EAR			9
+#define SLOT_L_EAR			10
+#define SLOT_GLASSES		11
+#define SLOT_GLOVES			12
+#define SLOT_NECK			13
+#define SLOT_HEAD			14
+#define SLOT_SHOES			15
+#define SLOT_WEAR_SUIT		16
+#define SLOT_W_UNIFORM		17
+#define SLOT_L_STORE		18
+#define SLOT_R_STORE		19
+#define SLOT_S_STORE		20
+#define SLOT_IN_BACKPACK	21
+#define SLOT_LEGCUFFED		22
+#define SLOT_GENERC_DEXTROUS_STORAGE	23
 
-#define SLOTS_AMT			21 // Keep this up to date!
+#define SLOTS_AMT			24 // Keep this up to date!
 
 //I hate that this has to exist
 /proc/slotdefine2slotbit(slotdefine) //Keep this up to date with the value of SLOT BITMASKS and SLOTS (the two define sections above)
@@ -85,7 +86,7 @@
 			. = ITEM_SLOT_ID
 		if(SLOT_WEAR_PDA)
 			. = ITEM_SLOT_PDA
-		if(SLOT_EARS)
+		if(SLOT_R_EAR, SLOT_L_EAR)
 			. = ITEM_SLOT_EARS
 		if(SLOT_GLASSES)
 			. = ITEM_SLOT_EYES

@@ -3,7 +3,7 @@
 	uniform = /obj/item/clothing/under/abductor
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
-	ears = /obj/item/radio/headset/abductor
+	r_ear = /obj/item/radio/headset/abductor
 
 /datum/outfit/abductor/proc/link_to_console(mob/living/carbon/human/H, team_number)
 	var/datum/antagonist/abductor/A = H?.mind?.has_antag_datum(/datum/antagonist/abductor)

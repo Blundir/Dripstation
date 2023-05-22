@@ -43,7 +43,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/botany
 
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/hydroponics
 	uniform_skirt = /obj/item/clothing/under/rank/hydroponics/skirt
 	suit = /obj/item/clothing/suit/apron

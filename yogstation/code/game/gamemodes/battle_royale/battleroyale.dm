@@ -222,7 +222,7 @@ GLOBAL_LIST_EMPTY(battleroyale_players) //reduce iteration cost
 	name = "Default Skin"
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset
+	r_ear = /obj/item/radio/headset
 	r_pocket = /obj/item/bikehorn
 	l_pocket = /obj/item/crowbar
 	back = /obj/item/storage/backpack

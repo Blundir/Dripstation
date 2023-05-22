@@ -6,7 +6,7 @@
 	uniform = /obj/item/clothing/under/rank/centcom_officer
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset/headset_cent/alt
+	r_ear = /obj/item/radio/headset/headset_cent/alt
 	implants = list(/obj/item/implant/mindshield)
 	backpack_contents = list(
 		/obj/item/clothing/mask/gas/sechailer/swat=1,
@@ -27,7 +27,7 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.set_frequency(FREQ_CENTCOM)
 	R.freqlock = TRUE
 
@@ -58,7 +58,7 @@
 
 	if(visualsOnly)
 		return
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.keyslot = new /obj/item/encryptionkey/heads/captain
 	R.recalculateChannels()
 
@@ -96,7 +96,7 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.keyslot = new /obj/item/encryptionkey/heads/hos
 	R.recalculateChannels()
 
@@ -135,7 +135,7 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.keyslot = new /obj/item/encryptionkey/heads/cmo
 	R.recalculateChannels()
 
@@ -181,7 +181,7 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.keyslot = new /obj/item/encryptionkey/heads/ce
 	R.recalculateChannels()
 
@@ -246,7 +246,7 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.keyslot = new /obj/item/encryptionkey/heads/hop
 	R.recalculateChannels()
 
@@ -299,7 +299,7 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.keyslot = new /obj/item/encryptionkey/headset_service
 	R.recalculateChannels()
 
@@ -315,7 +315,7 @@
 	name = "Code Banana ERT"
 	id = /obj/item/card/id/centcom
 	belt = /obj/item/pda/clown
-	ears = /obj/item/radio/headset/headset_cent
+	r_ear = /obj/item/radio/headset/headset_cent
 	uniform = /obj/item/clothing/under/rank/clown
 	back = /obj/item/storage/backpack/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
@@ -339,7 +339,7 @@
 	var/obj/item/implant/mindshield/L = new/obj/item/implant/mindshield(H)
 	L.implant(H, null, 1)
 
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.set_frequency(FREQ_CENTCOM)
 	R.freqlock = TRUE
 

@@ -50,7 +50,7 @@
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/phys
 
 	backpack_contents = list(/obj/item/roller = 1)
-	ears = /obj/item/radio/headset/headset_medsec
+	r_ear = /obj/item/radio/headset/headset_medsec
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	shoes = /obj/item/clothing/shoes/jackboots
 	digitigrade_shoes = /obj/item/clothing/shoes/xeno_wraps/jackboots

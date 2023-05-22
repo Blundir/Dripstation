@@ -20,8 +20,10 @@
 			return wear_id
 		if(SLOT_WEAR_PDA)
 			return wear_pda
-		if(SLOT_EARS)
-			return ears
+		if(SLOT_R_EAR)
+			return r_ear
+		if(SLOT_L_EAR)
+			return l_ear
 		if(SLOT_GLASSES)
 			return glasses
 		if(SLOT_GLOVES)
@@ -68,7 +70,8 @@
 		wear_mask,
 		wear_neck,
 		glasses,
-		ears,
+		r_ear,
+		l_ear
 		)
 
 /mob/living/carbon/human/proc/get_storage_slots()
@@ -98,8 +101,11 @@
 		if(SLOT_WEAR_PDA)
 			wear_pda = I
 			update_inv_wear_pda()
-		if(SLOT_EARS)
-			ears = I
+		if(SLOT_R_EAR)
+			r_ear = I
+			update_inv_ears()
+		if(SLOT_L_EAR)
+			l_ear = I
 			update_inv_ears()
 		if(SLOT_GLASSES)
 			glasses = I
@@ -202,8 +208,12 @@
 			update_sight()
 		if(!QDELETED(src))
 			update_inv_glasses()
-	else if(I == ears)
-		ears = null
+	else if(I == r_ear)
+		r_ear = null
+		if(!QDELETED(src))
+			update_inv_ears()
+	else if(I == l_ear)
+		l_ear = null
 		if(!QDELETED(src))
 			update_inv_ears()
 	else if(I == shoes)

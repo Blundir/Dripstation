@@ -56,34 +56,34 @@ GLOBAL_LIST_INIT(available_depts_eng, list(ENG_DEPT_MEDICAL, ENG_DEPT_SCIENCE, E
 			LAZYREMOVE(GLOB.available_depts_eng, department)
 		else
 			department = pick_n_take(GLOB.available_depts_eng)
-	var/ears = null
+	var/r_ear = null
 	var/accessory = null
 	var/list/dep_access = null
 	switch(department)
 		if(ENG_DEPT_SUPPLY)
-			ears = /obj/item/radio/headset/headset_eng/department/supply
+			r_ear = /obj/item/radio/headset/headset_eng/department/supply
 			dep_access = list(ACCESS_MAILSORTING, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_CARGO)
 			accessory = /obj/item/clothing/accessory/armband/cargo
 		if(ENG_DEPT_MEDICAL)
-			ears = /obj/item/radio/headset/headset_eng/department/med
+			r_ear = /obj/item/radio/headset/headset_eng/department/med
 			dep_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_VIROLOGY, ACCESS_GENETICS)
 			accessory =  /obj/item/clothing/accessory/armband/medblue
 		if(ENG_DEPT_SCIENCE)
-			ears = /obj/item/radio/headset/headset_eng/department/sci
+			r_ear = /obj/item/radio/headset/headset_eng/department/sci
 			dep_access = list(ACCESS_RESEARCH, ACCESS_TOX, ACCESS_XENOBIOLOGY, ACCESS_TOX_STORAGE)
 			accessory = /obj/item/clothing/accessory/armband/science
 		if(ENG_DEPT_SERVICE)
-			ears = /obj/item/radio/headset/headset_eng/department/service
+			r_ear = /obj/item/radio/headset/headset_eng/department/service
 			dep_access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_LIBRARY, ACCESS_THEATRE, ACCESS_JANITOR, ACCESS_CHAPEL_OFFICE, ACCESS_MANUFACTURING)
 			accessory =  /obj/item/clothing/accessory/armband/service
 
 	if(accessory)
 		var/obj/item/clothing/under/U = H.w_uniform
 		U.attach_accessory(new accessory)
-	if(ears)
-		if(H.ears)
-			qdel(H.ears)
-		H.equip_to_slot_or_del(new ears(H),SLOT_EARS)
+	if(r_ear)
+		if(H.r_ear)
+			qdel(H.r_ear)
+		H.equip_to_slot_or_del(new r_ear(H),SLOT_R_EAR)
 
 	var/obj/item/card/id/W = H.get_idcard()
 	W.access |= dep_access
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(available_depts_eng, list(ENG_DEPT_MEDICAL, ENG_DEPT_SCIENCE, E
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/engineering
 
 	belt = /obj/item/storage/belt/utility/full/engi
-	ears = /obj/item/radio/headset/headset_eng
+	r_ear = /obj/item/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/engineer
 	uniform_skirt = /obj/item/clothing/under/rank/engineer/skirt
 	shoes = /obj/item/clothing/shoes/workboots

@@ -598,7 +598,7 @@
 
 /obj/item/radio/headset/wolfears/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(SLOT_EARS))
+	AddComponent(/datum/component/wearertargeting/earprotection, list(SLOT_R_EAR, SLOT_L_EAR))
 
 /obj/item/clothing/gloves/wolfclaws/Initialize()
 	. = ..()

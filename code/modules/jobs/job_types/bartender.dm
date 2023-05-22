@@ -44,7 +44,7 @@
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/fountainpen/bartender
 
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/bartender
 	uniform_skirt = /obj/item/clothing/under/rank/bartender/skirt
 	suit = /obj/item/clothing/suit/armor/vest

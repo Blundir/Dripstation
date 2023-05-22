@@ -45,7 +45,8 @@
 	var/neck = null
 
 	/// Type path of item to go in ears slot
-	var/ears = null
+	var/r_ear = null
+	var/l_ear = null
 
 	/// Type path of item to go in the glasses slot
 	var/glasses = null
@@ -179,8 +180,10 @@
 		H.equip_to_slot_or_del(SSwardrobe.provide_type(mask, H), SLOT_WEAR_MASK, TRUE)
 	if(neck)
 		H.equip_to_slot_or_del(SSwardrobe.provide_type(neck, H), SLOT_NECK, TRUE)
-	if(ears)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(ears, H), SLOT_EARS, TRUE)
+	if(r_ear)
+		H.equip_to_slot_or_del(SSwardrobe.provide_type(r_ear, H), SLOT_R_EAR, TRUE)
+	if(l_ear)
+		H.equip_to_slot_or_del(SSwardrobe.provide_type(l_ear, H), SLOT_L_EAR, TRUE)
 	if(glasses)
 		H.equip_to_slot_or_del(SSwardrobe.provide_type(glasses, H), SLOT_GLASSES, TRUE)
 	if(id)
@@ -272,8 +275,10 @@
 		H.shoes.add_fingerprint(H,1)
 	if(H.gloves)
 		H.gloves.add_fingerprint(H,1)
-	if(H.ears)
-		H.ears.add_fingerprint(H,1)
+	if(H.r_ear)
+		H.r_ear.add_fingerprint(H,1)
+	if(H.l_ear)
+		H.l_ear.add_fingerprint(H,1)
 	if(H.glasses)
 		H.glasses.add_fingerprint(H,1)
 	if(H.belt)
@@ -292,7 +297,7 @@
 
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()
-	var/list/types = list(uniform, suit, back, belt, gloves, shoes, head, mask, neck, ears, glasses, id, l_pocket, r_pocket, suit_store, r_hand, l_hand)
+	var/list/types = list(uniform, suit, back, belt, gloves, shoes, head, mask, neck, r_ear, l_ear, glasses, id, l_pocket, r_pocket, suit_store, r_hand, l_hand)
 	types += chameleon_extras
 	listclearnulls(types)
 	return types
@@ -311,7 +316,8 @@
 		for(var/i in 1 to backpack_contents[type_to_load])
 			preload += type_to_load
 	preload += belt
-	preload += ears
+	preload += r_ear
+	preload += l_ear
 	preload += glasses
 	preload += gloves
 	preload += head
@@ -344,7 +350,8 @@
 	.["head"] = head
 	.["mask"] = mask
 	.["neck"] = neck
-	.["ears"] = ears
+	.["r_ear"] = r_ear
+	.["l_ear"] = l_ear
 	.["glasses"] = glasses
 	.["id"] = id
 	.["l_pocket"] = l_pocket
@@ -382,7 +389,8 @@
 	head = text2path(outfit_data["head"])
 	mask = text2path(outfit_data["mask"])
 	neck = text2path(outfit_data["neck"])
-	ears = text2path(outfit_data["ears"])
+	r_ear = text2path(outfit_data["r_ear"])
+	l_ear = text2path(outfit_data["l_ear"])
 	glasses = text2path(outfit_data["glasses"])
 	id = text2path(outfit_data["id"])
 	l_pocket = text2path(outfit_data["l_pocket"])

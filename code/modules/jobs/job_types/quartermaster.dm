@@ -45,7 +45,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/cargo
 
-	ears = /obj/item/radio/headset/headset_cargo
+	r_ear = /obj/item/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargo
 	uniform_skirt = /obj/item/clothing/under/rank/cargo/skirt
 	shoes = /obj/item/clothing/shoes/sneakers/brown

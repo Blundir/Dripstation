@@ -19,7 +19,7 @@
 				continue
 			var/mob/living/carbon/human/H = M
 			var/distance = max(1,get_dist(usr,H))
-			if(istype(H.ears, /obj/item/clothing/ears/earmuffs))//only the true power of earmuffs may block the power of the screech
+			if(istype(H.r_ear, /obj/item/clothing/ears/earmuffs) || istype(H.l_ear, /obj/item/clothing/ears/earmuffs))//only the true power of earmuffs may block the power of the screech
 				continue
 			to_chat(M, span_userdanger("You freeze in terror, your blood turning cold from the sound of the scream!"))
 			M.Stun(max(7/distance, 1))

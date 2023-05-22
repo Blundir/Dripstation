@@ -279,7 +279,7 @@
 /obj/item/bodypart/head/drop_limb(special)
 	if(!special)
 		//Drop all worn head items
-		for(var/X in list(owner.glasses, owner.ears, owner.wear_mask, owner.head))
+		for(var/X in list(owner.glasses, owner.r_ear, owner.l_ear, owner.wear_mask, owner.head))
 			var/obj/item/I = X
 			owner.dropItemToGround(I, TRUE)
 

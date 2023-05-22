@@ -50,7 +50,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/det
 
-	ears = /obj/item/radio/headset/headset_sec/alt
+	r_ear = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/det
 	uniform_skirt = /obj/item/clothing/under/rank/det/skirt
 	neck = /obj/item/clothing/neck/tie/detective

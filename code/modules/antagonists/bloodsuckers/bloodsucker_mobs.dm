@@ -220,7 +220,7 @@
 			if(2)
 				additionalmessage = "You have mutated werewolf ears!"
 				mutation = /obj/item/radio/headset/wolfears
-				slot = SLOT_EARS
+				slot = SLOT_R_EAR
 			if(3)
 				additionalmessage = "You have mutated werewolf claws!"
 				user.physiology.punchdamagehigh_bonus += 2.5

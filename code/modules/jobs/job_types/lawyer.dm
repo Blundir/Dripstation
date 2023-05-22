@@ -45,7 +45,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/fountainpen/law
 
-	ears = /obj/item/radio/headset/headset_srvsec
+	r_ear = /obj/item/radio/headset/headset_srvsec
 	uniform = /obj/item/clothing/under/lawyer/bluesuit
 	uniform_skirt = /obj/item/clothing/under/lawyer/bluesuit/skirt
 	suit = /obj/item/clothing/suit/toggle/lawyer

@@ -55,7 +55,7 @@
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/cmo
 
 	belt = /obj/item/storage/belt/medical/chief/full
-	ears = /obj/item/radio/headset/heads/cmo
+	r_ear = /obj/item/radio/headset/heads/cmo
 	uniform = /obj/item/clothing/under/rank/chief_medical_officer
 	uniform_skirt = /obj/item/clothing/under/rank/chief_medical_officer/skirt
 	shoes = /obj/item/clothing/shoes/sneakers/brown

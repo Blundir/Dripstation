@@ -64,7 +64,7 @@
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/cap
 
 	glasses = /obj/item/clothing/glasses/hud/personnel
-	ears = /obj/item/radio/headset/heads/captain/alt
+	r_ear = /obj/item/radio/headset/heads/captain/alt
 	gloves = /obj/item/clothing/gloves/color/captain
 	uniform =  /obj/item/clothing/under/rank/captain
 	uniform_skirt = /obj/item/clothing/under/rank/captain/skirt

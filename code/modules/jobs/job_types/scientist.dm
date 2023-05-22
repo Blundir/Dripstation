@@ -43,7 +43,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/sci
 
-	ears = /obj/item/radio/headset/headset_sci
+	r_ear = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/scientist
 	uniform_skirt = /obj/item/clothing/under/rank/scientist/skirt
 	shoes = /obj/item/clothing/shoes/sneakers/white

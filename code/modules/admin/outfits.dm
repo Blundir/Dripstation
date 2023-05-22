@@ -237,7 +237,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	O.r_pocket = text2path(href_list["outfit_r_pocket"])
 	O.id = text2path(href_list["outfit_id"])
 	O.belt = text2path(href_list["outfit_belt"])
-	O.ears = text2path(href_list["outfit_ears"])
+	O.r_ear = text2path(href_list["outfit_r_ear"])
+	O.l_ear = text2path(href_list["outfit_l_ear"])
 
 	GLOB.custom_outfits.Add(O)
 	message_admins("[key_name(usr)] created \"[O.name]\" outfit!")

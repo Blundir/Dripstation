@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/sexes = TRUE
 
 	///A list that contains pixel offsets for various clothing features, if your species is a different shape
-	var/list/offset_features = list(OFFSET_UNIFORM = list(0,0), OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_GLASSES = list(0,0), OFFSET_EARS = list(0,0), OFFSET_SHOES = list(0,0), OFFSET_S_STORE = list(0,0), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,0), OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,0), OFFSET_SUIT = list(0,0), OFFSET_NECK = list(0,0))
+	var/list/offset_features = list(OFFSET_UNIFORM = list(0,0), OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_GLASSES = list(0,0), OFFSET_R_EAR = list(0,0), OFFSET_L_EAR = list(0,0), OFFSET_SHOES = list(0,0), OFFSET_S_STORE = list(0,0), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,0), OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,0), OFFSET_SUIT = list(0,0), OFFSET_NECK = list(0,0))
 
 	/// this allows races to have specific hair colors... if null, it uses the H's hair/facial hair colors. if "mutcolor", it uses the H's mutant_color
 	var/hair_color
@@ -1172,8 +1172,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
-		if(SLOT_EARS)
-			if(H.ears && H.ears != I)
+		if(SLOT_R_EAR)
+			if(H.r_ear && H.r_ear != I)
+				return FALSE
+			if(!(I.slot_flags & ITEM_SLOT_EARS))
+				return FALSE
+			if(!H.get_bodypart(BODY_ZONE_HEAD))
+				return FALSE
+			return equip_delay_self_check(I, H, bypass_equip_delay_self)
+		if(SLOT_L_EAR)
+			if(H.l_ear && H.l_ear != I)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_EARS))
 				return FALSE
@@ -2100,8 +2108,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			burning_items += H.wear_mask
 		if(H.wear_neck && !(SLOT_NECK in obscured))
 			burning_items += H.wear_neck
-		if(H.ears && !(SLOT_EARS in obscured))
-			burning_items += H.ears
+		if(H.r_ear && !(SLOT_R_EAR in obscured))
+			burning_items += H.r_ear
+		if(H.l_ear && !(SLOT_L_EAR in obscured))
+			burning_items += H.l_ear
 		if(H.head)
 			burning_items += H.head
 

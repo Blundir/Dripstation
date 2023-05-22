@@ -67,7 +67,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/alt
 	shoes = /obj/item/clothing/shoes/jackboots
 	gloves = /obj/item/clothing/gloves/color/black
-	ears = /obj/item/radio/headset/headset_cent/alt
+	r_ear = /obj/item/radio/headset/headset_cent/alt
 	mask = /obj/item/clothing/mask/cigarette/lit
 	belt = /obj/item/storage/belt/military/occupying_officer
 	suit_store = /obj/item/gun/ballistic/automatic/wt550/armory
@@ -86,7 +86,7 @@
 	H.facial_hair_style = "None" // Everyone in the Peacekeeping force is bald and has no facial hair
 	H.hair_style = "None"
 	
-	var/obj/item/radio/R = H.ears
+	var/obj/item/radio/R = H.r_ear
 	R.set_frequency(FREQ_CENTCOM)
 	R.freqlock = TRUE
 

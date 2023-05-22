@@ -45,7 +45,7 @@
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/atmos
 
 	belt = /obj/item/storage/belt/utility/atmostech
-	ears = /obj/item/radio/headset/headset_eng
+	r_ear = /obj/item/radio/headset/headset_eng
 	digitigrade_shoes = /obj/item/clothing/shoes/xeno_wraps/engineering
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
 	uniform_skirt = /obj/item/clothing/under/rank/atmospheric_technician/skirt

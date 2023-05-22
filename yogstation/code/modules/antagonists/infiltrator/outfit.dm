@@ -5,7 +5,7 @@
 	shoes = /obj/item/clothing/shoes/chameleon/noslip/syndicate
 	gloves = /obj/item/clothing/gloves/chameleon/syndicate
 	back = /obj/item/storage/backpack/chameleon/syndicate
-	ears = /obj/item/radio/headset/chameleon/syndicate
+	r_ear = /obj/item/radio/headset/chameleon/syndicate
 	id = /obj/item/card/id/syndicate
 	mask = /obj/item/clothing/mask/chameleon/syndicate
 	belt = /obj/item/pda/chameleon/syndicate

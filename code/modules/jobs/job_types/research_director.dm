@@ -63,7 +63,7 @@
 	id_type = /obj/item/card/id/silver
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/rd
 
-	ears = /obj/item/radio/headset/heads/rd
+	r_ear = /obj/item/radio/headset/heads/rd
 	glasses = /obj/item/clothing/glasses/hud/diagnostic/sunglasses/rd
 	uniform = /obj/item/clothing/under/rank/research_director
 	uniform_skirt = /obj/item/clothing/under/rank/research_director/skirt

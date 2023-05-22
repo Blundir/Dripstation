@@ -45,7 +45,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/basic/mime
 
-	ears = /obj/item/radio/headset/headset_srv
+	r_ear = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/mime
 	uniform_skirt = /obj/item/clothing/under/rank/mime/skirt
 	mask = /obj/item/clothing/mask/gas/mime

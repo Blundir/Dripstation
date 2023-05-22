@@ -1226,7 +1226,10 @@
 	if(wear_mask && !(ITEM_SLOT_MASK in obscured) && wear_mask.wash(clean_types))
 		update_inv_wear_mask()
 		. = TRUE
-	if(ears && !(ITEM_SLOT_EARS in obscured) && ears.wash(clean_types))
+	if(r_ear && !(ITEM_SLOT_EARS in obscured) && r_ear.wash(clean_types))
+		update_inv_ears()
+		. = TRUE
+	if(l_ear && !(ITEM_SLOT_EARS in obscured) && l_ear.wash(clean_types))
 		update_inv_ears()
 		. = TRUE
 	if(wear_neck && !(ITEM_SLOT_NECK in obscured) && wear_neck.wash(clean_types))

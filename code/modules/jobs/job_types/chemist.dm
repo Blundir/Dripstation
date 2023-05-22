@@ -48,7 +48,7 @@
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/chem
 
 	glasses = /obj/item/clothing/glasses/science
-	ears = /obj/item/radio/headset/headset_med
+	r_ear = /obj/item/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/chemist
 	uniform_skirt = /obj/item/clothing/under/rank/chemist/skirt
 	shoes = /obj/item/clothing/shoes/sneakers/white

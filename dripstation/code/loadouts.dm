@@ -8,7 +8,7 @@
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/hos
 
 	belt = /obj/item/gun/energy/e_gun
-	ears = /obj/item/radio/headset/heads/hos/alt
+	r_ear = /obj/item/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/head_of_security
 	uniform_skirt = /obj/item/clothing/under/rank/head_of_security/skirt
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -37,7 +37,7 @@
 
 	pda_type = /obj/item/modular_computer/tablet/pda/preset/warden
 
-	ears = /obj/item/radio/headset/headset_sec/alt
+	r_ear = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/warden
 	uniform_skirt = /obj/item/clothing/under/rank/warden/skirt
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -69,7 +69,7 @@
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/hop
 
 	glasses = /obj/item/clothing/glasses/hud/personnel
-	ears = /obj/item/radio/headset/heads/hop
+	r_ear = /obj/item/radio/headset/heads/hop
 	uniform = /obj/item/clothing/under/rank/head_of_personnel
 	uniform_skirt = /obj/item/clothing/under/rank/head_of_personnel/skirt
 	shoes = /obj/item/clothing/shoes/laceup
@@ -92,7 +92,7 @@
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/cap
 
 	glasses = /obj/item/clothing/glasses/hud/personnel
-	ears = /obj/item/radio/headset/heads/captain/alt
+	r_ear = /obj/item/radio/headset/heads/captain/alt
 	gloves = /obj/item/clothing/gloves/color/black
 	uniform =  /obj/item/clothing/under/rank/captain
 	uniform_skirt = /obj/item/clothing/under/rank/captain/skirt
@@ -118,7 +118,7 @@
 	id_type = /obj/item/card/id/head
 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/rd
 
-	ears = /obj/item/radio/headset/heads/rd
+	r_ear = /obj/item/radio/headset/heads/rd
 	glasses = null	
 	uniform = /obj/item/clothing/under/rank/research_director
 	uniform_skirt = /obj/item/clothing/under/rank/research_director/skirt

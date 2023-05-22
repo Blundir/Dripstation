@@ -151,7 +151,7 @@
 				continue
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
-				if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
+				if(istype(H.r_ear, /obj/item/clothing/ears/earmuffs) || istype(H.l_ear, /obj/item/clothing/ears/earmuffs))
 					continue
 			listeners += L
 

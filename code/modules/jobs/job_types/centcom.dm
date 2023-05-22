@@ -10,7 +10,7 @@
 	suit = null
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	gloves = /obj/item/clothing/gloves/color/black
-	ears = /obj/item/radio/headset/headset_cent
+	r_ear = /obj/item/radio/headset/headset_cent
 	glasses = /obj/item/clothing/glasses/sunglasses
 	head = /obj/item/clothing/head/beret/sec/centcom
 	belt = /obj/item/gun/energy/e_gun
@@ -54,7 +54,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/centcom
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	gloves = /obj/item/clothing/gloves/color/captain/centcom
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	head = /obj/item/clothing/head/centhat
 	belt = /obj/item/gun/energy/e_gun
@@ -87,7 +87,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/centcom
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	gloves = /obj/item/clothing/gloves/color/captain/centcom
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	head = /obj/item/clothing/head/centhat
 	neck = /obj/item/clothing/neck/pauldron
@@ -121,7 +121,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/centcom
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	gloves = /obj/item/clothing/gloves/color/captain/centcom
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/cigarette/cigar/cohiba
 	head = /obj/item/clothing/head/centhat
@@ -156,7 +156,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/centcom
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	gloves = /obj/item/clothing/gloves/color/captain/centcom
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	head = /obj/item/clothing/head/centhat
@@ -191,7 +191,7 @@
 	suit = null
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	gloves = /obj/item/clothing/gloves/color/captain/centcom
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	head = /obj/item/clothing/head/centhat/admiral
@@ -226,7 +226,7 @@
 	suit = null
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	gloves = /obj/item/clothing/gloves/color/captain/centcom
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	head = /obj/item/clothing/head/centhat/admiral
@@ -261,7 +261,7 @@
 	suit = null
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/color/captain/centcom/admiral
-	ears = /obj/item/radio/headset/headset_cent/commander
+	r_ear = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	head = /obj/item/clothing/head/centhat/admiral/grand
