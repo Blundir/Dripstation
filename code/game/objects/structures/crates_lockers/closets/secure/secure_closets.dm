@@ -46,10 +46,10 @@
 						to_chat(user, "<span class='notice'>You have successfully prepared the lock panel wires.</span>")
 						desc += " The wires are disconnected and sticking out."
 						broken = 2
-				else 
-					to_chat(user, "<span class='warning'>Shit. Wrong wire...</span>")
-					do_sparks(5, 1, src)
-					electrocute_mob(user, get_area(src), src, 0.5, TRUE)
+					else 
+						to_chat(user, "<span class='warning'>Shit. Wrong wire...</span>")
+						do_sparks(5, 1, src)
+						electrocute_mob(user, get_area(src), src, 0.5, TRUE)
 				return
 		if(2)
 			if(W.tool_behaviour == TOOL_MULTITOOL && locked && user.a_intent != INTENT_HARM)
