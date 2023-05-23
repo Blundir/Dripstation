@@ -181,7 +181,7 @@
 
 /obj/item/clothing/gloves/sec_maga //more obviously named, given to sec
 	name = "krav maga gloves"
-	desc = "These gloves can teach you to perform Krav Maga using nanochips, but due to budget cuts, they only work in security areas."
+	desc = "These gloves can teach you to perform Krav Maga using nanochips." //but due to budget cuts, they only work in security areas." - nope, fuck you
 	icon_state = "fightgloves"
 	item_state = "fightgloves"
 	cold_protection = HANDS

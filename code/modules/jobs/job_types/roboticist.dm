@@ -30,8 +30,12 @@
 
 	mail_goodies = list(
 		/obj/item/storage/box/flashes = 20,
-		/obj/item/stack/sheet/metal/twenty = 15,
-		/obj/item/modular_computer/tablet/preset/advanced = 5
+		/obj/item/stack/sheet/metal/fifty = 15,
+		/obj/item/ipcrevive = 10,
+		/obj/item/stack/sheet/plasteel/twenty = 5,
+		/obj/item/modular_computer/tablet/preset/advanced = 5,
+		/obj/item/stock_parts/cell/bluespace = 5,
+		/obj/item/stack/ore/dilithium_crystal/refined = 5
 	)
 
 	smells_like = "burnt solder"
@@ -48,7 +52,8 @@
 	uniform_skirt = /obj/item/clothing/under/rank/roboticist/skirt
 	suit = /obj/item/clothing/suit/toggle/labcoat
 
-	backpack = /obj/item/storage/backpack/science
-	satchel = /obj/item/storage/backpack/satchel/tox
+	backpack = /obj/item/storage/backpack/science/robo
+	satchel = /obj/item/storage/backpack/satchel/tox/robo
+	duffelbag = /obj/item/storage/backpack/duffelbag/science/robo
 
 	pda_slot = SLOT_L_STORE

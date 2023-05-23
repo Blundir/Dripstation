@@ -34,21 +34,26 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system/update_icon()
 	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(is_operational())
 		var/mutable_appearance/on_app = mutable_appearance(icon, "AAS_on")
 		add_overlay(on_app)
+		SSvis_overlays.add_vis_overlay(src, icon, "AAS_on", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 	if(arrivalToggle)
 		var/mutable_appearance/arriving = mutable_appearance(icon, greenlight)
 		add_overlay(arriving)
+		SSvis_overlays.add_vis_overlay(src, icon, greenlight, EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 	if(newheadToggle)
 		var/mutable_appearance/newhead = mutable_appearance(icon, pinklight)
 		add_overlay(newhead)
+		SSvis_overlays.add_vis_overlay(src, icon, pinklight, EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 	if(stat & BROKEN)
 		var/mutable_appearance/icecream = mutable_appearance(icon, errorlight)
 		add_overlay(icecream)
+		SSvis_overlays.add_vis_overlay(src, icon, errorlight, EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 /obj/machinery/announcement_system/Destroy()
 	QDEL_NULL(radio)

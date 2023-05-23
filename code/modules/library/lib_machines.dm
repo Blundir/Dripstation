@@ -28,6 +28,7 @@ GLOBAL_LIST_EMPTY(checkouts)
 	icon_keyboard = null
 	circuit = /obj/item/circuitboard/computer/libraryconsole
 	desc = "Checked out books MUST be returned on time."
+	light_color = LIGHT_COLOR_LIGHT_CYAN
 	// Search Parameters
 	/// Title to search
 	var/title

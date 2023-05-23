@@ -1,5 +1,6 @@
 /obj/item/storage/box/syndie_kit/cluwnification
 	real_name = "Cluwne Burger Happy Meal (with mimanas)"
+	illustration = "clown"
 
 /obj/item/storage/box/syndie_kit/cluwnification/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/burger/cluwneburger(src)
@@ -13,12 +14,14 @@
 
 /obj/item/storage/box/syndie_kit/imp_mindslave
 	real_name = "Implanter (Mindslave)"
+	illustration = "implant"
 
 /obj/item/storage/box/syndie_kit/imp_mindslave/PopulateContents()
 	new /obj/item/implanter/mindslave(src)
 
 /obj/item/storage/box/syndie_kit/imp_greytide
 	real_name = "Implanter (Greytide)"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_greytide/PopulateContents()
 	new /obj/item/implanter/greytide(src)

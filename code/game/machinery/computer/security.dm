@@ -30,7 +30,7 @@
 
 	var/special_message
 
-	light_color = LIGHT_COLOR_RED
+	light_color = LIGHT_COLOR_INTENSE_RED
 
 /obj/machinery/computer/secure_data/Initialize(mapload)
 	. = ..()
@@ -57,6 +57,12 @@
 	icon_keyboard = "laptop_key"
 	clockwork = TRUE //it'd look weird
 	pass_flags = PASSTABLE
+	use_power = FALSE
+	density = FALSE
+	light_color = LIGHT_COLOR_INTENSE_RED
+
+/obj/machinery/computer/secure_data/laptop/screwdriver_act()
+	return
 
 /obj/machinery/computer/secure_data/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -843,7 +849,7 @@
 		var/mob/living/silicon/SILICON = i
 		if(SILICON.triggerAlarm("Burglar", alarmed, alarmed.cameras, src))
 			//Cancel silicon alert after 1 minute
-			addtimer(CALLBACK(SILICON, /mob/living/silicon.proc/cancelAlarm,"Burglar",src,alarmed), 600)
+			addtimer(CALLBACK(SILICON, TYPE_PROC_REF(/mob/living/silicon, cancelAlarm),"Burglar",src,alarmed), 600)
 
 /obj/machinery/computer/secure_data/emag_act(mob/user)
 	var/name

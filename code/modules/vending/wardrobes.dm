@@ -6,6 +6,7 @@
 	extra_price = 75
 	payment_department = NO_FREEBIES
 	input_display_header = "Returned Clothing"
+	light_mask = "wardrobe-light-mask"
 
 /obj/machinery/vending/wardrobe/canLoadItem(obj/item/I,mob/user)
 	if(I.type in products)
@@ -23,37 +24,40 @@
 	name = "\improper SecDrobe"
 	desc = "A vending machine for security and security-related clothing!"
 	icon_state = "secdrobe"
+	icon_vend = "secdrobe-vend"
+	icon_deny = "secdrobe-deny"
+	light_color = LIGHT_COLOR_INTENSE_RED
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
-	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 3,
-					/obj/item/storage/backpack/security = 3,
-					/obj/item/storage/backpack/satchel/sec = 3,
-					/obj/item/storage/backpack/duffelbag/sec = 3,
-					/obj/item/clothing/under/rank/security = 3,
-					/obj/item/clothing/under/yogs/armyuniform = 3,
-					/obj/item/clothing/shoes/jackboots = 3,
-					/obj/item/clothing/shoes/xeno_wraps/jackboots = 3,
-					/obj/item/clothing/head/beret/sec = 3,
-					/obj/item/clothing/head/beret/corpsec = 3,
-					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/red = 3,
-					/obj/item/clothing/suit/armor/vest/secmiljacket = 3,
-					/obj/item/clothing/shoes/yogs/namboots = 5,
-					/obj/item/clothing/gloves/yogs/namgloves = 5,
-					/obj/item/clothing/under/yogs/namjumpsuit = 5,
-					/obj/item/clothing/suit/armor/vest/namflakjacket = 5,
-					/obj/item/clothing/head/helmet/namhelm = 5,
-					/obj/item/clothing/under/yogs/redcoatuniform = 5,
-					/obj/item/clothing/suit/armor/vest/redcoatcoat = 5,
-					/obj/item/clothing/head/yogs/tricornhat = 5,
-					/obj/item/clothing/under/rank/security/skirt = 3,
-					/obj/item/clothing/under/rank/security/grey = 3,
-					/obj/item/clothing/under/yogs/shitcurity = 3,
-					/obj/item/clothing/under/pants/khaki = 3,
-					/obj/item/clothing/under/rank/security/blueshirt = 3)
-	premium = list(/obj/item/clothing/under/rank/security/navyblue = 3,
-					/obj/item/clothing/suit/armor/officerjacket = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3)
+	// products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 3,
+	// 				/obj/item/storage/backpack/security = 3,
+	// 				/obj/item/storage/backpack/satchel/sec = 3,
+	// 				/obj/item/storage/backpack/duffelbag/sec = 3,
+	// 				/obj/item/clothing/under/rank/security = 3,
+	// 				/obj/item/clothing/under/yogs/armyuniform = 3,
+	// 				/obj/item/clothing/shoes/jackboots = 3,
+	// 				/obj/item/clothing/shoes/xeno_wraps/jackboots = 3,
+	// 				/obj/item/clothing/head/beret/sec = 3,
+	// 				/obj/item/clothing/head/beret/corpsec = 3,
+	// 				/obj/item/clothing/head/soft/sec = 3,
+	// 				/obj/item/clothing/mask/bandana/red = 3,
+	// 				/obj/item/clothing/suit/armor/vest/secmiljacket = 3,
+	// 				/obj/item/clothing/shoes/yogs/namboots = 5,
+	// 				/obj/item/clothing/gloves/yogs/namgloves = 5,
+	// 				/obj/item/clothing/under/yogs/namjumpsuit = 5,
+	// 				/obj/item/clothing/suit/armor/vest/namflakjacket = 5,
+	// 				/obj/item/clothing/head/helmet/namhelm = 5,
+	// 				/obj/item/clothing/under/yogs/redcoatuniform = 5,
+	// 				/obj/item/clothing/suit/armor/vest/redcoatcoat = 5,
+	// 				/obj/item/clothing/head/yogs/tricornhat = 5,
+	// 				/obj/item/clothing/under/rank/security/skirt = 3,
+	// 				/obj/item/clothing/under/rank/security/grey = 3,
+	// 				/obj/item/clothing/under/yogs/shitcurity = 3,
+	// 				/obj/item/clothing/under/pants/khaki = 3,
+	// 				/obj/item/clothing/under/rank/security/blueshirt = 3)
+	// premium = list(/obj/item/clothing/under/rank/security/navyblue = 3,
+	// 				/obj/item/clothing/suit/armor/officerjacket = 3,
+	// 				/obj/item/clothing/head/beret/sec/navyofficer = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
 
@@ -64,6 +68,8 @@
 	name = "\improper MediDrobe"
 	desc = "A vending machine rumoured to be capable of dispensing clothing for medical personnel."
 	icon_state = "medidrobe"
+	icon_vend = "medidrobe-vend"
+	icon_deny = "medidrobe-deny"		
 	product_ads = "Make those blood stains look fashionable!!"
 	vend_reply = "Thank you for using the MediDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 4,
@@ -90,6 +96,7 @@
 					/obj/item/clothing/accessory/armband/medblue = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
 	payment_department = ACCOUNT_MED
+
 /obj/item/vending_refill/wardrobe/medi_wardrobe
 	machine_name = "MediDrobe"
 
@@ -97,6 +104,8 @@
 	name = "EngiDrobe"
 	desc = "A vending machine renowned for vending industrial grade clothing."
 	icon_state = "engidrobe"
+	icon_vend = "engidrobe-vend"
+	icon_deny = "engidrobe-deny"
 	product_ads = "Guaranteed to protect your feet from industrial accidents!;Afraid of radiation? Then wear yellow!"
 	vend_reply = "Thank you for using the EngiDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 3,
@@ -118,6 +127,7 @@
 					/obj/item/clothing/head/hardhat/weldhat = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
 	payment_department = ACCOUNT_ENG
+
 /obj/item/vending_refill/wardrobe/engi_wardrobe
 	machine_name = "EngiDrobe"
 
@@ -125,6 +135,8 @@
 	name = "AtmosDrobe"
 	desc = "This relatively unknown vending machine delivers clothing for Atmospherics Technicians, an equally unknown job."
 	icon_state = "atmosdrobe"
+	icon_vend = "atmosdrobe-vend"
+	icon_deny = "atmosdrobe-deny"
 	product_ads = "Get your inflammable clothing right here!!!"
 	vend_reply = "Thank you for using the AtmosDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 2,
@@ -138,6 +150,7 @@
 					/obj/item/clothing/shoes/sneakers/black = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/atmos_wardrobe
 	payment_department = ACCOUNT_ENG
+
 /obj/item/vending_refill/wardrobe/atmos_wardrobe
 	machine_name = "AtmosDrobe"
 
@@ -146,6 +159,8 @@
 	desc = "A rarely used vending machine that provides clothing for Network Admins."
 	icon_state = "sigdrobe"
 	product_ads = "Dress to impress yourself!;The drones will love you!;Get your clothing here!"
+	icon_vend = "sigdrobe-vend"
+	icon_deny = "sigdrobe-deny"
 	vend_reply = "Thank you for using the SigDrobe!"
 	products = list(/obj/item/storage/backpack/duffelbag/engineering = 1,
 					/obj/item/storage/backpack/industrial = 1,
@@ -156,6 +171,7 @@
 					/obj/item/clothing/under/yogs/rank/network_admin/skirt = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/sig_wardrobe
 	payment_department = ACCOUNT_ENG
+
 /obj/item/vending_refill/wardrobe/sig_wardrobe
 	machine_name = "SigDrobe"
 
@@ -163,7 +179,10 @@
 	name = "CargoDrobe"
 	desc = "A highly advanced vending machine for buying cargo related clothing for free."
 	icon_state = "cargodrobe"
+	icon_vend = "cargodrobe-vend"
+	icon_deny = "cargodrobe-deny"
 	product_ads = "Upgraded Assistant Style! Pick yours today!;These shorts are comfy and easy to wear, get yours now!"
+	light_color = LIGHT_COLOR_YELLOW
 	vend_reply = "Thank you for using the CargoDrobe!"
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/cargo = 3,
 					/obj/item/clothing/under/rank/cargotech = 3,
@@ -173,10 +192,12 @@
 					/obj/item/clothing/gloves/fingerless = 3,
 					/obj/item/clothing/head/soft = 3,
 					/obj/item/radio/headset/headset_cargo = 3,
-					/obj/item/clothing/accessory/armband/cargo = 2)
+					/obj/item/clothing/accessory/armband/cargo = 2,
+					/obj/item/storage/bag/mail = 3)
 	premium = list(/obj/item/clothing/under/rank/miner = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/cargo_wardrobe
 	payment_department = ACCOUNT_CAR
+
 /obj/item/vending_refill/wardrobe/cargo_wardrobe
 	machine_name = "CargoDrobe"
 
@@ -184,24 +205,27 @@
 	name = "RoboDrobe"
 	desc = "A vending machine designed to dispense clothing known only to roboticists."
 	icon_state = "robodrobe"
+	icon_vend = "robodrobe-vend"
+	icon_deny = "robodrobe-deny"
 	product_ads = "You turn me TRUE, use defines!;0110001101101100011011110111010001101000011001010111001101101000011001010111001001100101"
 	vend_reply = "Thank you for using the RoboDrobe!"
-	products = list(/obj/item/clothing/glasses/hud/diagnostic = 2,
-					/obj/item/clothing/head/welding/carp = 1,
-					/obj/item/clothing/head/welding/fancy = 1,
-					/obj/item/clothing/head/welding/demon = 1,
-					/obj/item/clothing/under/rank/roboticist = 2,
-					/obj/item/clothing/under/rank/roboticist/skirt = 2,
-					/obj/item/clothing/suit/toggle/labcoat = 2,
-					/obj/item/clothing/suit/toggle/labcoat/wardtlab = 2,
-					/obj/item/clothing/suit/toggle/labcoat/aeneasrinil = 2,
-					/obj/item/clothing/shoes/sneakers/black = 2,
-					/obj/item/clothing/gloves/fingerless = 2,
-					/obj/item/clothing/head/soft/black = 2,
-					/obj/item/clothing/mask/bandana/skull = 2,
-					/obj/item/clothing/suit/hooded/amech = 2)
+	// products = list(/obj/item/clothing/glasses/hud/diagnostic = 2,
+	// 				/obj/item/clothing/head/welding/carp = 1,
+	// 				/obj/item/clothing/head/welding/fancy = 1,
+	// 				/obj/item/clothing/head/welding/demon = 1,
+	// 				/obj/item/clothing/under/rank/roboticist = 2,
+	// 				/obj/item/clothing/under/rank/roboticist/skirt = 2,
+	// 				/obj/item/clothing/suit/toggle/labcoat = 2,
+	// 				/obj/item/clothing/suit/toggle/labcoat/wardtlab = 2,
+	// 				/obj/item/clothing/suit/toggle/labcoat/aeneasrinil = 2,
+	// 				/obj/item/clothing/shoes/sneakers/black = 2,
+	// 				/obj/item/clothing/gloves/fingerless = 2,
+	// 				/obj/item/clothing/head/soft/black = 2,
+	// 				/obj/item/clothing/mask/bandana/skull = 2,
+	// 				/obj/item/clothing/suit/hooded/amech = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/robo_wardrobe
 	payment_department = ACCOUNT_SCI
+
 /obj/item/vending_refill/wardrobe/robo_wardrobe
 	machine_name = "RoboDrobe"
 
@@ -209,23 +233,26 @@
 	name = "SciDrobe"
 	desc = "A simple vending machine suitable to dispense well tailored science clothing. Endorsed by Space Cubans."
 	icon_state = "scidrobe"
+	icon_vend = "scidrobe-vend"
+	icon_deny = "scidrobe-deny"	
 	product_ads = "Longing for the smell of plasma burnt flesh? Buy your science clothing now!;Made with 10% Auxetics, so you don't have to worry about losing your arm!"
 	vend_reply = "Thank you for using the SciDrobe!"
-	products = list(/obj/item/clothing/accessory/pocketprotector = 3,
-					/obj/item/storage/backpack/science = 3,
-					/obj/item/storage/backpack/satchel/tox = 3,
-					/obj/item/clothing/head/beret/sci = 3,
-					/obj/item/clothing/suit/hooded/wintercoat/science = 3,
-					/obj/item/clothing/under/rank/scientist = 3,
-					/obj/item/clothing/under/rank/scientist/skirt = 3,
-					/obj/item/clothing/suit/toggle/labcoat/science = 3,
-					/obj/item/clothing/shoes/sneakers/white = 3,
-					/obj/item/clothing/shoes/xeno_wraps/science = 3,
-					/obj/item/radio/headset/headset_sci = 3,
-					/obj/item/clothing/mask/gas = 3,
-					/obj/item/clothing/accessory/armband/science = 2)
+	// products = list(/obj/item/clothing/accessory/pocketprotector = 3,
+	// 				/obj/item/storage/backpack/science = 3,
+	// 				/obj/item/storage/backpack/satchel/tox = 3,
+	// 				/obj/item/clothing/head/beret/sci = 3,
+	// 				/obj/item/clothing/suit/hooded/wintercoat/science = 3,
+	// 				/obj/item/clothing/under/rank/scientist = 3,
+	// 				/obj/item/clothing/under/rank/scientist/skirt = 3,
+	// 				/obj/item/clothing/suit/toggle/labcoat/science = 3,
+	// 				/obj/item/clothing/shoes/sneakers/white = 3,
+	// 				/obj/item/clothing/shoes/xeno_wraps/science = 3,
+	// 				/obj/item/radio/headset/headset_sci = 3,
+	// 				/obj/item/clothing/mask/gas = 3,
+	// 				/obj/item/clothing/accessory/armband/science = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/science_wardrobe
 	payment_department = ACCOUNT_SCI
+
 /obj/item/vending_refill/wardrobe/science_wardrobe
 	machine_name = "SciDrobe"
 
@@ -233,8 +260,11 @@
 	name = "Hydrobe"
 	desc = "A machine with a catchy name. It dispenses botany related clothing and gear."
 	icon_state = "hydrobe"
+	icon_vend = "hydrobe-vend"
+	icon_deny = "hydrobe-deny"	
 	product_ads = "Do you love soil? Then buy our clothes!;Get outfits to match your green thumb here!"
 	vend_reply = "Thank you for using the Hydrobe!"
+	light_color = COLOR_GREEN
 	products = list(/obj/item/storage/backpack/botany = 2,
 					/obj/item/storage/backpack/satchel/hyd = 2,
 					/obj/item/clothing/suit/hooded/wintercoat/hydro = 2,
@@ -247,6 +277,7 @@
 					/obj/item/clothing/accessory/armband/hydro = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/hydro_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/hydro_wardrobe
 	machine_name = "HyDrobe"
 
@@ -254,6 +285,8 @@
 	name = "CuraDrobe"
 	desc = "A lowstock vendor only capable of vending clothing for curators and librarians."
 	icon_state = "curadrobe"
+	icon_vend = "curadrobe-vend"
+	icon_deny = "curadrobe-deny"	
 	product_ads = "Glasses for your eyes and literature for your soul, Curadrobe has it all!; Impress & enthrall your library guests with Curadrobe's extended line of pens!"
 	vend_reply = "Thank you for using the CuraDrobe!"
 	products = list(/obj/item/pen = 4,
@@ -275,6 +308,7 @@
 					/obj/item/clothing/accessory/armband/service = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/curator_wardrobe
 	payment_department = ACCOUNT_CIV
+
 /obj/item/vending_refill/wardrobe/curator_wardrobe
 	machine_name = "CuraDrobe"
 
@@ -282,6 +316,8 @@
 	name = "BarDrobe"
 	desc = "A stylish vendor to dispense the most stylish bar clothing!"
 	icon_state = "bardrobe"
+	icon_vend = "bardrobe-vend"
+	icon_deny = "bardrobe-deny"	
 	product_ads = "Guaranteed to prevent stains from spilled drinks!"
 	vend_reply = "Thank you for using the BarDrobe!"
 	products = list(/obj/item/clothing/head/that = 2,
@@ -308,6 +344,7 @@
 	premium = list(/obj/item/storage/box/dishdrive = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/bar_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/bar_wardrobe
 	machine_name = "BarDrobe"
 
@@ -315,6 +352,8 @@
 	name = "ChefDrobe"
 	desc = "This vending machine might not dispense meat, but it certainly dispenses chef related clothing."
 	icon_state = "chefdrobe"
+	icon_vend = "chefdrobe-vend"
+	icon_deny = "chefdrobe-deny"	
 	product_ads = "Our clothes are guaranteed to protect you from food splatters!"
 	vend_reply = "Thank you for using the ChefDrobe!"
 	products = list(/obj/item/clothing/under/waiter = 2,
@@ -333,6 +372,7 @@
 					/obj/item/clothing/accessory/armband/service = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/chef_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/chef_wardrobe
 	machine_name = "ChefDrobe"
 
@@ -340,6 +380,8 @@
 	name = "JaniDrobe"
 	desc = "A self cleaning vending machine capable of dispensing clothing for janitors."
 	icon_state = "janidrobe"
+	icon_vend = "janidrobe-vend"
+	icon_deny = "janidrobe-deny"	
 	product_ads = "Come and get your janitorial clothing, now endorsed by lizard janitors everywhere!"
 	vend_reply = "Thank you for using the JaniDrobe!"
 	products = list(/obj/item/clothing/under/rank/janitor = 2,
@@ -365,6 +407,7 @@
 					/obj/item/reagent_containers/spray/cleaner = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/jani_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/jani_wardrobe
 	machine_name = "JaniDrobe"
 
@@ -372,6 +415,8 @@
 	name = "LawDrobe"
 	desc = "Objection! This wardrobe dispenses the rule of law... and lawyer clothing."
 	icon_state = "lawdrobe"
+	icon_vend = "lawdrobe-vend"
+	icon_deny = "lawdrobe-deny"	
 	product_ads = "OBJECTION! Get the rule of law for yourself!"
 	vend_reply = "Thank you for using the LawDrobe!"
 	products = list(/obj/item/clothing/under/lawyer/female = 2,
@@ -394,6 +439,7 @@
 					/obj/item/clothing/accessory/lawyers_badge = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/law_wardrobe
 	payment_department = ACCOUNT_CIV
+
 /obj/item/vending_refill/wardrobe/law_wardrobe
 	machine_name = "LawDrobe"
 
@@ -401,6 +447,8 @@
 	name = "ChapDrobe"
 	desc = "This most blessed and holy machine vends clothing only suitable for chaplains to gaze upon."
 	icon_state = "chapdrobe"
+	icon_vend = "chapdrobe-vend"
+	icon_deny = "chapdrobe-deny"	
 	product_ads = "Are you being bothered by cultists or pesky revenants? Then come and dress like the holy man!;Clothes for men of the cloth!"
 	vend_reply = "Thank you for using the ChapDrobe!"
 	products = list(/obj/item/choice_beacon/holy = 1,
@@ -436,6 +484,7 @@
 					/obj/item/clothing/head/bishopmitre = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/chap_wardrobe
 	payment_department = ACCOUNT_CIV
+
 /obj/item/vending_refill/wardrobe/chap_wardrobe
 	machine_name = "ChapDrobe"
 
@@ -443,6 +492,8 @@
 	name = "ChemDrobe"
 	desc = "A vending machine for dispensing chemistry related clothing."
 	icon_state = "chemdrobe"
+	icon_vend = "chemdrobe-vend"
+	icon_deny = "chemdrobe-deny"	
 	product_ads = "Our clothes are 0.5% more resistant to acid spills! Get yours now!"
 	vend_reply = "Thank you for using the ChemDrobe!"
 	products = list(/obj/item/clothing/under/rank/chemist = 2,
@@ -455,6 +506,7 @@
 					/obj/item/storage/bag/chemistry = 4)
 	refill_canister = /obj/item/vending_refill/wardrobe/chem_wardrobe
 	payment_department = ACCOUNT_MED
+
 /obj/item/vending_refill/wardrobe/chem_wardrobe
 	machine_name = "ChemDrobe"
 
@@ -462,6 +514,8 @@
 	name = "GeneDrobe"
 	desc = "A machine for dispensing clothing related to genetics."
 	icon_state = "genedrobe"
+	icon_vend = "genedrobe-vend"
+	icon_deny = "genedrobe-deny"	
 	product_ads = "Perfect for the mad scientist in you!"
 	vend_reply = "Thank you for using the GeneDrobe!"
 	products = list(/obj/item/clothing/under/rank/geneticist = 2,
@@ -472,6 +526,7 @@
 					/obj/item/storage/backpack/satchel/gen = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/gene_wardrobe
 	payment_department = ACCOUNT_MED
+
 /obj/item/vending_refill/wardrobe/gene_wardrobe
 	machine_name = "GeneDrobe"
 
@@ -479,6 +534,8 @@
 	name = "ViroDrobe"
 	desc = "An unsterilized machine for dispending virology related clothing."
 	icon_state = "virodrobe"
+	icon_vend = "virodrobe-vend"
+	icon_deny = "virodrobe-deny"
 	product_ads = " Viruses getting you down? Then upgrade to sterilized clothing today!"
 	vend_reply = "Thank you for using the ViroDrobe"
 	products = list(/obj/item/clothing/under/rank/virologist = 2,
@@ -490,5 +547,6 @@
 					/obj/item/storage/backpack/satchel/vir = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/viro_wardrobe
 	payment_department = ACCOUNT_MED
+
 /obj/item/vending_refill/wardrobe/viro_wardrobe
 	machine_name = "ViroDrobe"

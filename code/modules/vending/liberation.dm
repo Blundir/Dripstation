@@ -2,6 +2,8 @@
 	name = "\improper Liberation Station"
 	desc = "An overwhelming amount of <b>ancient patriotism</b> washes over you just by looking at the machine."
 	icon_state = "liberationstation"
+	icon_vend = "liberationstation-vend" 
+	icon_deny = "liberationstation-deny"
 	product_slogans = "Liberation Station: Your one-stop shop for all things second amendment!;Be a patriot today, pick up a gun!;Quality weapons for cheap prices!;Better dead than red!"
 	product_ads = "Float like an astronaut, sting like a bullet!;Express your second amendment today!;Guns don't kill people, but you can!;Who needs responsibilities when you have guns?"
 	vend_reply = "Remember the name: Liberation Station!"
@@ -31,3 +33,4 @@
 	default_price = 50
 	extra_price = 100
 	payment_department = ACCOUNT_SEC
+	light_mask = "liberation-light-mask"	

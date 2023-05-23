@@ -14,7 +14,8 @@ export const SuitStorageUnit = (props, context) => {
     suit,
     helmet,
     mask,
-    storage,
+    tank,
+    magboots,
   } = data;
   return (
     <Window
@@ -89,13 +90,22 @@ export const SuitStorageUnit = (props, context) => {
                       item: 'mask',
                     })} />
                 </LabeledList.Item>
-                <LabeledList.Item label="Storage">
+                <LabeledList.Item label="Internals">
                   <Button
-                    icon={storage ? 'square' : 'square-o'}
-                    content={storage || 'Empty'}
-                    disabled={!storage}
+                    icon={tank ? 'square' : 'square-o'}
+                    content={tank || 'Empty'}
+                    disabled={!tank}
                     onClick={() => act('dispense', {
-                      item: 'storage',
+                      item: 'tank',
+                    })} />
+                </LabeledList.Item>
+                <LabeledList.Item label="Magboots">
+                  <Button
+                    icon={magboots ? 'square' : 'square-o'}
+                    content={magboots || 'Empty'}
+                    disabled={!magboots}
+                    onClick={() => act('dispense', {
+                      item: 'magboots',
                     })} />
                 </LabeledList.Item>
               </LabeledList>

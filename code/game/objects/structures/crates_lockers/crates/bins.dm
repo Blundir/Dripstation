@@ -5,7 +5,7 @@
 	open_sound = 'sound/effects/bin_open.ogg'
 	close_sound = 'sound/effects/bin_close.ogg'
 	anchored = TRUE
-	horizontal = FALSE
+	open_flags = ALLOW_OBJECTS | ALLOW_DENSE
 	delivery_icon = null
 
 /obj/structure/closet/crate/bin/Initialize()
@@ -15,12 +15,16 @@
 /obj/structure/closet/crate/bin/update_icon()
 	..()
 	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(contents.len == 0)
 		add_overlay("largebing")
+		SSvis_overlays.add_vis_overlay(src, icon, "largebing", layer, EMISSIVE_PLANE)
 	else if(contents.len >= storage_capacity)
 		add_overlay("largebinr")
+		SSvis_overlays.add_vis_overlay(src, icon, "largebinr", layer, EMISSIVE_PLANE)
 	else
 		add_overlay("largebino")
+		SSvis_overlays.add_vis_overlay(src, icon, "largebino", layer, EMISSIVE_PLANE)
 
 /obj/structure/closet/crate/bin/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/storage/bag/trash))

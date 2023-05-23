@@ -7,6 +7,7 @@
 	layer = 2.9
 	density = TRUE
 	var/list/inventory = list()
+	var/list/allowed_types = list(/obj/item/ammo_box/magazine/recharge/ntusp)
 	
 	contents = newlist(/obj/item/gun/energy/disabler, 
 					   /obj/item/gun/ballistic/automatic/pistol/ntusp)
@@ -15,6 +16,8 @@
 /obj/machinery/armaments_dispenser/Initialize()
 	. = ..()
 	inventory = contents.Copy()
+	for(var/obj/item/wep in inventory)
+		allowed_types += wep.type
 	
 /obj/machinery/armaments_dispenser/ui_assets(mob/user)
 	return list(
@@ -45,15 +48,29 @@
 		if("dispense_weapon")
 			if(params["weapon"] && ispath(text2path(params["weapon"])))
 				var/wep = text2path(params["weapon"])
+				if(!(wep in allowed_types))
+					message_admins("[ADMIN_LOOKUPFLW(usr)] just attempted to purchase a [wep] from the armaments dispenser.")
+					log_admin("[ADMIN_LOOKUP(usr)] attempted to purchase a [wep] from the armaments dispenser.")
+					return FALSE
 				new wep(loc)
 				if(params["magazine"] && ispath(text2path(params["magazine"])))
 					var/mag = text2path(params["magazine"])
+					if(!(mag in allowed_types))
+						message_admins("[ADMIN_LOOKUPFLW(usr)] just attempted to purchase a [mag] from the armaments dispenser.")
+						log_admin("[ADMIN_LOOKUP(usr)] attempted to purchase a [mag] from the armaments dispenser.")
+						return FALSE
 					new mag(loc)
 			else
 				return FALSE
 			C.registered_account.sec_weapon_claimed = TRUE
 			return TRUE
 	return FALSE
+
+/obj/machinery/armaments_dispenser/update_icon()
+	. = ..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & BROKEN) && powered())
+		SSvis_overlays.add_vis_overlay(src, icon, "armament-light-mask", layer, EMISSIVE_PLANE, dir)
 
 /obj/machinery/armaments_dispenser/ui_interact(mob/user, datum/tgui/ui)
 	if(stat & (BROKEN | NOPOWER | MAINT))

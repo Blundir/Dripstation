@@ -4,6 +4,7 @@
 	icon = 'icons/obj/sofa.dmi'
 	buildstackamount = 1
 	item_chair = null
+	color = "#a75400"
 
 /obj/structure/chair/sofa/left
 	icon_state = "sofaend_left"
@@ -23,6 +24,7 @@
 	max_integrity = 60
 	buildstacktype = /obj/item/stack/sheet/mineral/bamboo
 	buildstackamount = 3
+	color = null
 
 /obj/structure/chair/sofa/bamboo/left
 	icon_state = "bamboo_sofaend_left"

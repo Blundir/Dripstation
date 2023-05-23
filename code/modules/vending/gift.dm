@@ -4,6 +4,8 @@
 	icon = 'yogstation/icons/obj/vending.dmi'
 	icon_state = "gifts"
 	icon_deny = "gifts-deny"
+	icon_vend = "gifts-vend"
+	light_mask = "gifts-light-mask"
 	req_access_txt = "36"
 	product_slogans = "Toys For All!;Oh its a Gift!;A Gift for Your Loved ones!;Purchase more Gifts, Now!"
 	vend_reply = "Thank you for using Gift Vendor!"

@@ -3,7 +3,7 @@
 	desc = "A rubber stamp for stamping important documents."
 	icon = 'yogstation/icons/obj/bureaucracy.dmi'
 	icon_state = "stamp-ok"
-	item_state = "stamp"
+	// item_state = "stamp"
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
@@ -59,7 +59,7 @@
 /obj/item/stamp/denied
 	name = "\improper DENIED rubber stamp"
 	icon_state = "stamp-deny"
-	dye_color = DYE_REDCOAT
+	dye_color = DYE_RED
 
 /obj/item/stamp/clown
 	name = "clown's rubber stamp"
@@ -74,19 +74,19 @@
 /obj/item/stamp/cent
 	name = "centcom rubber stamp"
 	icon_state = "stamp-cent"
-	dye_color = DYE_REDCOAT
+	dye_color = DYE_CENT
 
 /obj/item/stamp/syndi
 	name = "knock-off syndicate rubber stamp"
 	desc = "Not a syndicate ripoff!"
 	icon_state = "stamp-syndi"
-	dye_color = DYE_HOS
+	dye_color = DYE_RED
 
 	
 /obj/item/stamp/syndiround
 	name = "syndicate rubber stamp"
 	icon_state = "stamp-syndiround"
-	dye_color = DYE_HOS
+	dye_color = DYE_SYNDI
 
 /obj/item/stamp/attack_paw(mob/user)
 	return attack_hand(user)

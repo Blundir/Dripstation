@@ -15,12 +15,15 @@
 
 /obj/structure/closet/crate/secure/update_icon()
 	..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(broken)
 		add_overlay("securecrateemag")
 	else if(locked)
 		add_overlay("securecrater")
+		SSvis_overlays.add_vis_overlay(src, icon, "securecrater", layer, EMISSIVE_PLANE)
 	else
 		add_overlay("securecrateg")
+		SSvis_overlays.add_vis_overlay(src, icon, "securecrateg", layer, EMISSIVE_PLANE)
 
 /obj/structure/closet/crate/secure/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)
 	if(prob(tamperproof) && damage_amount >= DAMAGE_PRECISION)

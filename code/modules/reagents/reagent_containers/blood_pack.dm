@@ -37,14 +37,14 @@
 			var/datum/antagonist/bloodsucker/bloodsuckerdatum = target.mind.has_antag_datum(/datum/antagonist/bloodsucker)
 			bloodsuckerdatum.AddBloodVolume(gulp_size)
 			var/mob/living/carbon/H = target
-			addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, target, gulp_size), 5)
+			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), target, gulp_size), 5)
 			reagents.reaction(target, INGEST, 100*gulp_size)
 			if(H.blood_volume >= bloodsuckerdatum.max_blood_volume)
 				to_chat(target, span_notice("You are full, and can't consume more blood"))
 				return
 		else
 			reagents.reaction(target, INGEST, gulp_size)
-			addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, target, gulp_size), 5)
+			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), target, gulp_size), 5)
 		playsound(user.loc, 'sound/items/drink.ogg', rand(10,50), 1)
 	return ..()
 
@@ -73,6 +73,9 @@
 
 /obj/item/reagent_containers/blood/update_icon()
 	cut_overlays()
+
+	if(blood_type)
+		add_overlay(image('icons/obj/bloodpack.dmi', "[blood_type]"))
 
 	var/v = min(round(reagents.total_volume / volume * 10), 10)
 	if(v > 0)
@@ -108,11 +111,21 @@
 	blood_type = "O-"
 
 /obj/item/reagent_containers/blood/lizard
+	desc = "Contains blood used for lizard transfusion. Must be attached to an IV drip."
 	blood_type = "L"
 
 /obj/item/reagent_containers/blood/ethereal
+	desc = "Contains so called 'liquid electricity' which is a blood resource of ethereals."
 	blood_type = "LE"
 	unique_blood = /datum/reagent/consumable/liquidelectricity
+
+/obj/item/reagent_containers/blood/ethereal/update_icon()
+	. = ..()
+	add_overlay(image('icons/obj/bloodpack.dmi', "LE"))
+
+/obj/item/reagent_containers/blood/ethereal/update_pack_name()
+	if(!labelled)
+		name = "blood pack - LE"
 
 /obj/item/reagent_containers/blood/universal
 	blood_type = "U"

@@ -3,6 +3,7 @@
 	desc = "Tools for tools."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
+	icon_vend = "tool-vend"
 	products = list(/obj/item/stack/cable_coil/random = 10,
 		            /obj/item/crowbar = 5,
 		            /obj/item/weldingtool = 3,
@@ -25,3 +26,4 @@
 	default_price = 20
 	extra_price = 80
 	payment_department = ACCOUNT_ENG
+	light_mask = "tool-light-mask"

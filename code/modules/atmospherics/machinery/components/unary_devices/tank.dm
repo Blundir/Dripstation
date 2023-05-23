@@ -26,7 +26,7 @@
 
 
 /obj/machinery/atmospherics/components/unary/tank/air
-	icon_state = "grey"
+	icon_state = "air"
 	name = "pressure tank (Air)"
 
 /obj/machinery/atmospherics/components/unary/tank/air/New()
@@ -44,7 +44,7 @@
 	air_contents.set_moles(/datum/gas/carbon_dioxide, AIR_CONTENTS)
 
 /obj/machinery/atmospherics/components/unary/tank/toxins
-	icon_state = "orange"
+	icon_state = "toxins"
 	gas_type = /datum/gas/plasma
 
 /obj/machinery/atmospherics/components/unary/tank/toxins/New()
@@ -53,7 +53,7 @@
 	air_contents.set_moles(/datum/gas/plasma, AIR_CONTENTS)
 
 /obj/machinery/atmospherics/components/unary/tank/oxygen
-	icon_state = "blue"
+	icon_state = "o2"
 	gas_type = /datum/gas/oxygen
 
 /obj/machinery/atmospherics/components/unary/tank/oxygen/New()
@@ -62,7 +62,7 @@
 	air_contents.set_moles(/datum/gas/oxygen, AIR_CONTENTS)
 
 /obj/machinery/atmospherics/components/unary/tank/nitrogen
-	icon_state = "red"
+	icon_state = "n2"
 	gas_type = /datum/gas/nitrogen
 
 /obj/machinery/atmospherics/components/unary/tank/nitrogen/New()

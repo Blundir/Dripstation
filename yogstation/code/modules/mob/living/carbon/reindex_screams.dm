@@ -31,6 +31,8 @@
 		add_screams(s_store.alternate_screams)
 	if(wear_id)
 		add_screams(wear_id.alternate_screams)
+	if(wear_pda)
+		add_screams(wear_pda.alternate_screams)
 
 //Note that the following two are for /mob/living, while the above two are for /carbon and /human
 /mob/living/proc/add_screams(var/list/screams)

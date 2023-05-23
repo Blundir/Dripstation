@@ -4,6 +4,8 @@
 	product_slogans = "Space cigs taste good like a cigarette should.;I'd rather toolbox than switch.;Smoke!;Don't believe the reports - smoke today!"
 	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
 	icon_state = "cigs"
+	icon_vend = "cigs-vend"
+	icon_deny = "cigs-deny"	
 	products = list(/obj/item/storage/box/fancy/cigarettes = 5,
 					/obj/item/storage/box/fancy/cigarettes/cigpack_uplift = 3,
 					/obj/item/storage/box/fancy/cigarettes/cigpack_robust = 3,
@@ -23,6 +25,7 @@
 	default_price = 10
 	extra_price = 50
 	payment_department = ACCOUNT_SRV
+	light_mask = "cigs-light-mask"	
 
 /obj/machinery/vending/cigarette/syndicate
 	products = list(/obj/item/storage/box/fancy/cigarettes/cigpack_syndicate = 7,

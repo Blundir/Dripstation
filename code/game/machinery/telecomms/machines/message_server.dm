@@ -55,10 +55,13 @@
 
 /obj/machinery/blackbox_recorder/update_icon()
 	. = ..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(!stored)
 		icon_state = "blackbox_b"
+		SSvis_overlays.add_vis_overlay(src, icon, "blackbox_b_layer", EMISSIVE_LAYER, EMISSIVE_PLANE)
 	else
 		icon_state = "blackbox"
+		SSvis_overlays.add_vis_overlay(src, icon, "blackbox_layer", EMISSIVE_LAYER, EMISSIVE_PLANE)
 
 /obj/item/blackbox
 	name = "the blackbox"
@@ -159,9 +162,11 @@
 
 /obj/machinery/telecomms/message_server/update_icon()
 	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(calibrating && on)
 		var/mutable_appearance/calibrate = mutable_appearance(icon, "message_server_disabled")
 		add_overlay(calibrate)
+		SSvis_overlays.add_vis_overlay(src, icon, "message_server_disabled", layer, EMISSIVE_PLANE, dir)
 	else if (!calibrating && on)
 		return ..()
 

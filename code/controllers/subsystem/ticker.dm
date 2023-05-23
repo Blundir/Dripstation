@@ -448,7 +448,7 @@ SUBSYSTEM_DEF(ticker)
 				living.client.init_verbs()
 			livings += living
 	if(livings.len)
-		addtimer(CALLBACK(src, .proc/release_characters, livings), 30, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 30, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/ticker/proc/release_characters(list/livings)
 	for(var/I in livings)
@@ -521,7 +521,7 @@ SUBSYSTEM_DEF(ticker)
 	//map rotate chance defaults to 75% of the length of the round (in minutes)
 	if (!prob((world.time/600)*CONFIG_GET(number/maprotatechancedelta)))
 		return
-	INVOKE_ASYNC(SSmapping, /datum/controller/subsystem/mapping/.proc/maprotate)
+	INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, maprotate))
 
 /datum/controller/subsystem/ticker/proc/HasRoundStarted()
 	return current_state >= GAME_STATE_PLAYING
@@ -632,7 +632,7 @@ SUBSYSTEM_DEF(ticker)
 	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if(player.ready == PLAYER_READY_TO_OBSERVE && player.mind)
 			//Break chain since this has a sleep input in it
-			addtimer(CALLBACK(player, /mob/dead/new_player.proc/make_me_an_observer), 1)
+			addtimer(CALLBACK(player, TYPE_PROC_REF(/mob/dead/new_player, make_me_an_observer)), 1)
 
 /datum/controller/subsystem/ticker/proc/load_mode()
 	var/mode = trim(file2text("data/mode.txt"))
@@ -678,13 +678,13 @@ SUBSYSTEM_DEF(ticker)
 		return
 	//yogs start - yogs tickets
 	if(GLOB.ahelp_tickets && GLOB.ahelp_tickets.ticketAmount)
-		var/list/adm = get_admin_counts(R_BAN)
-		var/list/activemins = adm["present"]
-		if(activemins.len > 0 && !force) // Ignore tickets if forced
-			to_chat(world, span_boldannounce("Not all tickets have been resolved. Server restart delayed."))
-			return
-		else
-			to_chat(world, span_boldannounce("Round ended, but there were still active tickets. Please submit a player complaint if you did not receive a response."))
+		// var/list/adm = get_admin_counts(R_BAN)
+		// var/list/activemins = adm["present"]
+		// if(activemins.len > 0 && !force) // Ignore tickets if forced
+		// 	to_chat(world, span_boldannounce("Not all tickets have been resolved. Server restart delayed."))
+		// 	return
+		// else
+		to_chat(world, span_boldannounce("Round ended, but there were still active tickets. Please submit a player complaint if you did not receive a response."))
 	 //yogs end - yogs tickets
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 	webhook_send_roundstatus("endgame") //yogs - webhook support

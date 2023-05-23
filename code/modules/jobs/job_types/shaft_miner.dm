@@ -63,7 +63,7 @@
 
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
-	duffelbag = /obj/item/storage/backpack/duffelbag
+	duffelbag = /obj/item/storage/backpack/duffelbag/explorer
 	box = /obj/item/storage/box/survival_mining
 	ipc_box = /obj/item/storage/box/ipc/miner
 

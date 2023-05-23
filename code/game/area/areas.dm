@@ -363,7 +363,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 				if(D.operating)
 					D.nextstate = opening ? FIREDOOR_OPEN : FIREDOOR_CLOSED
 				else if(!(D.density ^ opening))
-					INVOKE_ASYNC(D, (opening ? /obj/machinery/door/firedoor.proc/open : /obj/machinery/door/firedoor.proc/close))
+					INVOKE_ASYNC(D, (opening ? TYPE_PROC_REF(/obj/machinery/door/firedoor, open) : TYPE_PROC_REF(/obj/machinery/door/firedoor, close)))
 
 /**
   * Generate an firealarm alert for this area
@@ -468,7 +468,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		var/mob/living/silicon/SILICON = i
 		if(SILICON.triggerAlarm("Burglar", src, cameras, trigger))
 			//Cancel silicon alert after 1 minute
-			addtimer(CALLBACK(SILICON, /mob/living/silicon.proc/cancelAlarm,"Burglar",src,trigger), 600)
+			addtimer(CALLBACK(SILICON, TYPE_PROC_REF(/mob/living/silicon, cancelAlarm),"Burglar",src,trigger), 600)
 
 	var/obj/item/radio/radio = new /obj/item/radio(trigger)
 	radio.set_frequency(FREQ_SECURITY)
@@ -575,6 +575,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
   * Updates the area icon and calls power change on all machinees in the area
   */
 /area/proc/power_change()
+	SEND_SIGNAL(src, COMSIG_AREA_POWER_CHANGE)
 	for(var/obj/machinery/M in src)	// for each machine in the area
 		M.power_change()				// reverify power status (to update icons etc.)
 	update_icon()
@@ -617,6 +618,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			static_light += value
 		if(AREA_USAGE_STATIC_ENVIRON)
 			static_environ += value
+
+/area/proc/removeStaticPower(value, powerchannel)
+	switch(powerchannel)
+		if(AREA_USAGE_STATIC_START to AREA_USAGE_STATIC_END)
+			static_equip -= value
 
 /**
   * Clear all power usage in area

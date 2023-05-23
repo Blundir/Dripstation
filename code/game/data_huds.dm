@@ -155,14 +155,17 @@
 	holder.pixel_y = I.Height() - world.icon_size
 	if(HAS_TRAIT(src, TRAIT_XENO_HOST))
 		holder.icon_state = "hudxeno"
+	if(undergoing_cardiac_arrest() && stat != DEAD)
+		holder.icon_state = "huddefib"
+		return	
 	else if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		if(HAS_TRAIT(src, TRAIT_FAKEDEATH))
-			holder.icon_state = "huddefib"
+			holder.icon_state = "hudflatline"
 			return
 		if(tod)
 			var/tdelta = round(world.time - timeofdeath)
 			if(tdelta < (DEFIB_TIME_LIMIT))
-				holder.icon_state = "huddefib"
+				holder.icon_state = "hudflatline"
 				return
 		holder.icon_state = "huddead"
 	else

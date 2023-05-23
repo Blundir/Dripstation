@@ -18,6 +18,8 @@
 	circuit = /obj/item/circuitboard/computer/comm_server
 	tgui_id = "LogBrowser"
 
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
+
 /obj/machinery/computer/telecomms/server/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user,src,ui)
 	if(!ui)

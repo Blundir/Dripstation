@@ -42,7 +42,7 @@
 	if(!clockwork)
 		clockwork = TRUE
 		icon_screen = "ratvar[rand(1, 4)]"
-		icon_keyboard = "ratvar_key[rand(1, 6)]"
+		icon_keyboard = "ratvar_key[rand(1, 2)]"
 		icon_state = "ratvarcomputer[rand(1, 4)]"
 		update_icon()
 
@@ -88,6 +88,7 @@
 		add_overlay("[icon_keyboard]_off")
 		return
 	add_overlay(icon_keyboard)
+	SSvis_overlays.add_vis_overlay(src, icon, icon_keyboard, layer, EMISSIVE_PLANE, dir)
 
 	// This whole block lets screens ignore lighting and be visible even in the darkest room
 	var/overlay_state = icon_screen

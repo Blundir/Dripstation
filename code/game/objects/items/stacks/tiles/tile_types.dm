@@ -246,6 +246,12 @@
 	turf_type = /turf/open/floor/carpet/royalblue
 	tableVariant = /obj/structure/table/wood/fancy/royalblue
 
+/obj/item/stack/tile/carpet/guilded
+	name = "guiled carpet"
+	icon_state = "tile-carpet-art"
+	item_state = "tile-carpet-art"
+	turf_type = /turf/open/floor/carpet/guilded
+
 
 /obj/item/stack/tile/carpet/fifty
 	amount = 50
@@ -277,6 +283,8 @@
 /obj/item/stack/tile/carpet/royalblue/fifty
 	amount = 50
 
+/obj/item/stack/tile/carpet/guilded/fifty
+	amount = 50
 
 /obj/item/stack/tile/fakespace
 	name = "astral carpet"

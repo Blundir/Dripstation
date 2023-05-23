@@ -82,6 +82,8 @@
 
 /obj/item/storage/box/evidence
 	name = "evidence bag box"
+	icon_state = "secbox"
+	illustration = "evidence_icon"
 	desc = "A box claiming to contain evidence bags."
 
 /obj/item/storage/box/evidence/PopulateContents()

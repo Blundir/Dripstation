@@ -33,6 +33,7 @@
 		/obj/item/grenade/gas_crystal/pluonium_crystal = 10,
 		/obj/item/grenade/gas_crystal/healium_crystal = 10,
 		/obj/item/grenade/gas_crystal/nitrous_oxide_crystal = 5,
+		/obj/item/clothing/suit/space/hardsuit/engine/atmos = 1,
 	)
 
 	smells_like = "a gas leak"
@@ -50,9 +51,9 @@
 	uniform_skirt = /obj/item/clothing/under/rank/atmospheric_technician/skirt
 	r_pocket = /obj/item/analyzer
 
-	backpack = /obj/item/storage/backpack/industrial
-	satchel = /obj/item/storage/backpack/satchel/eng
-	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	backpack = /obj/item/storage/backpack/industrial/atmos
+	satchel = /obj/item/storage/backpack/satchel/atmos
+	duffelbag = /obj/item/storage/backpack/duffelbag/engineering/atmos
 	box = /obj/item/storage/box/engineer
 
 	pda_slot = SLOT_L_STORE

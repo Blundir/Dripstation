@@ -42,8 +42,15 @@
 	)
 
 	mail_goodies = list(
+		/obj/item/toner = 15,
+		/obj/item/pen/fourcolor = 10,
+		/obj/item/pen/fountain = 10,
 		/obj/item/card/id/silver = 10,
-		/obj/item/stack/sheet/bone = 5
+		/obj/item/stack/sheet/bone = 5,
+		/obj/item/stamp = 5,
+		/obj/item/stamp/denied = 5,
+		/obj/item/stamp/syndi = 3,
+		/obj/item/stamp/cent = 1 //the holy grail of stamps
 	)
 
 	smells_like = "bureaucracy"
@@ -56,22 +63,23 @@
 		. += list(/datum/reagent/medicine/strange_reagent = 20)
 		break
 
-/datum/outfit/job/hop
-	name = "Head of Personnel"
-	jobtype = /datum/job/hop
+// /datum/outfit/job/hop       overwritten in a module
+// 	name = "Head of Personnel"
+// 	jobtype = /datum/job/hop
 
-	id_type = /obj/item/card/id/silver
-	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/hop
+// 	id_type = /obj/item/card/id/silver
+// 	pda_type = /obj/item/modular_computer/tablet/phone/preset/advanced/command/hop
 
-	glasses = /obj/item/clothing/glasses/hud/personnel
-	ears = /obj/item/radio/headset/heads/hop
-	uniform = /obj/item/clothing/under/rank/head_of_personnel
-	uniform_skirt = /obj/item/clothing/under/rank/head_of_personnel/skirt
-	shoes = /obj/item/clothing/shoes/sneakers/brown
-	digitigrade_shoes = /obj/item/clothing/shoes/xeno_wraps/command
-	head = /obj/item/clothing/head/hopcap
-	backpack_contents = list(/obj/item/storage/box/ids=1,\
-		/obj/item/melee/classic_baton/telescopic=1) //yogs - removes serv budget
+// 	glasses = /obj/item/clothing/glasses/hud/personnel
+// 	ears = /obj/item/radio/headset/heads/hop
+// 	uniform = /obj/item/clothing/under/rank/head_of_personnel
+// 	uniform_skirt = /obj/item/clothing/under/rank/head_of_personnel/skirt
+// 	shoes = /obj/item/clothing/shoes/sneakers/brown
+// 	digitigrade_shoes = /obj/item/clothing/shoes/xeno_wraps/command
+// 	head = /obj/item/clothing/head/hopcap
+// 	backpack_contents = list(/obj/item/storage/box/ids=1, //////
+// 		/obj/item/melee/classic_baton/telescopic=1) //yogs - removes serv budget
 
 
-	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/hop)
+// 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/hop)
+

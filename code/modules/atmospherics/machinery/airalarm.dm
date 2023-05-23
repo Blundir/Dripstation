@@ -60,7 +60,7 @@
 	name = "air alarm"
 	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
 	icon = 'icons/obj/monitors.dmi'
-	icon_state = "alarm0"
+	icon_state = "alarmp"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
 	active_power_usage = 8
@@ -70,6 +70,7 @@
 	integrity_failure = 80
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
 	resistance_flags = FIRE_PROOF
+	light_color = ""
 
 	FASTDMM_PROP(\
 		set_instance_vars(\
@@ -631,6 +632,8 @@
 				), signal_source)
 
 /obj/machinery/airalarm/update_icon()
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(panel_open)
 		switch(buildstage)
 			if(2)
@@ -641,18 +644,27 @@
 				icon_state = "alarm_b1"
 		return
 
-	if((stat & (NOPOWER|BROKEN)) || shorted)
-		icon_state = "alarmp"
+	if(panel_open || (stat & (NOPOWER|BROKEN)) || shorted)
+		set_light(0)
 		return
 
 	var/area/A = get_area(src)
 	switch(max(danger_level, A.atmosalm))
 		if(0)
-			icon_state = "alarm0"
+			icon_state = "alarmp"
+			add_overlay("alarm0")
+			SSvis_overlays.add_vis_overlay(src, icon, "alarm0", layer, EMISSIVE_PLANE, dir)
+			light_color = "#03A728"  // green
 		if(1)
-			icon_state = "alarm2" //yes, alarm2 is yellow alarm
+			add_overlay("alarm2") //yes, alarm2 is yellow alarm
+			SSvis_overlays.add_vis_overlay(src, icon, "alarm2", layer, EMISSIVE_PLANE, dir)
+			light_color = "#EC8B2F" // yellow
 		if(2)
-			icon_state = "alarm1"
+			add_overlay("alarm1")
+			SSvis_overlays.add_vis_overlay(src, icon, "alarm1", layer, EMISSIVE_PLANE, dir)
+			light_color = "#DA0205" // red
+
+	set_light(1.5, 1, light_color)		
 
 /obj/machinery/airalarm/process()
 	if((stat & (NOPOWER|BROKEN)) || shorted)

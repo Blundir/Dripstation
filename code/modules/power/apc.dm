@@ -137,19 +137,19 @@
 
 /obj/machinery/power/apc/auto_name/north //Pixel offsets get overwritten on New()
 	dir = NORTH
-	pixel_y = 23
+	pixel_y = 28
 
 /obj/machinery/power/apc/auto_name/south
 	dir = SOUTH
-	pixel_y = -23
+	pixel_y = -28
 
 /obj/machinery/power/apc/auto_name/east
 	dir = EAST
-	pixel_x = 24
+	pixel_x = 28
 
 /obj/machinery/power/apc/auto_name/west
 	dir = WEST
-	pixel_x = -25
+	pixel_x = -28
 
 /obj/machinery/power/apc/get_cell()
 	return cell
@@ -181,21 +181,21 @@
 
 	switch(tdir)
 		if(NORTH)
-			if((pixel_y != initial(pixel_y)) && (pixel_y != 23))
+			if((pixel_y != initial(pixel_y)) && (pixel_y != 28))
 				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_y value ([pixel_y] - should be 23.)")
-			pixel_y = 23
+			pixel_y = 28
 		if(SOUTH)
-			if((pixel_y != initial(pixel_y)) && (pixel_y != -23))
+			if((pixel_y != initial(pixel_y)) && (pixel_y != -28))
 				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_y value ([pixel_y] - should be -23.)")
-			pixel_y = -23
+			pixel_y = -28
 		if(EAST)
-			if((pixel_y != initial(pixel_x)) && (pixel_x != 24))
+			if((pixel_y != initial(pixel_x)) && (pixel_x != 28))
 				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_x value ([pixel_x] - should be 24.)")
-			pixel_x = 24
+			pixel_x = 28
 		if(WEST)
-			if((pixel_y != initial(pixel_x)) && (pixel_x != -25))
+			if((pixel_y != initial(pixel_x)) && (pixel_x != -28))
 				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_x value ([pixel_x] - should be -25.)")
-			pixel_x = -25
+			pixel_x = -28
 	if (building)
 		if(user)
 			area = get_area(user)
@@ -206,7 +206,7 @@
 		name = "[area.name] APC"
 		stat |= MAINT
 		src.update_icon()
-		addtimer(CALLBACK(src, .proc/update), 5)
+		addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/machinery/power/apc/Destroy()
 	GLOB.apcs_list -= src
@@ -264,7 +264,7 @@
 
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()
@@ -1093,7 +1093,7 @@
 			for(var/obj/machinery/light/L in area)
 				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
 					L.no_emergency = emergency_lights
-					INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
+					INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
 				CHECK_TICK
 	return 1
 
@@ -1123,7 +1123,7 @@
 		return
 	to_chat(malf, "Beginning override of APC systems. This takes some time, and you cannot perform other actions during the process.")
 	malf.malfhack = src
-	malf.malfhacking = addtimer(CALLBACK(malf, /mob/living/silicon/ai/.proc/malfhacked, src), 300, TIMER_STOPPABLE)
+	malf.malfhacking = addtimer(CALLBACK(malf, TYPE_PROC_REF(/mob/living/silicon/ai, malfhacked), src), 300, TIMER_STOPPABLE)
 
 	var/atom/movable/screen/alert/hackingapc/A
 	A = malf.throw_alert("hackingapc", /atom/movable/screen/alert/hackingapc)
@@ -1445,7 +1445,7 @@
 	environ = 0
 	update_icon()
 	update()
-	addtimer(CALLBACK(src, .proc/reset, APC_RESET_EMP), 600)
+	addtimer(CALLBACK(src, PROC_REF(reset), APC_RESET_EMP), 600)
 
 /obj/machinery/power/apc/blob_act(obj/structure/blob/B)
 	set_broken()
@@ -1471,7 +1471,7 @@
 		return
 	if( cell && cell.charge>=20)
 		cell.use(20)
-		INVOKE_ASYNC(src, .proc/break_lights)
+		INVOKE_ASYNC(src, PROC_REF(break_lights))
 
 /obj/machinery/power/apc/proc/break_lights()
 	for(var/obj/machinery/light/L in area)

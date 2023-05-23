@@ -1,17 +1,17 @@
 /obj/structure/displaycase
 	name = "display case"
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "glassbox0"
+	icon_state = "glassbox"
 	desc = "A display case for prized possessions."
 	density = TRUE
 	anchored = TRUE
 	resistance_flags = ACID_PROOF
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 0, RAD = 0, FIRE = 70, ACID = 100)
 	max_integrity = 200
-	integrity_failure = 0.25
+	integrity_failure = 50
 	var/obj/item/showpiece = null
 	var/obj/item/showpiece_type = null //This allows for showpieces that can only hold items if they're the same istype as this.
-	var/alert = TRUE
+	var/alert = FALSE //Basic display cases have no alarms
 	var/open = FALSE
 	var/openable = TRUE
 	var/obj/item/electronics/airlock/electronics
@@ -57,9 +57,9 @@
 /obj/structure/displaycase/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	switch(damage_type)
 		if(BRUTE)
-			playsound(src.loc, 'sound/effects/glasshit.ogg', 75, TRUE)
+			playsound(loc, 'sound/effects/glasshit.ogg', 75, TRUE)
 		if(BURN)
-			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
+			playsound(loc, 'sound/items/welder.ogg', 100, TRUE)
 
 /obj/structure/displaycase/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -70,10 +70,12 @@
 	qdel(src)
 
 /obj/structure/displaycase/obj_break(damage_flag)
+	. = ..()
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		density = FALSE
-		broken = 1
-		new /obj/item/shard( src.loc )
+		broken = TRUE
+		open = TRUE		
+		new /obj/item/shard(drop_location())
 		playsound(src, "shatter", 70, TRUE)
 		update_icon()
 		trigger_alarm()
@@ -86,18 +88,16 @@
 		playsound(src, 'sound/effects/alert.ogg', 50, TRUE)
 
 /obj/structure/displaycase/update_icon()
-	var/icon/I
-	if(open)
-		I = icon('icons/obj/stationobjs.dmi',"glassbox_open")
-	else
-		I = icon('icons/obj/stationobjs.dmi',"glassbox0")
+	cut_overlays()
 	if(broken)
-		I = icon('icons/obj/stationobjs.dmi',"glassboxb0")
+		add_overlay("glassbox_broken")
 	if(showpiece)
-		var/icon/S = getFlatIcon(showpiece)
-		S.Scale(17,17)
-		I.Blend(S,ICON_UNDERLAY,8,8)
-	src.icon = I
+		var/mutable_appearance/showpiece_overlay = mutable_appearance(showpiece.icon, showpiece.icon_state)
+		showpiece_overlay.copy_overlays(showpiece)
+		showpiece_overlay.transform *= 0.6
+		add_overlay(showpiece_overlay)
+	if(!open && !broken)
+		add_overlay("glassbox_closed")
 	return
 
 /obj/structure/displaycase/attackby(obj/item/W, mob/user, params)
@@ -148,7 +148,8 @@
 		to_chat(user, span_notice("You start fixing [src]..."))
 		if(do_after(user, 2 SECONDS, src))
 			G.use(2)
-			broken = 0
+			broken = FALSE
+			open = FALSE
 			obj_integrity = max_integrity
 			update_icon()
 	else
@@ -218,7 +219,7 @@
 		to_chat(user, span_notice("You start adding [G] to [src]..."))
 		if(do_after(user, 2 SECONDS, src))
 			G.use(10)
-			var/obj/structure/displaycase/noalert/display = new(src.loc)
+			var/obj/structure/displaycase/display = new(src.loc)
 			if(electronics)
 				electronics.forceMove(display)
 				display.electronics = electronics
@@ -233,20 +234,19 @@
 //The lab cage and captain's display case do not spawn with electronics, which is why req_access is needed.
 /obj/structure/displaycase/captain
 	start_showpiece_type = /obj/item/gun/energy/laser/captain
-	req_access = list(ACCESS_CENT_SPECOPS) //this was intentional, presumably to make it slightly harder for caps to grab their gun roundstart
+	alert = TRUE
+	req_access = list(ACCESS_CAPTAIN) //this was intentional, presumably to make it slightly harder for caps to grab their gun roundstart
 
 /obj/structure/displaycase/labcage
 	name = "lab cage"
 	desc = "A glass lab container for storing interesting creatures."
+	alert = TRUE	
 	start_showpiece_type = /obj/item/clothing/mask/facehugger/lamarr
 	req_access = list(ACCESS_RD)
 
 /obj/structure/displaycase/cmo
 	start_showpiece_type = /obj/item/toy/rod_of_asclepius
 	req_access = list(ACCESS_CMO)
-
-/obj/structure/displaycase/noalert
-	alert = FALSE
 
 /obj/structure/displaycase/trophy
 	name = "trophy display case"

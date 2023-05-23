@@ -1,7 +1,7 @@
 /obj/item/paper_bin
 	name = "paper bin"
 	desc = "Contains all the paper you'll never need."
-	icon = 'yogstation/icons/obj/bureaucracy.dmi'
+	// icon = 'yogstation/icons/obj/bureaucracy.dmi' //dripstation overwrite
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"
 	lefthand_file = 'icons/mob/inhands/misc/sheets_lefthand.dmi'
@@ -59,51 +59,51 @@
 	return attack_hand(user)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/paper_bin/attack_hand(mob/user)
-	if(isliving(user))
-		var/mob/living/L = user
-		if(!(L.mobility_flags & MOBILITY_PICKUP))
-			return
-	user.changeNext_move(CLICK_CD_MELEE)
-	var/response = ""
-	if(bin_pen)
-		var/obj/item/pen/P = bin_pen
-		P.add_fingerprint(user)
-		P.forceMove(user.loc)
-		user.put_in_hands(P)
-		to_chat(user, span_notice("You take [P] out of \the [src]."))
-		bin_pen = null
-		update_icon()
-	else if(total_paper >= 1)
-		response = alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", "Regular", "Carbon Copy", "Cancel")
-		if (response != "Regular" && response != "Carbon Copy")
-			add_fingerprint(user)
-			return
-		total_paper--
-		update_icon()
-		// If there's any custom paper on the stack, use that instead of creating a new paper.
-		var/obj/item/paper/P
-		if(papers.len > 0)
-			P = papers[papers.len]
-			papers.Remove(P)
-		else
-			if(response == "Regular")
-				P = new papertype(src)
-				if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
-					if(prob(30))
-						P.info = "<font face=\"[CRAYON_FONT]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>APRIL FOOLS</b></font>"
-						P.rigged = 1
-			else if (response == "Carbon Copy")
-				P = new /obj/item/paper/carbon(src)
+// /obj/item/paper_bin/attack_hand(mob/user)   //dripstation overwrite
+// 	if(isliving(user))
+// 		var/mob/living/L = user
+// 		if(!(L.mobility_flags & MOBILITY_PICKUP))
+// 			return
+// 	user.changeNext_move(CLICK_CD_MELEE)
+// 	var/response = ""
+// 	if(bin_pen)
+// 		var/obj/item/pen/P = bin_pen
+// 		P.add_fingerprint(user)
+// 		P.forceMove(user.loc)
+// 		user.put_in_hands(P)
+// 		to_chat(user, span_notice("You take [P] out of \the [src]."))
+// 		bin_pen = null
+// 		update_icon()
+// 	else if(total_paper >= 1)
+// 		response = alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", "Regular", "Carbon Copy", "Cancel")
+// 		if (response != "Regular" && response != "Carbon Copy")
+// 			add_fingerprint(user)
+// 			return
+// 		total_paper--
+// 		update_icon()
+// 		// If there's any custom paper on the stack, use that instead of creating a new paper.
+// 		var/obj/item/paper/P
+// 		if(papers.len > 0)
+// 			P = papers[papers.len]
+// 			papers.Remove(P)
+// 		else
+// 			if(response == "Regular")
+// 				P = new papertype(src)
+// 				if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
+// 					if(prob(30))
+// 						P.info = "<font face=\"[CRAYON_FONT]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>APRIL FOOLS</b></font>"
+// 						P.rigged = 1
+// 			else if (response == "Carbon Copy")
+// 				P = new /obj/item/paper/carbon(src)
 
-		P.add_fingerprint(user)
-		P.forceMove(user.loc)
-		user.put_in_hands(P)
-		to_chat(user, span_notice("You take [P] out of \the [src]."))
-	else
-		to_chat(user, span_warning("[src] is empty!"))
-	add_fingerprint(user)
-	return ..()
+// 		P.add_fingerprint(user)
+// 		P.forceMove(user.loc)
+// 		user.put_in_hands(P)
+// 		to_chat(user, span_notice("You take [P] out of \the [src]."))
+// 	else
+// 		to_chat(user, span_warning("[src] is empty!"))
+// 	add_fingerprint(user)
+// 	return ..()
 
 /obj/item/paper_bin/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/paper))

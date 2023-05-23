@@ -8,10 +8,10 @@
 
 /world/IsBanned(key, address, computer_id, type, real_bans_only=FALSE)
 	var/static/key_cache = list()
-	if(!real_bans_only)
-		if(key_cache[key])
-			return list("reason"="concurrent connection attempts", "desc"="You are attempting to connect too fast. Try again.")
-		key_cache[key] = 1
+	// if(!real_bans_only)
+	// 	if(key_cache[key])
+	// 		return list("reason"="concurrent connection attempts", "desc"="You are attempting to connect too fast. Try again.")
+	// 	key_cache[key] = 1
 
 	debug_world_log("isbanned(): '[args.Join("', '")]'")
 	if (!key || (!real_bans_only && (!address || !computer_id)))

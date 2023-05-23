@@ -182,13 +182,19 @@ GLOBAL_LIST_EMPTY(allCasters)
 	name = "newscaster"
 	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
 	icon = 'icons/obj/terminals.dmi'
-	icon_state = "newscaster_normal"
+	icon_state = "newscaster_off"	
 	verb_say = "beeps"
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"
 	armor = list(MELEE = 50, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 30)
 	max_integrity = 200
 	integrity_failure = 50
+	light_system = STATIC_LIGHT
+	light_range = 2
+	light_power = 1
+	light_on = TRUE
+	light_color = LIGHT_COLOR_GREEN	
+	var/base_icon_state = "newscaster"	
 	var/screen = 0
 	var/paper_remaining = 15
 	var/securityCaster = 0
@@ -226,29 +232,43 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/machinery/newscaster/update_icon()
 	cut_overlays()
-	if(stat & (NOPOWER|BROKEN))
-		icon_state = "newscaster_off"
-	else
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & (NOPOWER|BROKEN)))
 		if(GLOB.news_network.wanted_issue.active)
-			icon_state = "newscaster_wanted"
+			add_overlay("newscaster_wanted")
+			SSvis_overlays.add_vis_overlay(src, icon, "newscaster_wanted", layer, EMISSIVE_PLANE, dir)
 		else
-			icon_state = "newscaster_normal"
+			add_overlay("newscaster_normal")
+			SSvis_overlays.add_vis_overlay(src, icon, "newscaster_normal", layer, EMISSIVE_PLANE, dir)
 			if(alert)
 				add_overlay("newscaster_alert")
+				SSvis_overlays.add_vis_overlay(src, icon, "newscaster_alert", layer, EMISSIVE_PLANE, dir)
 	var/hp_percent = obj_integrity * 100 /max_integrity
 	switch(hp_percent)
 		if(75 to 100)
 			return
 		if(50 to 75)
 			add_overlay("crack1")
+			SSvis_overlays.add_vis_overlay(src, icon, "crack1", EMISSIVE_BLOCKER_LAYER, EMISSIVE_BLOCKER_PLANE, dir)
 		if(25 to 50)
 			add_overlay("crack2")
+			SSvis_overlays.add_vis_overlay(src, icon, "crack1", EMISSIVE_BLOCKER_LAYER, EMISSIVE_BLOCKER_PLANE, dir)
 		else
 			add_overlay("crack3")
+			SSvis_overlays.add_vis_overlay(src, icon, "crack1", EMISSIVE_BLOCKER_LAYER, EMISSIVE_BLOCKER_PLANE, dir)
 
 /obj/machinery/newscaster/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	. = ..()
 	update_icon()
+
+/obj/machinery/newscaster/power_change()
+	. = ..()
+	if(!.)
+		return // reduce unneeded light changes
+	if(stat & NOPOWER)
+		set_light(FALSE)
+	else
+		set_light(TRUE)
 
 /obj/machinery/newscaster/ui_interact(mob/user)
 	. = ..()
@@ -832,7 +852,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		say("Breaking news from [channel]!")
 		alert = TRUE
 		update_icon()
-		addtimer(CALLBACK(src,.proc/remove_alert),alert_delay,TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(remove_alert)),alert_delay,TIMER_UNIQUE|TIMER_OVERRIDE)
 		playsound(loc, 'sound/machines/twobeep_high.ogg', 75, 1)
 	else
 		say("Attention! Wanted issue distributed!")

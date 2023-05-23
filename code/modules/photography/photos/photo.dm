@@ -44,7 +44,7 @@
 	if (user.gender == MALE)
 		playsound(user, 'sound/voice/human/manlaugh1.ogg', 50, 1)//EVERY TIME I DO IT MAKES ME LAUGH
 	else if (user.gender == FEMALE)
-		playsound(user, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+		playsound(user, 'sound/voice/human/womanlaugh1.ogg', 50, 1)
 	return OXYLOSS
 
 /obj/item/photo/attack_self(mob/user)

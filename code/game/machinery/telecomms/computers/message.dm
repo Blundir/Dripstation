@@ -38,7 +38,7 @@
 	var/customjob		= "Admin"
 	var/custommessage 	= "This is a test, please ignore."
 
-	light_color = LIGHT_COLOR_GREEN
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
 
 /obj/machinery/computer/message_monitor/attackby(obj/item/O, mob/living/user, params)
 	if(O.tool_behaviour == TOOL_SCREWDRIVER && (obj_flags & EMAGGED))
@@ -59,7 +59,7 @@
 		// Will help make emagging the console not so easy to get away with.
 		MK.info += "<br><br><font color='red'>£%@%(*$%&(£&?*(%&£/{}</font>"
 		var/time = 100 * length(linkedServer.decryptkey)
-		addtimer(CALLBACK(src, .proc/UnmagConsole), time)
+		addtimer(CALLBACK(src, PROC_REF(UnmagConsole)), time)
 		message = rebootmsg
 	else
 		to_chat(user, span_notice("A no server error appears on the screen."))

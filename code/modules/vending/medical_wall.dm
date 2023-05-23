@@ -2,6 +2,7 @@
 	name = "\improper NanoMed"
 	desc = "Wall-mounted Medical Equipment dispenser."
 	icon_state = "wallmed"
+	icon_vend = "wallmed-vend"
 	icon_deny = "wallmed-deny"
 	tiltable = FALSE
 	density = FALSE
@@ -19,6 +20,7 @@
 	default_price = 25
 	extra_price = 100
 	payment_department = ACCOUNT_MED
+	light_mask = "wallmed-light-mask"
 
 /obj/item/vending_refill/wallmed
 	machine_name = "NanoMed"
@@ -57,6 +59,7 @@
 	resistance_flags = FIRE_PROOF
 	refill_canister = /obj/item/vending_refill/wallhypo
 	payment_department = ACCOUNT_MED
+	light_mask = "wallmed-light-mask"	
 
 /obj/item/vending_refill/wallhypo
 	machine_name = "HypoMed"

@@ -2,7 +2,7 @@
 	name = "network card"
 	desc = "A basic wireless network card for usage with standard NTNet frequencies."
 	power_usage = 50
-	icon_state = "radio_mini"
+	icon_state = "netcard_basic"
 	var/identification_id = null	// Identification ID. Technically MAC address of this device. Can't be changed by user.
 	var/identification_string = "" 	// Identification string, technically nickname seen in the network. Can be set by user.
 	var/long_range = 0
@@ -65,7 +65,7 @@
 	desc = "An advanced network card for usage with standard NTNet frequencies. Its transmitter is strong enough to connect even off-station."
 	long_range = 1
 	power_usage = 100 // Better range but higher power usage.
-	icon_state = "radio"
+	icon_state = "netcard_advanced"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY

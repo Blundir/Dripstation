@@ -7,11 +7,21 @@
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	icon = 'icons/obj/chemical.dmi'
-	icon_state = "mixer0"
+	icon_state = "mixer"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/chem_master
+	integrity_failure = 50
+	light_color = LIGHT_COLOR_CYAN
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_power = 1
+	light_on = TRUE	
+	var/state_on = "mixer0"
+	var/state_working = "mixer1"
+	var/state_beaker = "mixerbeaker"
+	//var/state_broken = "mixer_b"//
+	var/state_broken_unpowered = "mixer_b_n"
 	var/obj/item/reagent_containers/beaker = null
 	var/obj/item/storage/pill_bottle/bottle = null
 	var/mode = 1
@@ -71,19 +81,38 @@
 
 /obj/machinery/chem_master/update_icon()
 	cut_overlays()
-	if (stat & BROKEN)
-		add_overlay("waitlight")
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(stat & BROKEN)
+		add_overlay(state_broken_unpowered)
+		// if(powered())
+		// 	add_overlay(state_broken)
+		// 	SSvis_overlays.add_vis_overlay(src, icon, state_broken, layer, EMISSIVE_PLANE, dir)
+		// if(stat & NOPOWER)
+		// 	add_overlay(state_broken_unpowered) no idea how to make it all work
+	if(!(stat & (NOPOWER|BROKEN)) && !beaker)
+		add_overlay(state_on)
+		SSvis_overlays.add_vis_overlay(src, icon, state_on, layer, EMISSIVE_PLANE, dir)
 	if(beaker)
-		icon_state = "mixer1"
+		add_overlay(state_beaker)
+		if(!(stat & (NOPOWER|BROKEN)))
+			add_overlay(state_working)
+			SSvis_overlays.add_vis_overlay(src, icon, state_working, layer, EMISSIVE_PLANE, dir)
+	
+/obj/machinery/chem_master/power_change()
+	. = ..()
+	if(!.)
+		return // reduce unneeded light changes
+	if(stat & (NOPOWER|BROKEN))
+		set_light(FALSE)
 	else
-		icon_state = "mixer0"
+		set_light(TRUE)
 
 /obj/machinery/chem_master/blob_act(obj/structure/blob/B)
 	if (prob(50))
 		qdel(src)
 
 /obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "mixer0_nopower", "mixer0", I))
+	if(default_deconstruction_screwdriver(user, "mixer_panel", "mixer", I))
 		return
 
 	else if(default_deconstruction_crowbar(I))
@@ -94,6 +123,7 @@
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		. = TRUE // no afterattack
 		if(panel_open)
+			icon_state = "[icon_state]panel"
 			to_chat(user, span_warning("You can't use the [src.name] while its panel is opened!"))
 			return
 		var/obj/item/reagent_containers/B = I

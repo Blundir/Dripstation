@@ -7,6 +7,8 @@
 	icon = 'yogstation/icons/obj/vending.dmi'
 	icon_state = "fishing"
 	icon_deny = "fishing-deny"
+	icon_vend = "fishing-vend"
+	light_mask = "fishing-light-mask"
 	product_slogans = "Don't tell my wife which bank I went to!;Fish fear me. Women love me.;If you want me to listen to you... talk about FISHING!;Good things come to those who bait.;Why did the lizard cross the road?"
 	vend_reply = "Go get 'em, tiger!"
 	products = list(/obj/item/twohanded/fishingrod = 3,

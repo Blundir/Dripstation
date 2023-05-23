@@ -92,7 +92,7 @@
 			return
 		var/chance = 0
 		switch(mood.shown_mood)
-			if(0 to MOOD_LEVEL_SAD4)
+			if(-INFINITY to MOOD_LEVEL_SAD4)
 				chance = -0.1
 			if(MOOD_LEVEL_SAD4 to MOOD_LEVEL_SAD3)
 				chance = -0.01
@@ -109,7 +109,7 @@
 				if(-1)
 					stop_wagging_tail(H)
 	if(!H.getorganslot(ORGAN_SLOT_TAIL) && !regrowtimer)
-		regrowtimer = addtimer(CALLBACK(src, .proc/regrow_tail, H), 20 MINUTES, TIMER_UNIQUE)
+		regrowtimer = addtimer(CALLBACK(src, PROC_REF(regrow_tail), H), 20 MINUTES, TIMER_UNIQUE)
 
 /datum/species/lizard/proc/regrow_tail(mob/living/carbon/human/H)
 	if(!H.getorganslot(ORGAN_SLOT_TAIL) && H.stat != DEAD)
@@ -184,7 +184,7 @@
 	inherent_traits = list(TRAIT_NOGUNS) //yogs start - ashwalkers have special lungs and actually breathe
 	mutantlungs = /obj/item/organ/lungs/ashwalker
 	breathid = "n2" // yogs end
-	species_language_holder = /datum/language_holder/lizard/ash
+	species_language_holder = /datum/language_holder/lizard/ash //ashwalker dum
 
 // yogs start - Ashwalkers now have ash immunity
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/C, datum/species/old_species)
@@ -206,6 +206,7 @@
 	punchdamagehigh = 7
 	punchstunthreshold = 7
 	action_speed_coefficient = 0.9 //they're smart and efficient unlike other lizards
+	species_language_holder = /datum/language_holder/lizard/shaman //shaman "smart"
 	var/obj/effect/proc_holder/spell/targeted/touch/healtouch/goodtouch
 
 //gives the heal spell

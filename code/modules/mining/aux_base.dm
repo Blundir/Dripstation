@@ -17,7 +17,9 @@
 	desc = "Allows a deployable expedition base to be dropped from the station to a designated mining location. It can also \
 	interface with the mining shuttle at the landing site if a mobile beacon is also deployed."
 	icon = 'icons/obj/terminals.dmi'
-	icon_state = "dorm_available"
+	icon_state = "pod_off"
+	icon_screen = "pod_on"	
+	light_color = LIGHT_COLOR_BLUE	
 	req_one_access = list(ACCESS_CARGO, ACCESS_CONSTRUCTION, ACCESS_HEADS, ACCESS_RESEARCH)
 	/// Shuttle ID of the base
 	var/shuttleId = "colony_drop"
@@ -42,6 +44,14 @@
 	var/mobs = 0
 	/// Calibration of the probe
 	var/calibration = 1
+
+/obj/machinery/computer/auxiliary_base/update_icon()
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & (NOPOWER|BROKEN)))
+		add_overlay(icon_screen)
+		SSvis_overlays.add_vis_overlay(src, icon, icon_screen, layer, EMISSIVE_PLANE, dir)
+
 
 /obj/machinery/computer/auxiliary_base/Initialize()
 	. = ..()
@@ -368,7 +378,7 @@
 		return
 
 	anti_spam_cd = 1
-	addtimer(CALLBACK(src, .proc/clear_cooldown), 50)
+	addtimer(CALLBACK(src, PROC_REF(clear_cooldown)), 50)
 
 	var/turf/landing_spot = get_turf(src)
 

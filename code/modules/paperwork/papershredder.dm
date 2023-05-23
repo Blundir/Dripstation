@@ -36,60 +36,60 @@
 			to_chat(user, span_warning("The [src] is full please empty it before you continue."))
 		return FALSE
 
-/obj/machinery/papershredder/attackby(obj/item/W, mob/user)
-	if(default_unfasten_wrench(user, W))
-		return
-	var/shred_amount = 0
-	if (istype(W, /obj/item/paper))
-		shred_amount = 1
-	else if(istype(W, /obj/item/photo))
-		shred_amount = 1
-	else if(istype(W, /obj/item/newspaper))
-		shred_amount = 3
-	else if(istype(W, /obj/item/card/id))
-		shred_amount = 3
-	else if(istype(W, /obj/item/station_charter))
-		shred_amount = 3
-	else if(istype(W, /obj/item/card/emag))
-		qdel(W)
-		explosion(src, -1, 0, 1,)
-		visible_message(("<span class='danger'>The [src] short-circuits and explodes! </span>"))
-	else if(istype(W, /obj/item/paper_bundle))
-		shred_amount = 3
-	else if(istype(W, /obj/item/book))
-		shred_amount = 5
-	else if(istype(W, /obj/item/storage/bag/trash))
-		var/datum/component/storage/STR = W.GetComponent(/datum/component/storage)
-		var/curpaper = paperamount
-		var/i
-		for(i=1; i<=curpaper; i++)
-			if(W.contents.len < 21)
-				var/obj/item/shreddedpaper/SP = new /obj/item/shreddedpaper
-				var/ran = rand(1,3)
-				if(ran == 1)
-					SP.color = "#BABABA"
-				if(ran == 2)
-					SP.color = "#7F7F7F"
-				if(ran == 3)
-					SP.color = null
-				STR.handle_item_insertion(SP)
-				paperamount -=1
-				update_icon()
-			else
-				to_chat(user, span_warning("The [W] is full."))
-				return
-	else if(istype(W, /obj/item/shreddedpaper))
-		if(paperamount == max_paper)
-			to_chat(user, span_warning("The [src] is full please empty it before you continue."))
-			return
-		if(paperamount < max_paper)
-			qdel(W)
-			paperamount += 1
-			update_icon()
-			return
+// /obj/machinery/papershredder/attackby(obj/item/W, mob/user)
+// 	if(default_unfasten_wrench(user, W))
+// 		return
+// 	var/shred_amount = 0
+// 	if (istype(W, /obj/item/paper))
+// 		shred_amount = 1
+// 	else if(istype(W, /obj/item/photo))
+// 		shred_amount = 1
+// 	else if(istype(W, /obj/item/newspaper))
+// 		shred_amount = 3
+// 	else if(istype(W, /obj/item/card/id))
+// 		shred_amount = 3
+// 	else if(istype(W, /obj/item/station_charter))
+// 		shred_amount = 3
+// 	else if(istype(W, /obj/item/card/emag))
+// 		qdel(W)
+// 		explosion(src, -1, 0, 1,)
+// 		visible_message(("<span class='danger'>The [src] short-circuits and explodes! </span>"))
+// 	else if(istype(W, /obj/item/paper_bundle))
+// 		shred_amount = 3
+// 	else if(istype(W, /obj/item/book))
+// 		shred_amount = 5
+// 	else if(istype(W, /obj/item/storage/bag/trash))
+// 		var/datum/component/storage/STR = W.GetComponent(/datum/component/storage)
+// 		var/curpaper = paperamount
+// 		var/i
+// 		for(i=1; i<=curpaper; i++)
+// 			if(W.contents.len < 21)
+// 				var/obj/item/shreddedpaper/SP = new /obj/item/shreddedpaper
+// 				var/ran = rand(1,3)
+// 				if(ran == 1)
+// 					SP.color = "#BABABA"
+// 				if(ran == 2)
+// 					SP.color = "#7F7F7F"
+// 				if(ran == 3)
+// 					SP.color = null
+// 				STR.handle_item_insertion(SP)
+// 				paperamount -=1
+// 				update_icon()
+// 			else
+// 				to_chat(user, span_warning("The [W] is full."))
+// 				return
+// 	else if(istype(W, /obj/item/shreddedpaper))
+// 		if(paperamount == max_paper)
+// 			to_chat(user, span_warning("The [src] is full please empty it before you continue."))
+// 			return
+// 		if(paperamount < max_paper)
+// 			qdel(W)
+// 			paperamount += 1
+// 			update_icon()
+// 			return
 	
-	if(shred_amount && try_insert(user, shred_amount))
-		qdel(W)
+// 	if(shred_amount && try_insert(user, shred_amount))
+// 		qdel(W)
 
 /obj/machinery/papershredder/verb/empty()
 	set name = "Empty bin"
@@ -118,20 +118,20 @@
 /obj/machinery/papershredder/AltClick(mob/living/user)
 	emptypaper()
 
-/obj/machinery/papershredder/update_icon()
-	if(paperamount == 0)
-		icon_state = "papershredder0"
-	if(paperamount == 1||paperamount == 2)
-		icon_state = "papershredder1"
-	if(paperamount == 3||paperamount == 4)
-		icon_state = "papershredder2"
-	if(paperamount == 5||paperamount == 6)
-		icon_state = "papershredder3"
-	if(paperamount == 7||paperamount == 8)
-		icon_state = "papershredder4"
-	if(paperamount == 9||paperamount == 10)
-		icon_state = "papershredder5"
-	return
+// /obj/machinery/papershredder/update_icon()
+// 	if(paperamount == 0)
+// 		icon_state = "papershredder0"
+// 	if(paperamount == 1||paperamount == 2)
+// 		icon_state = "papershredder1"
+// 	if(paperamount == 3||paperamount == 4)
+// 		icon_state = "papershredder2"
+// 	if(paperamount == 5||paperamount == 6)
+// 		icon_state = "papershredder3"
+// 	if(paperamount == 7||paperamount == 8)
+// 		icon_state = "papershredder4"
+// 	if(paperamount == 9||paperamount == 10)
+// 		icon_state = "papershredder5"
+// 	return
 
 /obj/item/shreddedpaper
 	name = "shredded paper"

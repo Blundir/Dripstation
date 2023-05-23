@@ -210,7 +210,7 @@
 /datum/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer_here, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, PROC_REF(_addtimer_here), CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -296,51 +296,51 @@
 	if((DIGITIGRADE in H.dna.species.species_traits) && digitigrade_shoes) 
 		shoes = digitigrade_shoes
 
-/datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	if(visualsOnly)
-		return
+// /datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+// 	if(visualsOnly)
+// 		return
 
-	var/datum/job/J = SSjob.GetJobType(jobtype)
-	if(!J)
-		J = SSjob.GetJob(H.job)
+// 	var/datum/job/J = SSjob.GetJobType(jobtype)
+// 	if(!J)
+// 		J = SSjob.GetJob(H.job)
 
-	var/obj/item/card/id/C = new id_type()
-	if(istype(C))
-		C.access = J.get_access()
-		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
-		C.registered_name = H.real_name
-		if(H.mind?.role_alt_title)
-			C.assignment = H.mind.role_alt_title
-		else
-			C.assignment = J.title
-		C.originalassignment = J.title
-		if(H.age)
-			C.registered_age = H.age
-		C.update_label()
-		var/acc_id = "[H.account_id]"
-		if(acc_id in SSeconomy.bank_accounts)
-			var/datum/bank_account/B = SSeconomy.bank_accounts[acc_id]
-			C.registered_account = B
-			B.bank_cards += C
-		H.sec_hud_set_ID()
+// 	var/obj/item/card/id/C = new id_type()
+// 	if(istype(C))
+// 		C.access = J.get_access()
+// 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
+// 		C.registered_name = H.real_name
+// 		if(H.mind?.role_alt_title)
+// 			C.assignment = H.mind.role_alt_title
+// 		else
+// 			C.assignment = J.title
+// 		C.originalassignment = J.title
+// 		if(H.age)
+// 			C.registered_age = H.age
+// 		C.update_label()
+// 		var/acc_id = "[H.account_id]"
+// 		if(acc_id in SSeconomy.bank_accounts)
+// 			var/datum/bank_account/B = SSeconomy.bank_accounts[acc_id]
+// 			C.registered_account = B
+// 			B.bank_cards += C
+// 		H.sec_hud_set_ID()
 
-	var/obj/item/modular_computer/PDA = new pda_type()
-	if(istype(PDA))
-		PDA.InsertID(C)
-		H.equip_to_slot_if_possible(PDA, SLOT_WEAR_ID)
+// 	var/obj/item/modular_computer/PDA = new pda_type()
+// 	if(istype(PDA))
+// 		PDA.InsertID(C)
+// 		H.equip_to_slot_if_possible(PDA, SLOT_WEAR_ID)
 
-		PDA.update_label()
-		PDA.update_icon()
-		PDA.update_filters()
+// 		PDA.update_label()
+// 		PDA.update_icon()
+// 		PDA.update_filters()
 		
-	else
-		H.equip_to_slot_if_possible(C, SLOT_WEAR_ID)
+// 	else
+// 		H.equip_to_slot_if_possible(C, SLOT_WEAR_ID)
 
-	if(H.stat != DEAD)//if a job has a gps and it isn't a decorative corpse, rename the GPS to the owner's name
-		for(var/obj/item/gps/G in H.GetAllContents())
-			G.gpstag = H.real_name
-			G.name = "global positioning system ([G.gpstag])"
-			continue
+// 	if(H.stat != DEAD)//if a job has a gps and it isn't a decorative corpse, rename the GPS to the owner's name
+// 		for(var/obj/item/gps/G in H.GetAllContents())
+// 			G.gpstag = H.real_name
+// 			G.name = "global positioning system ([G.gpstag])"
+// 			continue
 
 /datum/outfit/job/get_chameleon_disguise_info()
 	var/list/types = ..()

@@ -493,19 +493,27 @@
 	admin_controlled = 1
 	possible_destinations = "pod_asteroid"
 	icon = 'icons/obj/terminals.dmi'
-	icon_state = "dorm_available"
+	icon_state = "pod_off"
+	icon_keyboard = null
+	icon_screen = "pod_on"	
 	light_color = LIGHT_COLOR_BLUE
 	density = FALSE
 	clockwork = TRUE //it'd look weird
 
 /obj/machinery/computer/shuttle/pod/update_icon()
-	return
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & (NOPOWER|BROKEN)))
+		add_overlay(icon_screen)
+		SSvis_overlays.add_vis_overlay(src, icon, icon_screen, layer, EMISSIVE_PLANE, dir)
 
 /obj/machinery/computer/shuttle/pod/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
 	ENABLE_BITFIELD(obj_flags, EMAGGED)
 	to_chat(user, span_warning("You fry the pod's alert level checking system."))
+	icon_screen = "emagged_general"
+	update_icon()
 
 /obj/machinery/computer/shuttle/pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
 	. = ..()

@@ -72,9 +72,9 @@
 
 /obj/machinery/medical_kiosk/update_icon()
 	if(is_operational())
-		icon_state = "kiosk_off"
-	else
 		icon_state = "kiosk"
+	else
+		icon_state = "kiosk_off"
 
 /obj/machinery/medical_kiosk/wrench_act(mob/living/user, obj/item/I) //Allows for wrenching/unwrenching the machine.
 	..()

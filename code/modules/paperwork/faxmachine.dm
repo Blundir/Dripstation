@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 200
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
 	var/authenticated = FALSE
 	var/auth_name
 	var/sendcooldown = 0 // to avoid spamming fax messages
@@ -56,9 +57,9 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 					return	
 				sendcooldown = world.time + 1 MINUTES
 				if (destination in GLOB.admin_departments)
-					INVOKE_ASYNC(src, .proc/send_admin_fax, usr, destination)
+					INVOKE_ASYNC(src, PROC_REF(send_admin_fax), usr, destination)
 				else
-					INVOKE_ASYNC(src, .proc/sendfax, destination)
+					INVOKE_ASYNC(src, PROC_REF(sendfax), destination)
 			return
 		if("remove")
 			if(copy)
@@ -219,3 +220,11 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 /obj/machinery/photocopier/faxmachine/examine(mob/user)
 	if(IsAdminGhost(user))
 		.+= span_notice("You can send admin faxes via Alt-Click to this specific fax machine.")
+
+/obj/machinery/photocopier/faxmachine/power_change()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(stat & (BROKEN|NOPOWER))
+		icon_state = "fax_nopower"
+	else
+		SSvis_overlays.add_vis_overlay(src, icon, "fax_overlay", EMISSIVE_LAYER, EMISSIVE_PLANE)
+

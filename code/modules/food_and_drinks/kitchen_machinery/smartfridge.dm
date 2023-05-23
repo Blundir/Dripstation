@@ -18,6 +18,7 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/machine/smartfridge
+	light_color = LIGHT_COLOR_CYAN
 	var/max_n_of_items = 1000
 	var/allow_ai_retrieve = FALSE
 	var/list/initial_contents
@@ -35,6 +36,7 @@
 	var/dispenser_arm = TRUE //whether or not the dispenser is active (wires can disable this)
 	var/power_wire_cut = FALSE
 	var/list/slogan_list = list()
+	var/light_mask = "smartfridge-light-mask"
 
 /obj/machinery/smartfridge/Initialize()
 	. = ..()
@@ -79,9 +81,11 @@
 	if(!(stat & BROKEN))
 		if(powered() && !power_wire_cut)
 			stat &= ~NOPOWER
+			set_light(powered() ? MINIMUM_USEFUL_LIGHT_RANGE : 0)
 			START_PROCESSING(SSmachines, src)
 		else
 			stat |= NOPOWER
+			set_light(0)
 
 /obj/machinery/smartfridge/process()
 	if(stat & (BROKEN|NOPOWER))
@@ -173,6 +177,12 @@
 	else
 		icon_state = "[startstate]-off"
 
+/obj/machinery/smartfridge/update_icon()
+	. = ..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & BROKEN) && powered())
+		SSvis_overlays.add_vis_overlay(src, icon, light_mask, EMISSIVE_LAYER, EMISSIVE_PLANE)
+	
 /obj/machinery/smartfridge/proc/animate_dispenser()
 	//visually animate the smartfridge dispensing an item
 	if (supports_retrieval_state && !(stat & (NOPOWER|BROKEN)))
@@ -201,6 +211,7 @@
 		cut_overlays()
 		if(panel_open)
 			add_overlay("[initial(icon_state)]-panel")
+			SSvis_overlays.add_vis_overlay(src, icon, "[initial(icon_state)]-panel", EMISSIVE_BLOCKER_LAYER, EMISSIVE_BLOCKER_PLANE, dir)
 		updateUsrDialog()
 		return
 
@@ -703,11 +714,13 @@
 	icon_state = "disktoaster"
 	product_slogans = "Toasty!;Burnt to a crisp.;Puts a new meaning to the term \"burning a disk\", eh?;Store your plant data disks here. Or any kind of disk really. I don't discriminate."
 	pass_flags = PASSTABLE
+	light_color = LIGHT_COLOR_BLUEGREEN
 	supports_full_indicator_state = FALSE //whether or not the smartfridge supports a full inventory indicator icon state
 	retrieval_state = "disktoaster-retrieve" //the icon state for the dispensing animation
 	retrieval_time = 5 //the length (in ticks) of the retrieval_state
 	supports_retrieval_state = TRUE //whether or not the smartfridge supports a retrieval_state dispensing animation
 	supports_capacity_indication = FALSE //whether or not the smartfridge supports 5 levels of inventory quantity indication icon states
+	light_mask = "disktoaster-light-mask"
 
 /obj/machinery/smartfridge/disks/accept_check(obj/item/O)
 	if(istype(O, /obj/item/disk/))

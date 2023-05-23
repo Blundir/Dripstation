@@ -4,6 +4,8 @@
 	product_slogans = "Enjoy your meal.;Enough calories to support strenuous labor."
 	product_ads = "Sufficiently healthy.;Efficiently produced tofu!;Mmm! So good!;Have a meal.;You need food to live!;Have some more candy corn!;Try our new ice cups!"
 	icon_state = "sustenance"
+	icon_deny = "sustenance-deny"
+	icon_vend = "sustenance-vend"	
 	products = list(/obj/item/reagent_containers/food/snacks/tofu/prison = 24,
 					/obj/item/reagent_containers/food/drinks/ice/prison = 12,
 					/obj/item/reagent_containers/food/snacks/candy_corn/prison = 6)
@@ -15,6 +17,7 @@
 	default_price = 0
 	extra_price = 0
 	payment_department = NO_FREEBIES
+	light_mask = "sustenance-light-mask"	
 
 /obj/item/vending_refill/sustenance
 	machine_name = "Sustenance Vendor"

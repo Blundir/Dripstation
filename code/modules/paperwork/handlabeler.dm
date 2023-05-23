@@ -1,7 +1,7 @@
 /obj/item/hand_labeler
 	name = "hand labeler"
 	desc = "A combined label printer and applicator in a portable device, designed to be easy to operate and use."
-	icon = 'yogstation/icons/obj/bureaucracy.dmi'
+	// icon = 'yogstation/icons/obj/bureaucracy.dmi' //dripstatio overwrite
 	icon_state = "labeler0"
 	item_state = "flight"
 	var/label = null
@@ -35,30 +35,30 @@
 
 	return OXYLOSS
 
-/obj/item/hand_labeler/afterattack(atom/A, mob/user,proximity)
-	. = ..()
-	if(!proximity)
-		return
-	if(!mode)	//if it's off, give up.
-		return
+// /obj/item/hand_labeler/afterattack(atom/A, mob/user,proximity)
+// 	. = ..()
+// 	if(!proximity)
+// 		return
+// 	if(!mode)	//if it's off, give up.
+// 		return
 
-	if(!labels_left)
-		to_chat(user, span_warning("No labels left!"))
-		return
-	if(!label || !length(label))
-		to_chat(user, span_warning("No text set!"))
-		return
-	if(length(A.name) + length(label) > 64)
-		to_chat(user, span_warning("Label too big!"))
-		return
-	if(ismob(A))
-		to_chat(user, span_warning("You can't label creatures!")) // use a collar
-		return
+// 	if(!labels_left)
+// 		to_chat(user, span_warning("No labels left!"))
+// 		return
+// 	if(!label || !length(label))
+// 		to_chat(user, span_warning("No text set!"))
+// 		return
+// 	if(length(A.name) + length(label) > 64)
+// 		to_chat(user, span_warning("Label too big!"))
+// 		return
+// 	if(ismob(A))
+// 		to_chat(user, span_warning("You can't label creatures!")) // use a collar
+// 		return
 
-	user.visible_message("[user] labels [A] as [label].", \
-						 span_notice("You label [A] as [label]."))
-	A.name = "[A.name] ([label])"
-	labels_left--
+// 	user.visible_message("[user] labels [A] as [label].", 
+// 						 span_notice("You label [A] as [label]."))
+// 	A.name = "[A.name] ([label])"
+// 	labels_left--
 
 
 /obj/item/hand_labeler/attack_self(mob/user)
@@ -79,12 +79,12 @@
 	else
 		to_chat(user, span_notice("You turn off [src]."))
 
-/obj/item/hand_labeler/attackby(obj/item/I, mob/user, params)
-	..()
-	if(istype(I, /obj/item/hand_labeler_refill))
-		to_chat(user, span_notice("You insert [I] into [src]."))
-		qdel(I)
-		labels_left = initial(labels_left)	//Yes, it's capped at its initial value
+// /obj/item/hand_labeler/attackby(obj/item/I, mob/user, params)
+// 	..()
+// 	if(istype(I, /obj/item/hand_labeler_refill))
+// 		to_chat(user, span_notice("You insert [I] into [src]."))
+// 		qdel(I)
+// 		labels_left = initial(labels_left)	//Yes, it's capped at its initial value
 
 /obj/item/hand_labeler/borg
 	name = "cyborg-hand labeler"

@@ -54,7 +54,10 @@
 		return TRUE
 	return other.can_open(user)
 
-/obj/structure/closet/bluespace/internal/tool_interact(obj/item/W, mob/user)
+/obj/structure/closet/bluespace/internal/welder_act(mob/living/user, obj/item/W)
+	return
+
+/obj/structure/closet/bluespace/internal/wrench_act(mob/living/user, obj/item/W)
 	return
 
 /obj/structure/closet/bluespace/internal/attack_hand(mob/living/user)
@@ -266,7 +269,7 @@
 				F.pixel_y -= py
 			add_overlay(fullbrights)
 			if(add_reset_timer)
-				reset_timer_id = addtimer(CALLBACK(src, /turf/open/space/bluespace_locker_mirage.proc/reset_to_self), world.tick_lag * 4, TIMER_UNIQUE | TIMER_NO_HASH_WAIT | TIMER_OVERRIDE | TIMER_STOPPABLE)
+				reset_timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/turf/open/space/bluespace_locker_mirage, reset_to_self)), world.tick_lag * 4, TIMER_UNIQUE | TIMER_NO_HASH_WAIT | TIMER_OVERRIDE | TIMER_STOPPABLE)
 			else if(reset_timer_id)
 				deltimer(reset_timer_id)
 			pixel_x = px + dx*32

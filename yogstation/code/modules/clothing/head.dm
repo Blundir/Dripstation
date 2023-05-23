@@ -188,8 +188,8 @@
 /obj/item/clothing/head/beret/sci
 	name = "science beret"
 	desc = "A purple beret with the science insignia emblazoned on it. It has that authentic burning plasma smell."
-	icon = 'yogstation/icons/obj/clothing/hats.dmi'
-	mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
+	// icon = 'yogstation/icons/obj/clothing/hats.dmi'
+	// mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
 	icon_state = "beret_sci"
 	armor = list(bomb = 5, bio = 5, fire = 5, acid = 10)
 	strip_delay = 60
@@ -197,9 +197,9 @@
 /obj/item/clothing/head/beret/rd
 	name = "research director beret"
 	desc = "A purple beret with a golden science insignia emblazoned on it. It has that authentic burning plasma smell, with a hint of tritium."
-	icon = 'yogstation/icons/obj/clothing/hats.dmi'
-	mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
-	icon_state = "beret_rd"
+	// icon = 'yogstation/icons/obj/clothing/hats.dmi'
+	// mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
+	// icon_state = "beret_rd"
 	armor = list(bomb = 15, bio = 10, fire = 10, acid = 15)
 	strip_delay = 60
 
@@ -233,7 +233,7 @@
 /obj/item/clothing/head/beret/hop
 	name = "head of personnel beret"
 	desc = "A lovely blue beret with a red nanotrasen logo emblazoned on it. It seems to have a bit of dog hair in it."
-	icon = 'yogstation/icons/obj/clothing/hats.dmi'
+	// icon = 'yogstation/icons/obj/clothing/hats.dmi'
 	mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
 	icon_state = "beret_hop"
 	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
@@ -242,8 +242,8 @@
 /obj/item/clothing/head/beret/captain
 	name = "captain beret"
 	desc = "A lovely blue Captain beret with a gold and white insignia."
-	icon = 'yogstation/icons/obj/clothing/hats.dmi'
-	mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
+	// icon = 'yogstation/icons/obj/clothing/hats.dmi'
+	// mob_overlay_icon = 'yogstation/icons/mob/clothing/head/head.dmi'
 	icon_state = "beret_captain"
 	armor = list(melee = 50, bullet = 30, laser = 20, energy = 10, bomb = 15, bio = 10, rad = 10, fire = 10, acid = 60)
 	strip_delay = 90

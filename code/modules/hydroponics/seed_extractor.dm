@@ -61,6 +61,10 @@
 	icon_state = "sextractor"
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/seed_extractor
+	light_color = LIGHT_COLOR_BABY_BLUE
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_power = 1
+	light_on = TRUE
 	/// Associated list of seeds, they are all weak refs.  We check the len to see how many refs we have for each
 	// seed
 	var/list/piles = list()
@@ -76,6 +80,25 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		seed_multiplier = staring_seed_multiplier * M.rating
 
+/obj/machinery/seed_extractor/update_icon()
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & (NOPOWER|BROKEN)))
+		add_overlay("sextractor_on")
+		SSvis_overlays.add_vis_overlay(src, icon, "sextractor_on", layer, EMISSIVE_PLANE, dir)
+		if(panel_open)
+			add_overlay("sextractor_on")
+			SSvis_overlays.add_vis_overlay(src, icon, "sextractor_open", layer, EMISSIVE_PLANE, dir)
+
+/obj/machinery/seed_extractor/power_change()
+	. = ..()
+	if(!.)
+		return // reduce unneeded light changes
+	if(stat & (NOPOWER|BROKEN))
+		set_light(FALSE)
+	else
+		set_light(TRUE)
+
 /obj/machinery/seed_extractor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
@@ -83,7 +106,7 @@
 
 /obj/machinery/seed_extractor/attackby(obj/item/O, mob/user, params)
 
-	if(default_deconstruction_screwdriver(user, "sextractor_open", "sextractor", O))
+	if(default_deconstruction_screwdriver(user, "sextractor_panel", "sextractor", O))
 		return
 
 	if(default_pry_open(O))

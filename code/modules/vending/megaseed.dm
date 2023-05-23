@@ -4,6 +4,9 @@
 	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
+	icon_vend = "seeds-vend"
+	icon_deny = "seeds-deny"
+	light_color = LIGHT_COLOR_BLUEGREEN
 	products = list(/obj/item/seeds/aloe = 3,
 					/obj/item/seeds/ambrosia = 3,
 					/obj/item/seeds/apple = 3,
@@ -61,6 +64,7 @@
 	default_price = 10
 	extra_price = 50
 	payment_department = ACCOUNT_SRV
+	light_mask = "seeds-light-mask"	
 
 /obj/item/vending_refill/hydroseeds
 	machine_name = "MegaSeed Servitor"

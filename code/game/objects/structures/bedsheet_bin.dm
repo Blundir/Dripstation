@@ -211,7 +211,14 @@ LINEN BINS
 	desc = "It is decorated with a crate emblem in silver lining.  It's rather tough, and just the thing to lie on after a hard day of pushing paper."
 	icon_state = "sheetqm"
 	item_state = "sheetqm"
-	dream_messages = list("a grey ID", "a shuttle", "a crate", "a sloth", "the quartermaster")
+	dream_messages = list("a brown card", "a shuttle", "a crate", "a sloth", "the quartermaster")
+
+/obj/item/bedsheet/chap
+	name = "chaplain's blanket"
+	desc = "A blanket woven with the hearts of gods themselves... Wait, that's just linen."
+	icon_state = "sheetchap"
+	item_state = "sheetchap"
+	dream_messages = list("a grey ID", "the gods", "a fulfilled prayer", "a cult", "the chaplain", "an inquisition", "a crusade", "xeno scum")
 
 /obj/item/bedsheet/brown
 	icon_state = "sheetbrown"
@@ -240,7 +247,7 @@ LINEN BINS
 
 /obj/item/bedsheet/cult
 	name = "cultist's bedsheet"
-	desc = "You might dream of Nar'Sie if you sleep with this. It seems rather tattered and glows of an eldritch presence."
+	desc = "You might dream of Nar'sie if you sleep with this. It seems rather tattered and glows of an eldritch presence."
 	icon_state = "sheetcult"
 	item_state = "sheetcult"
 	dream_messages = list("a tome", "a floating red crystal", "a glowing sword", "a bloody symbol", "a massive humanoid figure")

@@ -333,9 +333,10 @@
 		return
 
 	client.crew_manifest_delay = world.time + (1 SECONDS)
-	var/datum/browser/popup = new(src, "airoster", "Crew Manifest", 387, 420)
-	popup.set_content(GLOB.data_core.get_manifest_html())
-	popup.open()
+	if(!GLOB.crew_manifest_tgui)
+		GLOB.crew_manifest_tgui = new /datum/crew_manifest(src)
+
+	GLOB.crew_manifest_tgui.ui_interact(src)
 
 /mob/living/silicon/proc/set_autosay() //For allowing the AI and borgs to set the radio behavior of auto announcements (state laws, arrivals).
 	if(!radio)
@@ -478,7 +479,7 @@
 			mega.UnregisterSignal(L, COMSIG_MOB_SAY)
 		else
 			mega.accent_name = aksent
-			mega.RegisterSignal(L, COMSIG_MOB_SAY, /datum/mind/.proc/handle_speech, TRUE)
+			mega.RegisterSignal(L, COMSIG_MOB_SAY, TYPE_PROC_REF(/datum/mind, handle_speech), TRUE)
 
 /mob/living/silicon/proc/create_modularInterface()
 	if(!modularInterface)

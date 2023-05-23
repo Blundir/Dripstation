@@ -21,7 +21,7 @@
 	icon_state = "sparks"
 	anchored = TRUE
 	light_system = MOVABLE_LIGHT
-	light_range = 2
+	light_range = 1.5
 	light_power = 0.5
 	light_color = LIGHT_COLOR_FIRE
 	light_flags = LIGHT_NO_LUMCOUNT
@@ -36,6 +36,7 @@
 	var/turf/T = loc
 	if(isturf(T))
 		T.hotspot_expose(1000,100)
+	animate(src, alpha = 0, time = 17, easing = SINE_EASING | EASE_IN)		
 	QDEL_IN(src, 2 SECONDS)
 
 /obj/effect/particle_effect/sparks/Destroy()

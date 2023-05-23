@@ -4,6 +4,7 @@
 	desc = "A vending machine for clothing."
 	icon_state = "clothes"
 	icon_deny = "clothes-deny"
+	icon_vend = "clothes-vend"
 	product_slogans = "Dress for success!;Prepare to look swagalicious!;Look at all this swag!;Why leave style up to fate? Use the ClothesMate!"
 	vend_reply = "Thank you for using the ClothesMate!"
 	products = list(/obj/item/clothing/head/beanie = 3,
@@ -192,6 +193,7 @@
 		              /obj/item/clothing/under/soviet = 1,
 		              /obj/item/storage/belt/fannypack/black = 2,
 		              /obj/item/clothing/suit/jacket/letterman_syndie = 1,
+					  /obj/item/clothing/suit/yogs/battlejacket = 2,
 		              /obj/item/clothing/under/jabroni = 1,
 		              /obj/item/clothing/suit/vapeshirt = 1,
 		              /obj/item/clothing/under/geisha = 1, //yogs added a ,
@@ -212,6 +214,7 @@
 	default_price = 50
 	extra_price = 75
 	payment_department = NO_FREEBIES
+	light_mask = "wardrobe-light-mask"	
 
 /obj/machinery/vending/clothing/canLoadItem(obj/item/I,mob/user)
 	return (I.type in products)

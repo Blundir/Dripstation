@@ -1,3 +1,5 @@
+#define CIRCUIT_FLOOR_POWERUSE 120
+//Circuit flooring, glows a little
 /turf/open/floor/goonplaque
 	name = "commemorative plaque"
 	icon_state = "plaque"
@@ -14,13 +16,17 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "bcircuit"
 	var/icon_normal = "bcircuit"
-	light_color = LIGHT_COLOR_CYAN
+	light_color = LIGHT_COLOR_BABY_BLUE
+	/// If we want to ignore our area's power status and just be always off
+	/// Mostly for mappers doing asthetic things, or cases where the floor should be broken	
+	var/always_off = FALSE
 	floor_tile = /obj/item/stack/tile/circuit
-	var/on = TRUE
+	var/on = -1
 
 /turf/open/floor/circuit/Initialize()
 	SSmapping.nuke_tiles += src
-	update_icon()
+	RegisterSignal(loc, COMSIG_AREA_POWER_CHANGE, .proc/handle_powerchange)
+	handle_powerchange(loc)
 	. = ..()
 
 /turf/open/floor/circuit/Destroy()
@@ -28,17 +34,37 @@
 	return ..()
 
 /turf/open/floor/circuit/update_icon()
-	if(on)
-		if(LAZYLEN(SSmapping.nuke_threats))
-			icon_state = "rcircuitanim"
-			light_color = LIGHT_COLOR_FLARE
-		else
-			icon_state = icon_normal
-			light_color = initial(light_color)
-		set_light(1.4, 0.5)
-	else
+	. = ..()
+	if(!on)
 		icon_state = "[icon_normal]off"
 		set_light(0)
+		return
+
+	if(LAZYLEN(SSmapping.nuke_threats))
+		icon_state = "rcircuitanim"
+		light_color = LIGHT_COLOR_INTENSE_RED
+
+	icon_state = icon_normal
+	set_light(1.8, 1.4)
+
+/turf/open/floor/circuit/proc/handle_powerchange(area/source)
+	SIGNAL_HANDLER
+	var/old_on = on
+	if(always_off)
+		on = FALSE
+	else
+		on = source.powered(AREA_USAGE_LIGHT)
+	if(on == old_on)
+		return
+
+	if(on)
+		source.addStaticPower(CIRCUIT_FLOOR_POWERUSE, AREA_USAGE_STATIC_LIGHT)
+	else
+		source.removeStaticPower(CIRCUIT_FLOOR_POWERUSE, AREA_USAGE_STATIC_LIGHT)
+	update_icon()
+
+#undef CIRCUIT_FLOOR_POWERUSE
+
 
 /turf/open/floor/circuit/off
 	icon_state = "bcircuitoff"
@@ -59,7 +85,7 @@
 /turf/open/floor/circuit/green
 	icon_state = "gcircuit"
 	icon_normal = "gcircuit"
-	light_color = LIGHT_COLOR_GREEN
+	light_color = LIGHT_COLOR_VIVID_GREEN
 	floor_tile = /obj/item/stack/tile/circuit/green
 
 /turf/open/floor/circuit/green/off
@@ -83,7 +109,7 @@
 /turf/open/floor/circuit/red
 	icon_state = "rcircuit"
 	icon_normal = "rcircuit"
-	light_color = LIGHT_COLOR_FLARE
+	light_color = LIGHT_COLOR_INTENSE_RED
 	floor_tile = /obj/item/stack/tile/circuit/red
 
 /turf/open/floor/circuit/red/off

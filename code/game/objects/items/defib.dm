@@ -90,6 +90,10 @@
 /obj/item/defibrillator/ui_action_click()
 	toggle_paddles()
 
+/obj/item/defibrillator/CtrlClick()
+	if(ishuman(usr) && Adjacent(usr))
+		toggle_paddles()
+
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/defibrillator/attack_hand(mob/user)
 	if(loc == user)
@@ -317,7 +321,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/check_range)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_range))
 	listeningTo = user
 
 /obj/item/twohanded/shockpaddles/Moved()
@@ -334,13 +338,8 @@
 	if(!req_defib)
 		return
 	if(!in_range(src,defib))
-		var/mob/living/L = loc
-		if(istype(L))
-			to_chat(L, span_warning("[defib]'s paddles overextend and come out of your hands!"))
-			L.temporarilyRemoveItemFromInventory(src,TRUE)
-		else
-			visible_message(span_notice("[src] snap back into [defib]."))
-			snap_back()
+		to_chat(usr, span_warning("[defib]'s paddles overextend and come out of your hands!"))
+		snap_back()
 
 /obj/item/twohanded/shockpaddles/proc/recharge(var/time)
 	if(req_defib || !time)
@@ -379,17 +378,17 @@
 	playsound(src, 'sound/machines/defib_zap.ogg', 50, 1, -1)
 	return OXYLOSS
 
-/obj/item/twohanded/shockpaddles/dropped(mob/user)
-	if(!req_defib)
-		return ..()
-	if(listeningTo)
-		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
+/obj/item/twohanded/shockpaddles/dropped(mob/user as mob)
+	. = ..()
 	if(user)
 		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
 		if(istype(O))
 			O.unwield()
-		to_chat(user, span_notice("The paddles snap back into the main unit."))
-		snap_back()
+		to_chat(user, "<span class='notice'>The paddles snap back into the main unit.</span>")
+		defib.on = FALSE
+		loc = defib
+		defib.update_icon()
+		update_icon()
 	return unwield(user)
 
 /obj/item/twohanded/shockpaddles/proc/snap_back()

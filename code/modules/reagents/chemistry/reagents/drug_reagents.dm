@@ -37,7 +37,7 @@
 	name = "Nicotine"
 	description = "Slightly reduces stun times. If overdosed it will deal toxin and oxygen damage."
 	reagent_state = LIQUID
-	color = "#60A584" // rgb: 96, 165, 132
+	color = "#333333" // rgb: 96, 165, 132
 	addiction_threshold = 10
 	taste_description = "smoke"
 	trippy = FALSE
@@ -413,7 +413,6 @@
 /datum/reagent/drug/happiness/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = 0
 	M.confused = 0
-	M.disgust = 0
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.2)
 	..()
 	. = 1

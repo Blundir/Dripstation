@@ -391,6 +391,15 @@
 	icon_state = "damaged"
 	broken = TRUE
 
+/turf/open/floor/carpet/guilded
+	icon = 'icons/turf/floors/carpet_guilded.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/guilded
+	canSmoothWith = list(/turf/open/floor/carpet/guilded)
+
+/turf/open/floor/carpet/guilded/broken
+	icon_state = "damaged"
+	broken = TRUE
+
 /turf/open/floor/carpet/narsie_act(force, ignore_mobs, probability = 20)
 	. = (prob(probability) || force)
 	for(var/I in src)

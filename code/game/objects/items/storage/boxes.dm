@@ -124,6 +124,11 @@
 		new /obj/item/disk/nanite_program(src)
 
 // Ordinary survival box
+/obj/item/storage/box/survival
+	name = "emergency survival box"
+	icon_state = "air"
+	illustration = null	
+	
 /obj/item/storage/box/survival/PopulateContents()
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
@@ -154,6 +159,11 @@
 	new /obj/item/reagent_containers/autoinjector/medipen(src)
 
 // Engineer survival box
+/obj/item/storage/box/engineer
+	name = "extended emergency survival box"
+	icon_state = "air_upgrade"
+	illustration = null
+
 /obj/item/storage/box/engineer/PopulateContents()
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
@@ -164,12 +174,22 @@
 	new /obj/item/radio/off(src)
 
 // Syndie survival box
+/obj/item/storage/box/syndie
+	name = "emergency survival box"
+	icon_state = "syndie_air"
+	illustration = null	
+
 /obj/item/storage/box/syndie/PopulateContents()
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/extinguisher/mini(src)
 
 // Security survival box
+/obj/item/storage/box/security
+	name = "security survival box"
+	icon_state = "secbox"
+	illustration = "emergencytank"	
+
 /obj/item/storage/box/security/PopulateContents()
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
@@ -180,6 +200,11 @@
 	new /obj/item/radio/off(src)
 
 // Plasmaman survival box
+/obj/item/storage/box/plasmaman
+	name = "plasmaman survival box"
+	icon_state = "plasmaman"
+	illustration = null		
+
 /obj/item/storage/box/plasmaman/PopulateContents()
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/plasmaman/belt/full(src)
@@ -193,6 +218,11 @@
 	new /obj/item/reagent_containers/autoinjector/medipen(src)
 
 // IPC survival box
+/obj/item/storage/box/ipc
+	name = "robot survival box"
+	icon_state = "robot"
+	illustration = null	
+
 /obj/item/storage/box/ipc/PopulateContents()
 	new /obj/item/tank/internals/ipc_coolant(src)
 	new /obj/item/reagent_containers/autoinjector/medipen(src)
@@ -224,7 +254,8 @@
 /obj/item/storage/box/syringes
 	name = "box of syringes"
 	desc = "A box full of syringes."
-	illustration = "syringe"
+	icon_state = "syringes"
+	illustration = null	
 
 /obj/item/storage/box/syringes/PopulateContents()
 	for(var/i in 1 to 7)
@@ -242,7 +273,7 @@
 /obj/item/storage/box/medipens
 	name = "box of medipens"
 	desc = "A box full of epinephrine MediPens."
-	illustration = "syringe"
+	illustration = "epipen"
 
 /obj/item/storage/box/medipens/PopulateContents()
 	for(var/i in 1 to 7)
@@ -251,7 +282,7 @@
 /obj/item/storage/box/medipens/utility
 	name = "stimpack value kit"
 	desc = "A box with several stimpack medipens for the economical miner."
-	illustration = "syringe"
+	illustration = "epipen"
 
 /obj/item/storage/box/medipens/utility/PopulateContents()
 	..() // includes regular medipens.
@@ -268,7 +299,7 @@
 
 /obj/item/storage/box/beakers/bluespace
 	name = "box of bluespace beakers"
-	illustration = "beaker"
+	illustration = "blubeaker"
 
 /obj/item/storage/box/beakers/bluespace/PopulateContents()
 	for(var/i in 1 to 7)
@@ -302,6 +333,7 @@
 
 /obj/item/storage/box/vials/bluespace
 	name = "box of bluespace vials"
+	illustration = "vialblue"
 
 /obj/item/storage/box/vials/bluespace/PopulateContents()
 	for(var/i in 1 to 7)
@@ -318,6 +350,7 @@
 /obj/item/storage/box/injectors
 	name = "box of DNA injectors"
 	desc = "This box contains injectors, it seems."
+	illustration = "dna"	
 
 /obj/item/storage/box/injectors/PopulateContents()
 	var/static/items_inside = list(
@@ -339,7 +372,7 @@
 	name = "box of flashbulbs"
 	desc = "<B>WARNING: Flashes can cause serious eye damage, protective eyewear is required.</B>"
 	icon_state = "secbox"
-	illustration = "flashbang"
+	illustration = "flash"
 
 /obj/item/storage/box/flashes/PopulateContents()
 	for(var/i in 1 to 6)
@@ -348,7 +381,7 @@
 /obj/item/storage/box/wall_flash
 	name = "wall-mounted flash kit"
 	desc = "This box contains everything necessary to build a wall-mounted flash. <B>WARNING: Flashes can cause serious eye damage, protective eyewear is required.</B>"
-	illustration = "flashbang"
+	illustration = "flash"
 
 /obj/item/storage/box/wall_flash/PopulateContents()
 	var/id = rand(1000, 9999)
@@ -366,17 +399,18 @@
 
 /obj/item/storage/box/teargas
 	name = "box of tear gas grenades (WARNING)"
+	icon_state = "secbox"	
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness and skin irritation.</B>"
-	illustration = "flashbang"
+	illustration = "grenade"
 
 /obj/item/storage/box/teargas/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/grenade/chem_grenade/teargas(src)
 
 /obj/item/storage/box/emps
-	name = "box of emp grenades"
+	name = "box of emp grenades"	
 	desc = "A box with 5 emp grenades."
-	illustration = "flashbang"
+	illustration = "emp"
 
 /obj/item/storage/box/emps/PopulateContents()
 	for(var/i in 1 to 5)
@@ -462,6 +496,7 @@
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."
+	illustration = "drinkglass"	
 
 /obj/item/storage/box/drinkingglasses/PopulateContents()
 	for(var/i in 1 to 6)
@@ -470,6 +505,7 @@
 /obj/item/storage/box/condimentbottles
 	name = "box of condiment bottles"
 	desc = "It has a large ketchup smear on it."
+	illustration = "condiment"		
 
 /obj/item/storage/box/condimentbottles/PopulateContents()
 	for(var/i in 1 to 6)
@@ -478,6 +514,7 @@
 /obj/item/storage/box/cups
 	name = "box of paper cups"
 	desc = "It has pictures of paper cups on the front."
+	illustration = "cup"	
 
 /obj/item/storage/box/cups/PopulateContents()
 	for(var/i in 1 to 7)
@@ -655,6 +692,7 @@
 /obj/item/storage/box/seccarts
 	name = "box of PDA security cartridges"
 	desc = "A box full of PDA cartridges used by Security."
+	icon_state = "secbox"
 	illustration = "pda"
 
 /obj/item/storage/box/seccarts/PopulateContents()
@@ -665,7 +703,7 @@
 /obj/item/storage/box/firingpins
 	name = "box of standard firing pins"
 	desc = "A box full of standard firing pins, to allow newly-developed firearms to operate."
-	illustration = "id"
+	illustration = "firingpin"
 
 /obj/item/storage/box/firingpins/PopulateContents()
 	for(var/i in 1 to 5)
@@ -674,7 +712,7 @@
 /obj/item/storage/box/secfiringpins
 	name = "box of mindshield firing pins"
 	desc = "A box full of mindshield firing pins, to allow newly-developed firearms to operate."
-	illustration = "id"
+	illustration = "firingpin"
 
 /obj/item/storage/box/secfiringpins/PopulateContents()
 	for(var/i in 1 to 5)
@@ -683,7 +721,7 @@
 /obj/item/storage/box/lasertagpins
 	name = "box of laser tag firing pins"
 	desc = "A box full of laser tag firing pins, to allow newly-developed firearms to require wearing brightly coloured plastic armor before being able to be used."
-	illustration = "id"
+	illustration = "firingpin"
 
 /obj/item/storage/box/lasertagpins/PopulateContents()
 	for(var/i in 1 to 3)
@@ -724,6 +762,7 @@
 	name = "boxed space suit and helmet"
 	desc = "A sleek, sturdy box used to hold replica spacesuits."
 	icon_state = "syndiebox"
+	illustration = "syndiesuit"	
 
 /obj/item/storage/box/fakesyndiesuit/PopulateContents()
 	new /obj/item/clothing/head/syndicatefake(src)
@@ -830,6 +869,8 @@
 /obj/item/storage/box/deputy
 	name = "box of deputy armbands"
 	desc = "To be issued to those authorized to act as deputy of security."
+	icon_state = "secbox"
+	illustration = "depband"	
 
 /obj/item/storage/box/deputy/PopulateContents()
 	for(var/i in 1 to 7)
@@ -847,7 +888,7 @@
 /obj/item/storage/box/smart_metal_foam
 	name = "box of smart metal foam grenades"
 	desc = "Used to rapidly seal hull breaches. This variety conforms to the walls of its area."
-	illustration = "flashbang"
+	illustration = "grenade"
 
 /obj/item/storage/box/smart_metal_foam/PopulateContents()
 	for(var/i in 1 to 7)
@@ -1201,6 +1242,7 @@
 
 /obj/item/storage/box/emptysandbags
 	name = "box of empty sandbags"
+	illustration = "sandbag"
 
 /obj/item/storage/box/emptysandbags/PopulateContents()
 	for(var/i in 1 to 7)
@@ -1209,6 +1251,7 @@
 /obj/item/storage/box/rndboards
 	name = "\proper the liberator's legacy"
 	desc = "A box containing a gift for worthy golems."
+	illustration = "scicircuit"	
 
 /obj/item/storage/box/rndboards/PopulateContents()
 	new /obj/item/circuitboard/machine/protolathe(src)
@@ -1219,6 +1262,7 @@
 /obj/item/storage/box/rndboards/miner
 	name = "\proper Morokha Heavy Industries Research and Development Kit"
 	desc = "A box containing the essential circuit boards for research and development. Materials, stock parts, and intelligence not included."
+	illustration = "circuit"
 
 /obj/item/storage/box/rndboards/miner/PopulateContents()
 	new /obj/item/circuitboard/machine/autolathe(src)
@@ -1230,6 +1274,7 @@
 /obj/item/storage/box/silver_sulf
 	name = "box of silver sulfadiazine patches"
 	desc = "Contains patches used to treat burns."
+	illustration = "firepatch"	
 
 /obj/item/storage/box/silver_sulf/PopulateContents()
 	for(var/i in 1 to 7)
@@ -1237,6 +1282,7 @@
 
 /obj/item/storage/box/fountainpens
 	name = "box of fountain pens"
+	illustration = "fpen"	
 
 /obj/item/storage/box/fountainpens/PopulateContents()
 	for(var/i in 1 to 7)
@@ -1245,7 +1291,7 @@
 /obj/item/storage/box/holy_grenades
 	name = "box of holy hand grenades"
 	desc = "Contains several grenades used to rapidly purge heresy."
-	illustration = "flashbang"
+	illustration = "circuit"
 
 /obj/item/storage/box/holy_grenades/PopulateContents()
 	for(var/i in 1 to 7)
@@ -1254,6 +1300,7 @@
 /obj/item/storage/box/stockparts/basic //for ruins where it's a bad idea to give access to an autolathe/protolathe, but still want to make stock parts accessible
 	name = "box of stock parts"
 	desc = "Contains a variety of basic stock parts."
+	illustration = "grenade"	
 
 /obj/item/storage/box/stockparts/basic/PopulateContents()
 	var/static/items_inside = list(
@@ -1268,6 +1315,7 @@
 	name = "box of deluxe stock parts"
 	desc = "Contains a variety of deluxe stock parts."
 	icon_state = "syndiebox"
+	illustration = "circuit"	
 
 /obj/item/storage/box/stockparts/deluxe/PopulateContents()
 	var/static/items_inside = list(

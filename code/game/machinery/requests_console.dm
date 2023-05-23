@@ -28,7 +28,13 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 	name = "requests console"
 	desc = "A console intended to send requests to different departments on the station."
 	icon = 'icons/obj/terminals.dmi'
-	icon_state = "req_comp0"
+	icon_state = "req_comp_off"
+	light_system = STATIC_LIGHT
+	light_range = 2
+	light_power = 1
+	light_on = TRUE
+	light_color = LIGHT_COLOR_GREEN
+	var/base_icon_state = "req_comp"
 	var/department = "Unknown" //The list of all departments on the station (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
 	var/list/messages = list() //List of all messages
 	var/departmentType = 0 //bitflag
@@ -70,27 +76,32 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 	armor = list(MELEE = 70, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 0, BIO = 0, RAD = 0, FIRE = 90, ACID = 90)
 
 /obj/machinery/requests_console/update_icon()
-	if(stat & NOPOWER)
-		set_light(0)
-	else
-		set_light(1.4,0.7,"#34D352")//green light
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(open)
-		if(!hackState)
-			icon_state="req_comp_open"
-		else
-			icon_state="req_comp_rewired"
-	else if(stat & NOPOWER)
-		if(icon_state != "req_comp_off")
-			icon_state = "req_comp_off"
+		add_overlay("req_comp_open")
+	if(open || (stat & NOPOWER))
+		return
+	var/screen_state
+	if(emergency || (newmessagepriority == REQ_EXTREME_MESSAGE_PRIORITY))
+		screen_state = "[base_icon_state]3"
+	else if(newmessagepriority == REQ_HIGH_MESSAGE_PRIORITY)
+		screen_state = "[base_icon_state]2"
+	else if(newmessagepriority == REQ_NORMAL_MESSAGE_PRIORITY)
+		screen_state = "[base_icon_state]1"
 	else
-		if(emergency || (newmessagepriority == REQ_EXTREME_MESSAGE_PRIORITY))
-			icon_state = "req_comp3"
-		else if(newmessagepriority == REQ_HIGH_MESSAGE_PRIORITY)
-			icon_state = "req_comp2"
-		else if(newmessagepriority == REQ_NORMAL_MESSAGE_PRIORITY)
-			icon_state = "req_comp1"
-		else
-			icon_state = "req_comp0"
+		screen_state = "[base_icon_state]0"
+	add_overlay(screen_state)
+	SSvis_overlays.add_vis_overlay(src, icon, screen_state, layer, EMISSIVE_PLANE, dir)
+
+/obj/machinery/requests_console/power_change()
+	. = ..()
+	if(!.)
+		return // reduce unneeded light changes
+	if(stat & NOPOWER)
+		set_light(FALSE)
+	else
+		set_light(TRUE)
 
 /obj/machinery/requests_console/Initialize()
 	. = ..()
@@ -289,7 +300,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 				Radio.set_frequency(radio_freq)
 				Radio.talk_into(src,"[emergency] emergency in [department]!!",radio_freq)
 				update_icon()
-				addtimer(CALLBACK(src, .proc/clear_emergency), 5 MINUTES)
+				addtimer(CALLBACK(src, PROC_REF(clear_emergency)), 5 MINUTES)
 
 	if(href_list["send"] && message && to_department && priority)
 

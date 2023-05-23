@@ -17,6 +17,7 @@
 	max_integrity = 300
 	integrity_failure = 150
 	var/console_department = "" // Used in New() to set network tag according to our area.
+	// var/icon_keyboard = "generic_key"		
 
 /obj/machinery/modular_computer/console/Initialize()
 	. = ..()
@@ -70,3 +71,11 @@
 		if(istype(T, /turf/closed/wall) || W)
 			pixel_x = offet_matrix[1]
 			pixel_y = offet_matrix[2]
+
+// /obj/machinery/modular_computer/console/power_change()
+// 	if(stat & NOPOWER)
+// 		add_overlay("[icon_keyboard]_off")
+// 		return
+// 	add_overlay(icon_keyboard)
+// 	SSvis_overlays.add_vis_overlay(src, icon, icon_keyboard, layer, EMISSIVE_PLANE, dir)
+

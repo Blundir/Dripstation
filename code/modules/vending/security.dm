@@ -4,6 +4,7 @@
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
+	icon_vend = "sec-vend"	
 	req_access = list(ACCESS_SECURITY)
 	products = list(/obj/item/clothing/head/helmet/plated = 6,
 					/obj/item/clothing/suit/armor/plated = 6,
@@ -27,6 +28,7 @@
 	default_price = 100
 	extra_price = 150
 	payment_department = ACCOUNT_SEC
+	light_mask = "sec-light-mask"	
 
 /obj/machinery/vending/security/pre_throw(obj/item/I)
 	if(istype(I, /obj/item/grenade))

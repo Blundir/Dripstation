@@ -2,6 +2,8 @@
 	name = "\improper Syndicate Donksoft Toy Vendor"
 	desc = "An ages 8 and up approved vendor that dispenses toys. If you were to find the right wires, you can unlock the adult mode setting!"
 	icon_state = "syndi"
+	icon_vend = "syndi-vend"
+	icon_deny = "syndi-deny"
 	req_access = list(ACCESS_SECURITY)
 	product_slogans = "Get your cool toys today!;Trigger a valid hunter today!;Quality toy weapons for cheap prices!;Give them to HoPs for all access!;Give them to HoS to get permabrigged!"
 	product_ads = "Feel robust with your toys!;Express your inner child today!;Toy weapons don't kill people, but valid hunters do!;Who needs responsibilities when you have toy weapons?;Make your next murder FUN!"
@@ -11,6 +13,7 @@
 					/obj/item/gun/ballistic/automatic/toy/pistol/unrestricted = 10,
 					/obj/item/gun/ballistic/shotgun/toy/unrestricted = 10,
 					/obj/item/toy/sword = 10,
+					/obj/item/twohanded/vxtvulhammer/toy = 7,
 					/obj/item/ammo_box/foambox = 20,
 					/obj/item/toy/foamblade = 10,
 					/obj/item/toy/syndicateballoon = 10,
@@ -29,3 +32,4 @@
 	default_price = 25
 	extra_price = 50
 	payment_department = ACCOUNT_SRV
+	light_mask = "donksoft-light-mask"	

@@ -94,11 +94,13 @@
 				return
 			if(32)
 				continue
-			if(127 to INFINITY)
+			if(127 to 1039)
+				return
+			if(1104 to INFINITY)
 				if(ascii_only)
-					return
+					return				
 			else
-				non_whitespace = TRUE
+				non_whitespace = TRUE				
 	if(non_whitespace)
 		return text		//only accepts the text if it has some non-spaces
 
@@ -142,6 +144,19 @@
 		switch(text2ascii(char))
 			// A  .. Z
 			if(65 to 90)			//Uppercase Letters
+				number_of_alphanumeric++
+				last_char_group = LETTERS_DETECTED
+
+			// А  .. Я
+			if(1040 to 1071)            //Uppercase Letters
+				number_of_alphanumeric++
+				last_char_group = LETTERS_DETECTED
+
+			// а  .. я
+			if(1072 to 1103)            //Lowercase Letters
+				if(last_char_group == NO_CHARS_DETECTED || last_char_group == SPACES_DETECTED || last_char_group == SYMBOLS_DETECTED) //start of a word
+					char = uppertext(char)
+
 				number_of_alphanumeric++
 				last_char_group = LETTERS_DETECTED
 

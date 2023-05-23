@@ -58,7 +58,8 @@
 	/obj/item/stamp/mime = 1)
 
 	backpack = /obj/item/storage/backpack/mime
-	satchel = /obj/item/storage/backpack/mime
+	satchel = /obj/item/storage/backpack/satchel/mime
+	duffelbag = /obj/item/storage/backpack/duffelbag/mime
 
 	chameleon_extras = /obj/item/stamp/mime
 

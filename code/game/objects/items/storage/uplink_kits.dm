@@ -36,14 +36,14 @@
 			new /obj/item/grenade/syndieminibomb/concussion/frag(src) //See above
 			new /obj/item/flashlight/emp(src) //2 TC
 
-		if("bloodyspai") //32 TCish
+		if("bloodyspai") //30 TCish
 			new /obj/item/clothing/under/chameleon/syndicate(src) //1 TC, has only two parts of the massive kit
 			new /obj/item/clothing/mask/chameleon/syndicate(src) //See above
 			new /obj/item/card/id/syndicate(src) //2 TC
 			new /obj/item/multitool/ai_detect(src) //1 TC
 			new /obj/item/encryptionkey/syndicate(src) //2 TC
 			new /obj/item/reagent_containers/syringe/mulligan(src) //4 TC
-			new /obj/item/switchblade/backstab(src) //5 TC
+			new /obj/item/switchblade/backstab(src) //3 TC
 			new /obj/item/storage/box/fancy/cigarettes/cigpack_syndicate (src) //2 TC (for now)
 			new /obj/item/flashlight/emp(src) //2 TC
 			new /obj/item/chameleon(src) //7 TC
@@ -453,30 +453,35 @@
 
 /obj/item/storage/box/syndie_kit/imp_freedom
 	real_name = "freedom implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_freedom/PopulateContents()
 	new /obj/item/implanter/freedom(src)
 
 /obj/item/storage/box/syndie_kit/imp_microbomb
 	real_name = "microbomb implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_microbomb/PopulateContents()
 	new /obj/item/implanter/explosive(src)
 
 /obj/item/storage/box/syndie_kit/imp_macrobomb
 	real_name = "macrobomb implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_macrobomb/PopulateContents()
 	new /obj/item/implanter/explosive_macro(src)
 
 /obj/item/storage/box/syndie_kit/imp_uplink
 	real_name = "uplink implant box"
+	illustration = "implant"		
 
 /obj/item/storage/box/syndie_kit/imp_uplink/PopulateContents()
 	new /obj/item/implanter/uplink(src)
 
 /obj/item/storage/box/syndie_kit/bioterror
 	real_name = "bioterror syringe box"
+	illustration = "syringe"		
 
 /obj/item/storage/box/syndie_kit/bioterror/PopulateContents()
 	for(var/i in 1 to 7)
@@ -484,36 +489,42 @@
 
 /obj/item/storage/box/syndie_kit/imp_adrenal
 	real_name = "adrenal implant box"
+	illustration = "implant"		
 
 /obj/item/storage/box/syndie_kit/imp_adrenal/PopulateContents()
 	new /obj/item/implanter/adrenalin(src)
 
 /obj/item/storage/box/syndie_kit/imp_storage
 	real_name = "storage implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_storage/PopulateContents()
 	new /obj/item/implanter/storage(src)
 
 /obj/item/storage/box/syndie_kit/imp_stealth
 	real_name = "stealth implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_stealth/PopulateContents()
 	new /obj/item/implanter/stealth(src)
 
 /obj/item/storage/box/syndie_kit/imp_radio
 	real_name = "syndicate radio implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_radio/PopulateContents()
 	new /obj/item/implanter/radio/syndicate(src)
 
 /obj/item/storage/box/syndie_kit/imp_mindshield
 	real_name = "mindshield implant box"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/imp_mindshield/PopulateContents()
 	new /obj/item/implanter/mindshield/tot(src)
 
 /obj/item/storage/box/syndie_kit/space
 	real_name = "boxed space suit and helmet"
+	illustration = "syndiesuit"	
 
 /obj/item/storage/box/syndie_kit/space/ComponentInitialize()
 	. = ..()
@@ -532,6 +543,7 @@
 
 /obj/item/storage/box/syndie_kit/emp
 	real_name = "EMP kit"
+	illustration = "emp"		
 
 /obj/item/storage/box/syndie_kit/emp/PopulateContents()
 	for(var/i in 1 to 5)
@@ -540,6 +552,7 @@
 
 /obj/item/storage/box/syndie_kit/chemical
 	real_name = "chemical kit"
+	illustration = "beaker"	
 
 /obj/item/storage/box/syndie_kit/chemical/ComponentInitialize()
 	. = ..()
@@ -617,6 +630,7 @@
 
 /obj/item/storage/box/syndie_kit/tuberculosisgrenade
 	real_name = "virus grenade kit"
+	illustration = "grenade"	
 
 /obj/item/storage/box/syndie_kit/tuberculosisgrenade/PopulateContents()
 	new /obj/item/grenade/chem_grenade/tuberculosis(src)
@@ -717,6 +731,7 @@
 /obj/item/storage/box/syndie_kit/bee_grenades
 	real_name = "buzzkill grenade box"
 	desc = "A sleek, sturdy box with a buzzing noise coming from the inside. Uh oh."
+	illustration = "grenade"	
 
 /obj/item/storage/box/syndie_kit/bee_grenades/PopulateContents()
 	for(var/i in 1 to 3)
@@ -732,6 +747,8 @@
 
 /obj/item/storage/box/syndie_kit/augmentation
 	real_name = "augmentation kit"
+	icon_state = "cyber_implants"
+	illustration = null		
 
 /obj/item/storage/box/syndie_kit/augmentation/PopulateContents()
 	new /obj/item/autosurgeon/limb/head/robot(src)
@@ -758,6 +775,8 @@
 
 /obj/item/storage/box/syndie_kit/buster
 	real_name = "Buster kit"
+	icon_state = "cyber_implants"
+	illustration = null
 
 /obj/item/storage/box/syndie_kit/buster/PopulateContents()
 	for(var/i in 1 to 3)
@@ -766,6 +785,15 @@
 
 /obj/item/storage/box/syndie_kit/emp_shield
 	real_name = "EMP shield implant kit"
+	illustration = "implant"	
 
 /obj/item/storage/box/syndie_kit/emp_shield/PopulateContents()
 	new /obj/item/implanter/empshield(src)
+
+/obj/item/storage/box/syndie_kit/prisonerbag
+	real_name = "Prisoner kit"
+
+/obj/item/storage/box/syndie_kit/prisonerbag/PopulateContents()
+	var/obj/item/bodybag/environmental/prisoner/syndicate/pbag = new(src)
+	var/obj/item/syndicate_prisoner_remote/remote = new(src)
+	remote.bag = pbag

@@ -1,4 +1,6 @@
 /obj/machinery/vending/assist
+	icon_vend = "generic-vend"
+	icon_deny = "generic-deny"	
 	products = list(/obj/item/assembly/prox_sensor = 5,
 					/obj/item/assembly/igniter = 3,
 					/obj/item/assembly/signaler = 4,
@@ -13,6 +15,7 @@
 	default_price = 10
 	extra_price = 50
 	payment_department = NO_FREEBIES
+	light_mask = "generic-light-mask"
 
 /obj/item/vending_refill/assist
 	machine_name = "Vendomat"

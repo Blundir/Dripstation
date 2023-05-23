@@ -4,6 +4,8 @@
 	product_slogans = "Try our new nougat bar!;Twice the calories for half the price!"
 	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
+	icon_vend = "snack-vend"
+	icon_deny = "snack-deny"
 	products = list(/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6,
 					/obj/item/reagent_containers/food/snacks/candy = 6,
@@ -24,6 +26,7 @@
 	extra_price = 30
 	payment_department = ACCOUNT_SRV
 	input_display_header = "Chef's Food Selection"
+	light_mask = "snack-light-mask"	
 
 /obj/item/vending_refill/snack
 	machine_name = "Getmore Chocolate Corp"
@@ -41,13 +44,6 @@
 		S.forceMove(get_turf(src))
 	return ..()
 
-/obj/machinery/vending/snack/proc/food_load(obj/item/reagent_containers/food/snacks/S)
-	if(vending_machine_input[S.name])
-		vending_machine_input[S.name]++
-	else
-		vending_machine_input[S.name] = 1
-	sortList(vending_machine_input)
-
 /obj/machinery/vending/snack/random
 	name = "\improper Random Snackies"
 	icon_state = "random_snack"
@@ -61,12 +57,20 @@
 
 /obj/machinery/vending/snack/blue
 	icon_state = "snackblue"
+	icon_vend = "snackblue-vend"
+	icon_deny = "snackblue-deny"	
 
 /obj/machinery/vending/snack/orange
 	icon_state = "snackorange"
+	icon_vend = "snackorange-vend"
+	icon_deny = "snackorange-deny"	
 
 /obj/machinery/vending/snack/green
 	icon_state = "snackgreen"
+	icon_vend = "snackgreen-vend"
+	icon_deny = "snackgreen-deny"		
 
 /obj/machinery/vending/snack/teal
 	icon_state = "snackteal"
+	icon_vend = "snackteal-vend"
+	icon_deny = "snackteal-deny"

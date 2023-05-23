@@ -19,7 +19,7 @@
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
-	light_color = LIGHT_COLOR_BLUE
+	light_color = LIGHT_COLOR_DARK_BLUE
 
 /obj/machinery/computer/med_data/syndie
 	icon_keyboard = "syndie_key"
@@ -575,6 +575,12 @@
 	icon_keyboard = "laptop_key"
 	clockwork = TRUE //it'd look weird
 	pass_flags = PASSTABLE
+	use_power = FALSE
+	density = FALSE
+	light_color = LIGHT_COLOR_DARK_BLUE
+
+/obj/machinery/computer/med_data/laptop/screwdriver_act()
+	return
 
 /obj/machinery/computer/med_data/AltClick(mob/user)
 	if(!user.canUseTopic(src, BE_CLOSE))

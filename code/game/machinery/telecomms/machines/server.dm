@@ -13,6 +13,7 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 15
 	circuit = /obj/item/circuitboard/machine/telecomms/server
+	on_icon = "server_on"
 	var/list/log_entries = list()
 	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
 

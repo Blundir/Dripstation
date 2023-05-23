@@ -137,8 +137,8 @@
 
 /obj/machinery/chem_dispenser/proc/display_beaker()
 	var/mutable_appearance/b_o = beaker_overlay || mutable_appearance(icon, "disp_beaker")
-	b_o.pixel_y = -4
-	b_o.pixel_x = -7
+	b_o.pixel_y = -1
+	b_o.pixel_x = rand(-8, 8)
 	return b_o
 
 /obj/machinery/chem_dispenser/proc/work_animation()
@@ -273,6 +273,10 @@
 					return
 				R.add_reagent(reagent, actual)
 
+				overlays.Cut()
+				update_icon()
+
+				playsound(src.loc, 'sound/machines/reagent_dispense.ogg', 25, 1)
 				work_animation()
 				. = TRUE
 		if("remove")
@@ -503,7 +507,6 @@
 	desc = "Contains a large reservoir of soft drinks."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "soda_dispenser"
-	has_panel_overlay = FALSE
 	amount = 10
 	pixel_y = 6
 	layer = WALL_OBJ_LAYER

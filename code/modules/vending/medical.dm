@@ -3,6 +3,7 @@
 	desc = "Medical drug dispenser."
 	icon_state = "med"
 	icon_deny = "med-deny"
+	icon_vend = "med-vend"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(ACCESS_MEDICAL)
 	products = list(/obj/item/stack/medical/gauze = 8,
@@ -44,6 +45,7 @@
 	default_price = 25
 	extra_price = 100
 	payment_department = ACCOUNT_MED
+	light_mask = "med-light-mask"	
 
 /obj/item/vending_refill/medical
 	machine_name = "NanoMed Plus"
@@ -51,4 +53,7 @@
 
 /obj/machinery/vending/medical/syndicate_access
 	name = "\improper SyndiMed Plus"
+	icon_state = "syndi-big-med"
+	icon_deny = "syndi-big-med-deny"
+	icon_vend = "syndi-big-med-vend"	
 	req_access = list(ACCESS_SYNDICATE)

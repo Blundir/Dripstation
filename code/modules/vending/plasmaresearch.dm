@@ -1,6 +1,8 @@
 //This one's from bay12
 /obj/machinery/vending/plasmaresearch
 	name = "\improper Toximate 3000"
+	icon_deny = "generic-deny"
+	icon_vend = "generic-vend"	
 	desc = "All the fine parts you need in one vending machine!"
 	products = list(/obj/item/clothing/under/rank/scientist = 6,
 		            /obj/item/clothing/suit/bio_suit = 6,
@@ -14,3 +16,4 @@
 	default_price = 200
 	extra_price = 250
 	payment_department = ACCOUNT_SCI
+	light_mask = "generic-light-mask"	

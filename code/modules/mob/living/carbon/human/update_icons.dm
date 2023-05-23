@@ -76,6 +76,7 @@ There are several things that need to be remembered:
 		update_hair()
 		update_inv_w_uniform()
 		update_inv_wear_id()
+		update_inv_wear_pda()
 		update_inv_gloves()
 		update_inv_glasses()
 		update_inv_ears()
@@ -166,6 +167,23 @@ There are several things that need to be remembered:
 		overlays_standing[ID_LAYER] = id_overlay
 
 	apply_overlay(ID_LAYER)
+
+
+/mob/living/carbon/human/update_inv_wear_pda()
+	remove_overlay(PDA_LAYER)
+
+	if(client && hud_used)
+		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_WEAR_PDA]
+		inv.update_icon()
+
+	if(wear_pda)
+		wear_pda.screen_loc = ui_pda
+		if(client && hud_used && hud_used.hud_shown)
+			client.screen += wear_pda
+		update_observer_view(wear_pda)
+
+
+	apply_overlay(PDA_LAYER)
 
 
 /mob/living/carbon/human/update_inv_gloves()
@@ -431,9 +449,15 @@ There are several things that need to be remembered:
 		inv.update_icon()
 
 	if(wear_mask)
+		var/target_overlay = wear_mask.icon_state
+		if("snout" in dna.species.mutant_bodyparts) //checks for snout and uses lizard mask variant
+			if(wear_mask.mutantrace_variation == MUTANTRACE_VARIATION && !wear_mask.mask_adjusted)
+				target_overlay = "[target_overlay]_l"
+			else if (wear_mask.mutantrace_adjusted == MUTANTRACE_VARIATION)
+				target_overlay = "[target_overlay]_l"
 		update_hud_wear_mask(wear_mask)
 		if(!(head && (head.flags_inv & HIDEMASK)))
-			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask/mask.dmi')
+			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask/mask.dmi', override_state = target_overlay)
 			var/mutable_appearance/mask_overlay = overlays_standing[FACEMASK_LAYER]
 			if(mask_overlay)
 				remove_overlay(FACEMASK_LAYER)

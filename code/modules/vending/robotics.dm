@@ -4,6 +4,7 @@
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
+	icon_vend = "robotics-vend"
 	req_access = list(ACCESS_ROBO_CONTROL)
 	products = list(/obj/item/stack/cable_coil = 4,
 					/obj/item/assembly/flash/handheld = 6,
@@ -18,6 +19,7 @@
 	default_price = 50
 	extra_price = 75
 	payment_department = ACCOUNT_SCI
+	light_mask = "robotics-light-mask"
 
 /obj/item/vending_refill/robotics
 	machine_name = "Robotech Deluxe"

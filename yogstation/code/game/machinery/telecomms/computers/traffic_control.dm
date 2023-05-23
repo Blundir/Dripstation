@@ -22,6 +22,8 @@
 
 	req_access = list(ACCESS_TCOM_ADMIN)
 
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
+
 /obj/machinery/computer/telecomms/traffic/Initialize(mapload)
 	. = ..()
 	GLOB.traffic_comps += src

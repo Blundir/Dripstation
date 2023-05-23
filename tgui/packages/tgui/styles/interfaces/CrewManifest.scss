@@ -1,0 +1,64 @@
+@use '../colors.scss';
+
+$department_map: (
+  'Command': colors.$blue,
+  'Security': colors.$red,
+  'Engineering': colors.$orange,
+  'Medical': colors.$teal,
+  'Science': colors.$purple,
+  'Cargo': colors.$brown,
+  'Service': colors.$green,
+  'Silicon': colors.$light-grey
+);
+
+.CrewManifest {
+  @each $department-name, $color-value in $department_map {
+    &--#{$department-name} {
+      .Section {
+        &__title {
+          border-color: $color-value;
+        }
+        &__titleText {
+          color: $color-value;
+        }
+      }
+    }
+  }
+
+  &__Cell {
+    padding: 3px 0;
+
+    &--Rank {
+      color: colors.$label;
+    }
+  }
+
+  &__Icons {
+    padding: 3px 9px;
+    text-align: right;
+  }
+
+  &__Icon {
+    color: colors.$label;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 7px;
+    }
+
+    &--Command {
+      color: colors.$yellow;
+      padding: 3px 9px;
+
+      &--Head {
+        color: colors.$light-grey;
+        padding: 3px 9px;
+
+      &--Crew {
+        color: colors.$grey;
+        padding: 3px 9px;
+      }
+      }
+    }
+  }
+}

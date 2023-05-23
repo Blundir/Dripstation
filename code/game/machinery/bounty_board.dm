@@ -8,8 +8,13 @@ GLOBAL_LIST_EMPTY(request_list)
 	name = "bounty board"
 	desc = "Allows you to place requests for goods and services across the station, as well as pay those who actually did it."
 	icon = 'icons/obj/terminals.dmi'
-	icon_state = "request_kiosk"
-	light_color = LIGHT_COLOR_GREEN
+	icon_state = "bounty_off"
+	light_system = STATIC_LIGHT
+	light_range = 2
+	light_power = 1
+	light_on = TRUE	
+	light_color = LIGHT_COLOR_YELLOW
+	var/icon_screen = "bounty"
 	///Reference to the currently logged in user.
 	var/datum/bank_account/current_user
 	///The station request datum being affected by UI actions.
@@ -32,11 +37,20 @@ GLOBAL_LIST_EMPTY(request_list)
 	. = ..()
 
 /obj/machinery/bounty_board/update_icon()
-	..()
-	if(stat & (NOPOWER|BROKEN))
-		icon_state = "request_kiosk_off"
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	if(!(stat & (NOPOWER|BROKEN)))
+		add_overlay(icon_screen)
+		SSvis_overlays.add_vis_overlay(src, icon, icon_screen, layer, EMISSIVE_PLANE, dir)
+
+/obj/machinery/bounty_board/power_change()
+	. = ..()
+	if(!.)
+		return // reduce unneeded light changes
+	if(stat & NOPOWER)
+		set_light(FALSE)
 	else
-		icon_state = "request_kiosk"
+		set_light(TRUE)
 
 /obj/machinery/bounty_board/attackby(obj/item/I, mob/living/user, params)
 	. = ..()

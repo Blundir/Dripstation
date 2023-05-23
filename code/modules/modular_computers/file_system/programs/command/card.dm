@@ -58,7 +58,7 @@
 			"head" = "Chief Engineer"
 		)
 	)
-
+	
 /datum/computer_file/program/card_mod/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
 		return
@@ -356,7 +356,17 @@
 
 	return data
 
+/datum/computer_file/program/card_mod/hos
+	program_icon_state = "idhos"
 
+/datum/computer_file/program/card_mod/ce
+	program_icon_state = "idce"
+
+/datum/computer_file/program/card_mod/cmo
+	program_icon_state = "idcmo"
+
+/datum/computer_file/program/card_mod/rd
+	program_icon_state = "idrd"
 
 #undef CARDCON_DEPARTMENT_SERVICE
 #undef CARDCON_DEPARTMENT_SECURITY

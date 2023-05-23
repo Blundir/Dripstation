@@ -28,8 +28,10 @@
 	)
 
 	mail_goodies = list(
-		///obj/item/raw_anomaly_core/random = 10,
-		///obj/item/disk/tech_disk/spaceloot = 2,
+		/obj/item/stack/sheet/bluespace_crystal = 10,
+		/obj/item/megaphone = 10,
+		/obj/item/anomaly_neutralizer = 5,
+		/obj/item/relic = 5,
 		/obj/item/camera_bug = 1
 	)
 
@@ -49,6 +51,7 @@
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	duffelbag = /obj/item/storage/backpack/duffelbag/science
 
 /datum/outfit/job/scientist/pre_equip(mob/living/carbon/human/H)
 	..()

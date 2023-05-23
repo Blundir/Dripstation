@@ -15,6 +15,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	desc = "An interface between crew and the cryogenic storage oversight systems."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "cellconsole_1"
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
+	light_range = 3
+	light_power = 2
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	req_one_access = list(ACCESS_HEADS, ACCESS_ARMORY) //Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
@@ -38,6 +41,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 /obj/machinery/computer/cryopod/attack_ai()
 	attack_hand()
+
+/obj/machinery/computer/cryopod/update_icon()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	SSvis_overlays.add_vis_overlay(src, icon, icon_state, EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
 
 /obj/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(stat & (NOPOWER|BROKEN))

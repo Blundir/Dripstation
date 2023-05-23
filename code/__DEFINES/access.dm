@@ -92,6 +92,15 @@
 #define ACCESS_SECURE_TECH_STORAGE 76 // Creating this to cleanly fix door remote bug will be equivalent to ACCESS_AI_UPLOAD for Cap and RD
 #define ACCESS_PSYCH 77 // For the psych's back office area with the flashes/chem machines
 
+//Dripstation: 
+#define ACCESS_CLOWN 78 // Vending, locker, airlocks and some other related stuff
+#define ACCESS_MIME 79 // Vending, locker, airlocks and some other related stuff
+#define ACCESS_POD_PILOT 80 // Locker, airlock, pod related stuff
+#define ACCESS_BLUESHIELD 81 // Locker, airlock
+#define ACCESS_NTREP 82 // Locker, airlock
+#define ACCESS_MAGISTRATE 83 // Locker, airlock
+#define ACCESS_HAZARD_TECH 84 // Hazard technician stuff
+#define ACCESS_ARTIST 85 // Artist stuff, mostly door and vendor
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
 	Mostly for admin fun times.*/

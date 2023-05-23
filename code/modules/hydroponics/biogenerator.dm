@@ -2,7 +2,7 @@
 	name = "biogenerator"
 	desc = "Converts plants into biomass, which can be used to construct useful items."
 	icon = 'icons/obj/machines/biogenerator.dmi'
-	icon_state = "biogen-empty"
+	icon_state = "biogenerator"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
@@ -15,6 +15,7 @@
 	var/max_items = 40
 	var/datum/techweb/stored_research
 	var/list/show_categories = list("Food","Kitchen Chemicals","Botany Chemicals","Organic Materials")
+	var/max_visual_biomass = 5000	
 	/// Currently selected category in the UI
 	var/selected_cat
 
@@ -56,6 +57,7 @@
 	efficiency = E
 	productivity = P
 	max_items = max_storage
+	update_icon()
 
 /obj/machinery/biogenerator/examine(mob/user)
 	. = ..()
@@ -66,14 +68,32 @@
 	update_icon()
 
 /obj/machinery/biogenerator/update_icon()
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(panel_open)
-		icon_state = "biogen-empty-o"
-	else if(!src.beaker)
-		icon_state = "biogen-empty"
-	else if(!src.processing)
-		icon_state = "biogen-stand"
-	else
-		icon_state = "biogen-work"
+		add_overlay("[icon_state]_o_panel")
+
+	if(beaker)
+		add_overlay("[icon_state]_o_container")
+
+	if(points > 0)
+		// Get current biomass volume adjusted with sine function (more biomass = less frequent icon changes)
+		var/biomass_volume_sin = sin(min(points/max_visual_biomass, 1) * 90)
+		// Round up to get the corresponding overlay icon
+		var/biomass_level = ROUND_UP(biomass_volume_sin * 7)
+		add_overlay("[icon_state]_o_biomass_[biomass_level]")
+		SSvis_overlays.add_vis_overlay(src, icon, "[icon_state]_o_biomass_[biomass_level]", layer, EMISSIVE_PLANE, dir)
+
+	if(stat & (NOPOWER|BROKEN))
+		return
+
+	if(processing)
+		add_overlay("[icon_state]_o_process")
+		SSvis_overlays.add_vis_overlay(src, icon, "[icon_state]_o_process", layer, EMISSIVE_PLANE, dir)
+
+	add_overlay("[icon_state]_o_screen")
+	SSvis_overlays.add_vis_overlay(src, icon, "[icon_state]_o_screen", layer, EMISSIVE_PLANE, dir)
+
 
 /obj/machinery/biogenerator/attackby(obj/item/O, mob/user, params)
 	if(user.a_intent == INTENT_HARM)
@@ -83,7 +103,10 @@
 		to_chat(user, span_warning("The biogenerator is currently processing."))
 		return
 
-	if(default_deconstruction_screwdriver(user, "biogen-empty-o", "biogen-empty", O))
+	if(default_deconstruction_screwdriver(user, icon_state, icon_state, O))
+		if(processing)
+			stop_process(FALSE)
+
 		if(beaker)
 			var/obj/item/reagent_containers/glass/B = beaker
 			B.forceMove(drop_location())
@@ -342,3 +365,10 @@
 		if("select")
 			selected_cat = params["category"]
 			return TRUE
+
+/obj/machinery/biogenerator/proc/stop_process(update_icon = TRUE)
+	end_processing()
+	processing = FALSE
+
+	if(update_icon)
+		update_icon()

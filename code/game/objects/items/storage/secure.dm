@@ -15,6 +15,7 @@
 	var/icon_locking = "secureb"
 	var/icon_sparking = "securespark"
 	var/icon_opened = "secure0"
+	var/icon_closed = "secure_c"
 	var/code = ""
 	var/l_code = null
 	var/l_set = 0
@@ -51,7 +52,9 @@
 				l_hacking = 1
 				if (W.use_tool(src, user, 400))
 					cut_overlays()
+					SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)					
 					add_overlay(icon_sparking)
+					SSvis_overlays.add_vis_overlay(src, icon, icon_sparking, layer, EMISSIVE_PLANE, dir)
 					to_chat(user, span_danger("Internal memory reset - lock has been disengaged."))
 					l_set = 0
 					l_hacking = 0
@@ -94,7 +97,9 @@
 			else if ((code == l_code) && (l_set == 1))
 				SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, FALSE)
 				cut_overlays()
+				SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)	
 				add_overlay(icon_opened)
+				SSvis_overlays.add_vis_overlay(src, icon, icon_opened, layer, EMISSIVE_PLANE, dir)
 				code = null
 			else
 				code = "ERROR"
@@ -102,6 +107,9 @@
 			if ((href_list["type"] == "R") && (!l_setshort))
 				SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, TRUE)
 				cut_overlays()
+				SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)					
+				add_overlay(icon_closed)
+				SSvis_overlays.add_vis_overlay(src, icon, icon_closed, layer, EMISSIVE_PLANE, dir)
 				code = null
 				SEND_SIGNAL(src, COMSIG_TRY_STORAGE_HIDE_FROM, usr)
 			else
@@ -165,6 +173,7 @@
 	icon_state = "safe"
 	icon_opened = "safe0"
 	icon_locking = "safeb"
+	icon_closed = "safe_c"
 	icon_sparking = "safespark"
 	desc = "Excellent for securing things away from grubby hands."
 	force = 8

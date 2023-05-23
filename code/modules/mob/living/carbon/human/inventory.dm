@@ -18,6 +18,8 @@
 			return belt
 		if(SLOT_WEAR_ID)
 			return wear_id
+		if(SLOT_WEAR_PDA)
+			return wear_pda
 		if(SLOT_EARS)
 			return ears
 		if(SLOT_GLASSES)
@@ -54,6 +56,7 @@
 		shoes,
 		belt,
 		wear_id,
+		wear_pda,
 		l_store,
 		r_store,
 		w_uniform
@@ -92,6 +95,9 @@
 			wear_id = I
 			sec_hud_set_ID()
 			update_inv_wear_id()
+		if(SLOT_WEAR_PDA)
+			wear_pda = I
+			update_inv_wear_pda()
 		if(SLOT_EARS)
 			ears = I
 			update_inv_ears()
@@ -163,19 +169,21 @@
 				update_inv_w_uniform()
 			update_inv_wear_suit()
 	else if(I == w_uniform)
-		if(invdrop)
-			if(r_store)
-				dropItemToGround(r_store, TRUE) //Again, makes sense for pockets to drop.
-			if(l_store)
-				dropItemToGround(l_store, TRUE)
-			if(wear_id)
-				dropItemToGround(wear_id)
-			if(belt)
-				dropItemToGround(belt)
 		w_uniform = null
 		update_suit_sensors()
 		if(!QDELETED(src))
 			update_inv_w_uniform()
+		if(invdrop)
+			if(r_store && !can_equip(r_store, SLOT_R_STORE, TRUE))
+				dropItemToGround(r_store, TRUE) //Again, makes sense for pockets to drop.
+			if(l_store && !can_equip(l_store, SLOT_L_STORE, TRUE))
+				dropItemToGround(l_store, TRUE)
+			if(wear_id && !can_equip(wear_id, SLOT_WEAR_ID, TRUE))
+				dropItemToGround(wear_id)
+			if(wear_pda && !can_equip(wear_pda, SLOT_WEAR_PDA, TRUE))
+				dropItemToGround(wear_pda)
+			if(belt && !can_equip(belt, SLOT_BELT, TRUE))
+				dropItemToGround(belt)
 	else if(I == gloves)
 		gloves = null
 		if(!QDELETED(src))
@@ -211,6 +219,10 @@
 		sec_hud_set_ID()
 		if(!QDELETED(src))
 			update_inv_wear_id()
+	else if(I == wear_pda)
+		wear_pda = null
+		if(!QDELETED(src))
+			update_inv_wear_pda()
 	else if(I == r_store)
 		r_store = null
 		if(!QDELETED(src))

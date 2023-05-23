@@ -158,6 +158,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		return ..()
 
+/obj/item/clothing/mask/cigarette/attack_hand(mob/user)
+	if(!lit && isethereal(user) && user.a_intent == INTENT_HARM)
+		light("With a snap of [user.p_their()] fingers, [user] lights [src].")
+		return
+	. = ..()
+	
+
 /obj/item/clothing/mask/cigarette/afterattack(obj/item/reagent_containers/glass/glass, mob/user, proximity)
 	. = ..()
 	if(!proximity || lit) //can't dip if cigarette is lit (it will heat the reagents in the glass instead)
@@ -537,8 +544,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "\improper Zippo lighter"
 	desc = "The zippo."
 	icon = 'icons/obj/cigarettes.dmi'
-	icon_state = "zippo"
+	icon_state = "lighter_overlay_plain"
 	item_state = "zippo"
+	lefthand_file = 'icons/mob/inhands/misc/lefthand_cigs_lighters.dmi'
+	righthand_file = 'icons/mob/inhands/misc/righthand_cigs_lighters.dmi'	
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
@@ -546,15 +555,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	light_range = 2
 	light_power = 0.6
 	light_on = FALSE
+	light_color = LIGHT_COLOR_FIRE
+	var/activation_sounds = list('sound/items/cigs_lighters/zippo_on.ogg')
+	var/deactivation_sounds = list('sound/items/cigs_lighters/zippo_off.ogg')	
 	var/lit = 0
 	var/fancy = TRUE
 	var/overlay_state
-	var/overlay_list = list(
-		"plain",
-		"dame",
-		"thirteen",
-		"snake"
-		)
+	var/overlay_list = list("plain")
 	heat = 1500
 	resistance_flags = FIRE_PROOF
 	light_color = LIGHT_COLOR_FIRE
@@ -584,12 +591,127 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	cut_overlays()
 	var/mutable_appearance/lighter_overlay = mutable_appearance(icon,"lighter_overlay_[overlay_state][lit ? "-on" : ""]")
 	icon_state = "[initial(icon_state)][lit ? "-on" : ""]"
+	item_state = "[initial(item_state)][lit ? "-on" : ""]"	
 	add_overlay(lighter_overlay)
 
 /obj/item/lighter/ignition_effect(atom/A, mob/user)
 	if(is_hot())
 		. = span_rose("With a single flick of [user.p_their()] wrist, [user] smoothly lights [A] with [src]. Damn [user.p_theyre()] cool.")
-		playsound(src, 'sound/items/lighter/light.ogg', 50, 2)
+		playsound(src, pick(activation_sounds), 50, 2)
+
+/obj/item/lighter/cap
+	name = "Captain's zippo"
+	desc = "A limited edition gold Zippo espesially for NT Captains. Looks extremely expensive."
+	overlay_state = "cap"
+	icon_state = null
+	light_color = LIGHT_COLOR_BABY_BLUE
+	item_state = "cap"
+	overlay_list = list("cap")
+
+/obj/item/lighter/ce
+	name = "Chief Engineer zippo"
+	desc = "A limited edition Zippo for NT Heads. Somebody've tried to repair cover with blue tape."
+	overlay_state = "ce"
+	icon_state = null
+	item_state = "ce"
+	overlay_list = list("ce")
+
+/obj/item/lighter/hos
+	name = "Head of Security zippo"
+	desc = "A limited edition Zippo for NT Heads. Fuel it with clown's tears."
+	overlay_state = "hos"
+	icon_state = null
+	light_color = CIRCUIT_COLOR_SECURITY
+	item_state = "hos"
+	overlay_list = list("hos")
+
+/obj/item/lighter/cmo
+	name = "Chief Medical Officer zippo"
+	desc = "A limited edition Zippo for NT Heads. Made of hypoallergenic steel."
+	overlay_state = "cmo"
+	icon_state = null
+	item_state = "cmo"
+	overlay_list = list("cmo")
+
+/obj/item/lighter/hop
+	name = "Head of personnel zippo"
+	desc = "A limited edition Zippo for NT Heads. Tries it best to look like captain's."
+	overlay_state = "hop"
+	icon_state = null
+	item_state = "hop"
+	light_color = COLOR_PRIDE_BLUE
+	overlay_list = list("hop")
+
+/obj/item/lighter/rd
+	name = "Research Director zippo"
+	desc = "A limited edition Zippo for NT Heads. Uses advanced tech to make fire from plasma and acid compounds."
+	overlay_state = "rd"
+	icon_state = null
+	item_state = "rd"
+	overlay_list = list("rd")
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
+
+/obj/item/lighter/nt
+	name = "Gold engraved zippo"
+	desc = "An engraved golden Zippo lighter with the letters NT on it."
+	overlay_state = "nt"
+	icon_state = null
+	overlay_list = list("nt")
+	item_state = "nt"
+	light_color = COLOR_ASSEMBLY_LBLUE
+
+/obj/item/lighter/blue
+	name = "Blue zippo lighter"
+	desc = "A special NT zippo lighter made of some blue metal."
+	overlay_state = "blue"
+	icon_state = null
+	overlay_list = list("blue")
+	item_state = "blue"
+	light_color = LIGHT_COLOR_DARK_BLUE
+
+/obj/item/lighter/chap
+	name = "Black zippo lighter"
+	desc = "Special zippo made to light your way from evil darkness"
+	overlay_state = "chap"
+	icon_state = null
+	item_state = "blackzippo"
+	overlay_list = list("chap")
+
+/obj/item/lighter/contr
+	name = "Contractor zippo lighter"
+	desc = "An unique black and gold zippo commonly carried by elite Syndicate agents."
+	overlay_state = "contr"
+	icon_state = null
+	item_state = "blackzippo"
+	overlay_list = list("contr")
+
+/obj/item/lighter/engraved
+	name = "Engraved zippo lighter"
+	desc = "A intricately engraved zippo lighter."
+	overlay_state = "engraved"
+	icon_state = null
+
+/obj/item/lighter/qm
+	name = "Quartermaster zippo"
+	desc = "Modified zippo that uses plasma dust instead of usual fuel, has custom hand made goliath hide cover."
+	overlay_state = "qm"
+	icon_state = null
+	item_state = "qm"
+	light_color = LIGHT_COLOR_PINK
+
+/obj/item/lighter/cyber
+	name = "retractable lighter"
+	desc = "An augmented lighter, implanted directly into the hand, popping through the finger."
+	icon_state = "lighter_overlay_aug"
+	overlay_state = "aug"
+	activation_sounds = list(
+		'sound/items/cigs_lighters/cheap_on1.ogg',
+		'sound/items/cigs_lighters/cheap_on2.ogg'
+		)
+	deactivation_sounds = list('sound/items/cigs_lighters/cheap_off.ogg')
+	overlay_list = list("aug")
+	item_state = "aug"
+	fancy = TRUE
 
 /obj/item/lighter/proc/set_lit(new_lit)
 	if(lit == new_lit)
@@ -618,7 +740,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			set_lit(TRUE)
 			if(fancy)
 				user.visible_message("Without even breaking stride, [user] flips open and lights [src] in one smooth movement.", span_notice("Without even breaking stride, you flip open and light [src] in one smooth movement."))
-				playsound(src, 'sound/items/lighter/strike.ogg', 50, 2)
+				playsound(src, pick(activation_sounds), 50, 2)
 			else
 				var/prot = FALSE
 				var/mob/living/carbon/human/H = user
@@ -632,7 +754,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 				if(prot || prob(75))
 					user.visible_message("After a few attempts, [user] manages to light [src].", span_notice("After a few attempts, you manage to light [src]."))
-					playsound(src, 'sound/items/lighter/plastic_strike.ogg', 40, 2)
+					playsound(src, pick(activation_sounds), 40, 2)
 				else
 					var/hitzone = user.held_index_to_dir(user.active_hand_index) == "r" ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND
 					user.apply_damage(5, BURN, hitzone)
@@ -643,10 +765,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			set_lit(FALSE)
 			if(fancy)
 				user.visible_message("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow.", span_notice("You quietly shut off [src] without even looking at what you're doing. Wow."))
-				playsound(src, 'sound/items/lighter/close.ogg', 50, 1)
+				playsound(src, pick(deactivation_sounds), 50, 1)
 			else
 				user.visible_message("[user] quietly shuts off [src].", span_notice("You quietly shut off [src]."))
-				playsound(src, 'sound/items/lighter/plastic_close.ogg', 40, 2)
+				playsound(src, pick(deactivation_sounds), 40, 2)
 	else
 		. = ..()
 
@@ -680,51 +802,28 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter/greyscale
 	name = "cheap lighter"
 	desc = "A cheap lighter."
-	icon_state = "lighter"
+	item_state = "lighter-g"
+	icon_state = "lighter_overlay_lighter-g"
+	activation_sounds = list(
+		'sound/items/cigs_lighters/cheap_on1.ogg',
+		'sound/items/cigs_lighters/cheap_on2.ogg',
+		'sound/items/cigs_lighters/cheap_on3.ogg')
+	deactivation_sounds = list('sound/items/cigs_lighters/cheap_off.ogg')
 	fancy = FALSE
-	overlay_list = list(
-		"transp",
-		"tall",
-		"matte",
-		"zoppo" //u cant stoppo th zoppo
-		)
-	var/lighter_color
-	var/list/color_list = list( //Same 16 color selection as electronic assemblies
-		COLOR_ASSEMBLY_BLACK,
-		COLOR_FLOORTILE_GRAY,
-		COLOR_ASSEMBLY_BGRAY,
-		COLOR_ASSEMBLY_WHITE,
-		COLOR_ASSEMBLY_RED,
-		COLOR_ASSEMBLY_ORANGE,
-		COLOR_ASSEMBLY_BEIGE,
-		COLOR_ASSEMBLY_BROWN,
-		COLOR_ASSEMBLY_GOLD,
-		COLOR_ASSEMBLY_YELLOW,
-		COLOR_ASSEMBLY_GURKHA,
-		COLOR_ASSEMBLY_LGREEN,
-		COLOR_ASSEMBLY_GREEN,
-		COLOR_ASSEMBLY_LBLUE,
-		COLOR_ASSEMBLY_BLUE,
-		COLOR_ASSEMBLY_PURPLE
-		)
-
-/obj/item/lighter/greyscale/Initialize()
-	. = ..()
-	if(!lighter_color)
-		lighter_color = pick(color_list)
-	update_icon()
-
-/obj/item/lighter/greyscale/update_icon()
-	cut_overlays()
-	var/mutable_appearance/lighter_overlay = mutable_appearance(icon,"lighter_overlay_[overlay_state][lit ? "-on" : ""]")
-	icon_state = "[initial(icon_state)][lit ? "-on" : ""]"
-	lighter_overlay.color = lighter_color
-	add_overlay(lighter_overlay)
+	overlay_state = "lighter-g"
+	overlay_list = list("lighter-g")
 
 /obj/item/lighter/greyscale/ignition_effect(atom/A, mob/user)
 	if(is_hot())
 		. = span_notice("After some fiddling, [user] manages to light [A] with [src].")
-		playsound(src, 'sound/items/lighter/light.ogg', 50, 2)
+		playsound(src, pick(activation_sounds), 50, 2)
+
+/obj/item/lighter/proc/update_overlays()
+	cut_overlays()
+	. += create_lighter_overlay()
+
+/obj/item/lighter/proc/create_lighter_overlay()
+	return mutable_appearance(icon, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")
 
 
 /obj/item/lighter/slime
@@ -743,6 +842,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "blighter"
 	light_color = LIGHT_COLOR_RED
 	overlay_state = "badass_sus"
+
+/obj/item/lighter/gold //gold lighter for donator item, Ynot01
+	name = "golden lighter"
+	desc = "A golden lighter."
+	overlay_list = list(
+		"plaingold",
+		"damegold",
+		"thirteengold",
+		"snakegold"
+		)
 
 ///////////
 //ROLLING//

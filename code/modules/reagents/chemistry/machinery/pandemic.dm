@@ -6,7 +6,11 @@
 	desc = "Used to work with viruses."
 	density = TRUE
 	icon = 'icons/obj/chemical.dmi'
-	icon_state = "pandemic0"
+	icon_state = "pandemic"
+	light_color = LIGHT_COLOR_CYAN
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_power = 1
+	integrity_failure = 50	
 	circuit = /obj/item/circuitboard/computer/pandemic
 	use_power = TRUE
 	idle_power_usage = 20
@@ -126,15 +130,36 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 /obj/machinery/computer/pandemic/update_icon()
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(stat & BROKEN)
-		icon_state = (beaker ? "pandemic1_b" : "pandemic0_b")
-		return
-
-	icon_state = "pandemic[(beaker) ? "1" : "0"][powered() ? "" : "_nopower"]"
+		// if(!(stat & NOPOWER))
+		// 	add_overlay("pandemic_b")
+		// 	SSvis_overlays.add_vis_overlay(src, icon, "pandemic_b", layer, EMISSIVE_PLANE, dir)
+		// else
+		// 	add_overlay("pandemic_b_n")
+		add_overlay("pandemic_b_n")			
+	if(!(stat & (NOPOWER|BROKEN)) && !beaker)
+		add_overlay("pandemic0")
+		SSvis_overlays.add_vis_overlay(src, icon, "pandemic0", layer, EMISSIVE_PLANE, dir)
+	if(beaker)
+		add_overlay("pandemicbeaker")
+		if(!(stat & (NOPOWER|BROKEN)))
+			add_overlay("pandemic1")
+			SSvis_overlays.add_vis_overlay(src, icon, "pandemic1", layer, EMISSIVE_PLANE, dir)
 	if(wait)
-		add_overlay("waitlight")
+		add_overlay("waitlight_pandemic")
+		SSvis_overlays.add_vis_overlay(src, icon, "waitlight_pandemic", layer, EMISSIVE_PLANE, dir)
+
+/obj/machinery/computer/pandemic/power_change()
+	. = ..()
+	if(!.)
+		return // reduce unneeded light changes
+	if(stat & (NOPOWER|BROKEN))
+		set_light(FALSE)
 	else
-		cut_overlays()
+		set_light(TRUE)
+
 
 /obj/machinery/computer/pandemic/proc/eject_beaker()
 	if(beaker)
@@ -218,7 +243,7 @@
 			update_icon()
 			var/turf/source_turf = get_turf(src)
 			log_virus("A culture bottle was printed for the virus [A.admin_details()] at [loc_name(source_turf)] by [key_name(usr)]")
-			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 50)
+			addtimer(CALLBACK(src, PROC_REF(reset_replicator_cooldown)), 50)
 			. = TRUE
 		if("create_vaccine_bottle")
 			if (wait)
@@ -230,7 +255,7 @@
 			B.reagents.add_reagent(/datum/reagent/vaccine, 15, list(id))
 			wait = TRUE
 			update_icon()
-			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 200)
+			addtimer(CALLBACK(src, PROC_REF(reset_replicator_cooldown)), 200)
 			. = TRUE
 
 

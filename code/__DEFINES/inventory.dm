@@ -29,16 +29,18 @@
 #define ITEM_SLOT_HEAD			(1<<6)
 #define ITEM_SLOT_FEET			(1<<7)
 #define ITEM_SLOT_ID			(1<<8)
-#define ITEM_SLOT_BELT			(1<<9)
-#define ITEM_SLOT_BACK			(1<<10)
+#define ITEM_SLOT_PDA			(1<<9)
+#define ITEM_SLOT_BELT			(1<<10)
+#define ITEM_SLOT_BACK			(1<<11)
 /// this is to allow items with a w_class of WEIGHT_CLASS_NORMAL or WEIGHT_CLASS_BULKY to fit in pockets.
-#define ITEM_SLOT_POCKET		(1<<11)
+#define ITEM_SLOT_POCKET		(1<<12)
 /// this is to deny items with a w_class of WEIGHT_CLASS_SMALL or WEIGHT_CLASS_TINY to fit in pockets.
-#define ITEM_SLOT_DENYPOCKET	(1<<12)
-#define ITEM_SLOT_NECK			(1<<13)
-#define ITEM_SLOT_HANDS			(1<<14)
-#define ITEM_SLOT_BACKPACK		(1<<15)
-#define ITEM_SLOT_SUIT			(1<<16) //yogs: suit storage inventory check
+#define ITEM_SLOT_DENYPOCKET	(1<<13)
+#define ITEM_SLOT_NECK			(1<<14)
+#define ITEM_SLOT_HANDS			(1<<15)
+#define ITEM_SLOT_BACKPACK		(1<<16)
+/// Prevents items from being stored in suit storage
+#define ITEM_SLOT_DENY_S_STORE	(1<<17)
 
 //SLOTS
 #define SLOT_BACK			1
@@ -49,22 +51,23 @@
 #define SLOT_HANDS			4
 #define SLOT_BELT			5
 #define SLOT_WEAR_ID		6
-#define SLOT_EARS			7
-#define SLOT_GLASSES		8
-#define SLOT_GLOVES			9
-#define SLOT_NECK			10
-#define SLOT_HEAD			11
-#define SLOT_SHOES			12
-#define SLOT_WEAR_SUIT		13
-#define SLOT_W_UNIFORM		14
-#define SLOT_L_STORE		15
-#define SLOT_R_STORE		16
-#define SLOT_S_STORE		17
-#define SLOT_IN_BACKPACK	18
-#define SLOT_LEGCUFFED		19
-#define SLOT_GENERC_DEXTROUS_STORAGE	20
+#define SLOT_WEAR_PDA		7	
+#define SLOT_EARS			8
+#define SLOT_GLASSES		9
+#define SLOT_GLOVES			10
+#define SLOT_NECK			11
+#define SLOT_HEAD			12
+#define SLOT_SHOES			13
+#define SLOT_WEAR_SUIT		14
+#define SLOT_W_UNIFORM		15
+#define SLOT_L_STORE		16
+#define SLOT_R_STORE		17
+#define SLOT_S_STORE		18
+#define SLOT_IN_BACKPACK	19
+#define SLOT_LEGCUFFED		20
+#define SLOT_GENERC_DEXTROUS_STORAGE	21
 
-#define SLOTS_AMT			20 // Keep this up to date!
+#define SLOTS_AMT			21 // Keep this up to date!
 
 //I hate that this has to exist
 /proc/slotdefine2slotbit(slotdefine) //Keep this up to date with the value of SLOT BITMASKS and SLOTS (the two define sections above)
@@ -80,6 +83,8 @@
 			. = ITEM_SLOT_BELT
 		if(SLOT_WEAR_ID)
 			. = ITEM_SLOT_ID
+		if(SLOT_WEAR_PDA)
+			. = ITEM_SLOT_PDA
 		if(SLOT_EARS)
 			. = ITEM_SLOT_EARS
 		if(SLOT_GLASSES)
@@ -100,8 +105,6 @@
 			. = ITEM_SLOT_HANDS
 		if(SLOT_IN_BACKPACK)
 			. = ITEM_SLOT_BACKPACK
-		if(SLOT_S_STORE) //yogs: suit storage inventory check
-			. = ITEM_SLOT_SUIT //yogs
 
 
 //Bit flags for the flags_inv variable, which determine when a piece of clothing hides another. IE a helmet hiding glasses.

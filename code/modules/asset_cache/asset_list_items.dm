@@ -102,6 +102,11 @@
 		"stamp-qm" = 'icons/stamp_icons/large_stamp-qm.png',
 		"stamp-law" = 'icons/stamp_icons/large_stamp-law.png',
 		"stamp-mime" = 'icons/stamp_icons/large_stamp-mime.png',
+		"stamp-chap" = 'icons/stamp_icons/large_stamp-chap.png',
+		"stamp-ward" = 'icons/stamp_icons/large_stamp-warden.png',
+		"stamp-magistrate" = 'icons/stamp_icons/large_stamp-magistrate.png',
+		"stamp-rep" = 'icons/stamp_icons/large_stamp-ntrep.png',
+		"stamp-blueshield" = 'icons/stamp_icons/large_stamp-blueshield.png',									
 		"stamp-cent" = 'icons/stamp_icons/large_stamp-cent.png',
 		"stamp-syndi" = 'icons/stamp_icons/large_stamp-syndi.png',
 		"stamp-syndiround" = 'icons/stamp_icons/large_stamp-syndiround.png'

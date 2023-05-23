@@ -35,12 +35,10 @@
 
 	mail_goodies = list(
 		///obj/item/storage/fancy/cigarettes = 25,
-		/obj/item/ammo_box/c38 = 25,
+		/obj/item/ammo_box/c38/rubber = 25,
+		/obj/item/ammo_box/c38 = 5,
 		///obj/item/ammo_box/c38/dumdum = 5,
-		/obj/item/ammo_box/c38/hotshot = 5,
-		/obj/item/ammo_box/c38/iceblox = 5,
 		///obj/item/ammo_box/c38/match = 5,
-		/obj/item/ammo_box/tra32 = 5,
 		///obj/item/storage/belt/holster/detective/full = 1
 	)
 
@@ -67,6 +65,9 @@
 		/obj/item/detective_scanner=1,\
 		/obj/item/melee/classic_baton=1)
 	mask = /obj/item/clothing/mask/cigarette
+
+	backpack = /obj/item/storage/backpack/satchel/sec/detective
+	satchel = /obj/item/storage/backpack/satchel/sec/detective
 
 	implants = list(/obj/item/implant/mindshield)
 

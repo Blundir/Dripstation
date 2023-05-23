@@ -8,7 +8,7 @@
 /obj/item/reagent_containers/food/condiment
 	name = "condiment container"
 	desc = "Just your average condiment container."
-	icon = 'yogstation/icons/obj/food/containers.dmi' //yogs changed icon path
+	// icon = 'yogstation/icons/obj/food/containers.dmi' //yogs changed icon path //dripstation changed it again
 	icon_state = "emptycondiment"
 	reagent_flags = OPENCONTAINER
 	possible_transfer_amounts = list(1, 5, 10, 15, 20, 25, 30, 50)
@@ -226,9 +226,9 @@
 	name = "space milk"
 	desc = "It's milk. White and nutritious goodness!"
 	icon_state = "milk"
-	item_state = "carton"
-	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
+	// item_state = "carton"
+	// // lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
+	// // righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 	list_reagents = list(/datum/reagent/consumable/milk = 50)
 	possible_states = list()
 
@@ -265,9 +265,9 @@
 	name = "soy milk"
 	desc = "It's soy milk. White and nutritious goodness!"
 	icon_state = "soymilk"
-	item_state = "carton"
-	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
+	// item_state = "carton"
+	// lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
+	// righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 	list_reagents = list(/datum/reagent/consumable/soymilk = 50)
 	possible_states = list()
 

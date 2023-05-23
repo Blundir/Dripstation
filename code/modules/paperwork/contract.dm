@@ -171,7 +171,8 @@
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		attempt_signature(user)
 	else if(istype(P, /obj/item/stamp))
-		to_chat(user, span_notice("You stamp the paper with your rubber stamp, however the ink ignites as you release the stamp."))
+		to_chat(user, span_notice("You stamp the paper with your rubber stamp, however the ink ignites as you release the stamp."))		
+		playsound(src, pick(stamp_sounds), 35, 1, -1)
 	else if(P.is_hot())
 		user.visible_message(span_danger("[user] brings [P] next to [src], but [src] does not catch fire!"), span_danger("[src] refuses to ignite!"))
 	else
@@ -235,7 +236,7 @@
 			user.visible_message(span_notice("With a sudden blaze, [H] stands back up."))
 			H.fakefire()
 			fulfillContract(H, 1)//Revival contracts are always signed in blood
-			addtimer(CALLBACK(H, /mob/living/carbon/human.proc/fakefireextinguish), 5, TIMER_UNIQUE)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, fakefireextinguish)), 5, TIMER_UNIQUE)
 		addtimer(CALLBACK(src, "resetcooldown"), 300, TIMER_UNIQUE)
 	else
 		..()

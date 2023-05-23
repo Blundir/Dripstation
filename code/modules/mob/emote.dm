@@ -54,7 +54,7 @@
 
 /datum/emote/flip/check_cooldown(mob/user, intentional, update=TRUE, is_keybind = FALSE)
 	. = ..()
-	if (!is_keybind)
+	if(!is_keybind)
 		return
 	if(!can_run_emote(user, intentional=intentional))
 		return
@@ -103,7 +103,7 @@
 	. = ..()
 	if(!.)
 		return
-	if (!is_keybind)
+	if(!is_keybind)
 		return
 	if(!can_run_emote(user, intentional=intentional))
 		return

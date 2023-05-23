@@ -26,7 +26,10 @@
 	var/obj/item/gps/pirate/beacon
 
 /datum/round_event/pirates/setup()
-	ship_name = pick(strings(PIRATE_NAMES_FILE, "ship_names"))
+	var/the = prob(50) ? "The " : ""
+	var/start = pick(strings(PIRATE_NAMES_FILE, "ship_name_start"))
+	var/end = pick(strings(PIRATE_NAMES_FILE, "ship_name_end"))
+	ship_name = "[the][start] [end]"
 	beacon = new(ship_name)
 
 /datum/round_event/pirates/announce(fake)
@@ -41,7 +44,7 @@
 	threat.title = "Business proposition"
 	threat.content = "This is [ship_name]. Pay up [payoff] credits or you'll walk the plank."
 	threat.possible_answers = list("We'll pay.","No way.")
-	threat.answer_callback = CALLBACK(src,.proc/answered)
+	threat.answer_callback = CALLBACK(src, PROC_REF(answered))
 	SScommunications.send_message(threat,unique = TRUE)
 
 /datum/round_event/pirates/proc/answered()
@@ -62,7 +65,7 @@
   * Called when the ship is shot down, cancels the event and calls [/datum/round_event/pirates/proc/announce_shot_down] after 20 seconds
   */
 /datum/round_event/pirates/proc/shot_down()
-	addtimer(CALLBACK(src, .proc/announce_shot_down), 200)
+	addtimer(CALLBACK(src, PROC_REF(announce_shot_down)), 200)
 	paid_off = TRUE
 
 /**
@@ -230,11 +233,11 @@
 	id = "pirateship"
 	rechargeTime = 3 MINUTES
 
-/obj/machinery/suit_storage_unit/pirate
-	suit_type = /obj/item/clothing/suit/space
-	helmet_type = /obj/item/clothing/head/helmet/space
-	mask_type = /obj/item/clothing/mask/breath
-	storage_type = /obj/item/tank/internals/oxygen
+// /obj/machinery/suit_storage_unit/pirate
+// 	suit_type = /obj/item/clothing/suit/space
+// 	helmet_type = /obj/item/clothing/head/helmet/space
+// 	mask_type = /obj/item/clothing/mask/breath
+// 	storage_type = /obj/item/tank/internals/oxygen
 
 /obj/machinery/loot_locator
 	name = "Booty Locator"
@@ -414,7 +417,7 @@
 	status_report = "Sending..."
 	pad.visible_message(span_notice("[pad] starts charging up."))
 	pad.icon_state = pad.warmup_state
-	sending_timer = addtimer(CALLBACK(src,.proc/send),warmup_time, TIMER_STOPPABLE)
+	sending_timer = addtimer(CALLBACK(src, PROC_REF(send)),warmup_time, TIMER_STOPPABLE)
 
 /obj/machinery/computer/piratepad_control/proc/stop_sending()
 	if(!sending)

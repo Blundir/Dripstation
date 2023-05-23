@@ -14,12 +14,22 @@
 	outfit = /datum/outfit/job/artist
 	alt_titles = list("Painter", "Composer", "Artisan")
 	added_access = list()
-	base_access = list()
-	paycheck = PAYCHECK_ASSISTANT
-	paycheck_department = ACCOUNT_CIV
+	base_access = list(ACCESS_ARTIST)
+	paycheck = PAYCHECK_MINIMAL
+	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_ARTIST
 	minimal_character_age = 18 //Young folks can be crazy crazy artists, something talented that can be self-taught feasibly
+
+	mail_goodies = list(
+	  	/obj/item/grenade/chem_grenade/colorful = 10,
+		/obj/item/toy/crayon/spraycan = 10,
+		/obj/item/choice_beacon/music = 5,
+		/obj/item/storage/toolbox/artistic = 5,
+		/obj/item/paint/anycolor = 5,
+		/obj/item/cardboard_cutout = 3,
+		/obj/item/toy/crayon/rainbow = 2
+	)
 
 	departments_list = list(
 		/datum/job_department/service,

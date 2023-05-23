@@ -30,8 +30,8 @@
 	mail_goodies = list(
 		/obj/item/reagent_containers/food/snacks/grown/banana = 100,
 		/obj/item/reagent_containers/food/snacks/pie/cream = 50,
-		/obj/item/clothing/shoes/clown_shoes/combat = 10,
-		/obj/item/reagent_containers/spray/waterflower/lube = 20 // lube
+		/obj/item/reagent_containers/spray/waterflower/lube = 20, // lube
+		/obj/item/clothing/shoes/clown_shoes/combat = 10
 		///obj/item/reagent_containers/spray/waterflower/superlube = 1 // Superlube, good lord.
 	)
 
@@ -63,7 +63,7 @@
 	implants = list(/obj/item/implant/sad_trombone)
 
 	backpack = /obj/item/storage/backpack/clown
-	satchel = /obj/item/storage/backpack/clown
+	satchel = /obj/item/storage/backpack/satchel/clown
 	duffelbag = /obj/item/storage/backpack/duffelbag/clown //strangely has a duffel
 
 	box = /obj/item/storage/box/hug/survival

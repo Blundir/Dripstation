@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// Initialize tgui panel
 	tgui_panel.initialize()
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
-	addtimer(CALLBACK(src, .proc/check_panel_loaded), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 5 SECONDS)
 
 
 	if(alert_mob_dupe_login)
@@ -931,7 +931,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		if (CONFIG_GET(flag/asset_simple_preload))
-			addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
 		#if (PRELOAD_RSC == 0)
 		for (var/name in GLOB.vox_sounds)
@@ -995,20 +995,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
-				if(SAY_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=.say")
-				if(ME_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=.me")
-				if(OOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=ooc")
-				if(LOOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=looc")
 				if(ASAY_CHANNEL)
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=asay")
-				if(MSAY_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=msay")
-				if(DONORSAY_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=.donorsay")
 				if(DEADSAY_CHANNEL)
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=dsay")
 

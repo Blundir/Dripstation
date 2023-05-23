@@ -2,8 +2,9 @@
 	name = "plant DNA manipulator"
 	desc = "An advanced device designed to manipulate the genetic makeup of a plant."
 	icon = 'icons/obj/hydroponics/equipment.dmi'
-	icon_state = "dnamod"
+	icon_state = "dnamod-off"
 	density = TRUE
+	light_color = LIGHT_COLOR_GREEN
 	circuit = /obj/item/circuitboard/machine/plantgenes
 	pass_flags = PASSTABLE
 
@@ -58,12 +59,18 @@
 /obj/machinery/plantgenes/update_icon()
 	..()
 	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if((stat & (BROKEN|NOPOWER)))
-		icon_state = "dnamod-off"
+		set_light(0)
 	else
-		icon_state = "dnamod"
+		add_overlay("dnamod")
+		SSvis_overlays.add_vis_overlay(src, icon, "dnamod", layer, EMISSIVE_PLANE)
+		light_color = LIGHT_COLOR_GREEN
+		set_light(powered() ? MINIMUM_USEFUL_LIGHT_RANGE : 0)
 	if(seed)
 		add_overlay("dnamod-dna")
+		SSvis_overlays.add_vis_overlay(src, icon, "dnamod-dna", layer, EMISSIVE_PLANE)
+		light_color = LIGHT_COLOR_BLUEGREEN
 	if(disk)
 		add_overlay("dnamod-disk")
 	if(panel_open)

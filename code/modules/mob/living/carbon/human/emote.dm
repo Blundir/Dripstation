@@ -8,8 +8,9 @@
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
-	message = "cries."
+	message = "плачет."
 	emote_type = EMOTE_AUDIBLE
+	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/carbon/human/cry/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -22,7 +23,7 @@
 		var/list/key_emotes = GLOB.emote_list["cry"]
 		for(var/datum/emote/living/carbon/human/cry/human_emote in key_emotes)
 			// The existing timer restarts if it is already running
-			addtimer(CALLBACK(human_emote, .proc/end_visual, human_user), CRY_DURATION, TIMER_UNIQUE | TIMER_OVERRIDE)
+			addtimer(CALLBACK(human_emote, PROC_REF(end_visual), human_user), CRY_DURATION, TIMER_UNIQUE | TIMER_OVERRIDE)
 
 /datum/emote/living/carbon/human/cry/proc/end_visual(mob/living/carbon/human/human_user)
 	if(!QDELETED(human_user))
@@ -40,12 +41,12 @@
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
-	message = "raises an eyebrow."
+	message = "приподнимает бровь."
 
 /datum/emote/living/carbon/human/grumble
 	key = "grumble"
 	key_third_person = "grumbles"
-	message = "grumbles!"
+	message = "ворчит!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/handshake
@@ -58,8 +59,8 @@
 /datum/emote/living/carbon/hiss
 	key = "hiss"
 	key_third_person = "hisses"
-	message = "hisses."
-	message_param = "hisses at %t."
+	message = "шипит."
+	message_param = "шипит на %t."
 	emote_type = EMOTE_AUDIBLE
 	var/list/viable_tongues = list(/obj/item/organ/tongue/lizard, /obj/item/organ/tongue/polysmorph)
 
@@ -87,21 +88,22 @@
 /datum/emote/living/carbon/human/hug
 	key = "hug"
 	key_third_person = "hugs"
-	message = "hugs themself."
-	message_param = "hugs %t."
+	message = "обнимает себя."
+	message_param = "обнимает %t."
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
-	message = "mumbles!"
+	message = "бормочет!"
 	emote_type = EMOTE_AUDIBLE
+	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
-	message = "screams!"
+	message = "кричит!"
 	emote_type = EMOTE_AUDIBLE
 	cooldown = 10 SECONDS
 	vary = TRUE
@@ -118,7 +120,7 @@
 /datum/emote/living/carbon/meow
 	key = "meow"
 	key_third_person = "meows"
-	message = "meows."
+	message = "мяукает."
 	emote_type = EMOTE_AUDIBLE
 	cooldown = 10 SECONDS
 
@@ -141,30 +143,30 @@
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"
-	message = "goes pale for a second."
+	message = "на мгновение бледнеет."
 
 /datum/emote/living/carbon/human/raise
 	key = "raise"
 	key_third_person = "raises"
-	message = "raises a hand."
+	message = "поднимает руку."
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
-	message = "salutes."
-	message_param = "salutes to %t."
+	message = "салютует."
+	message_param = "салютует %t."
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
 	key_third_person = "shrugs"
-	message = "shrugs."
+	message = "пожимает плечами."
 
 /datum/emote/living/carbon/human/wag
 	key = "wag"
 	key_third_person = "wags"
-	message = "wags their tail."
+	message = "машет хвостом."
 
 /datum/emote/living/carbon/human/wag/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -222,6 +224,9 @@
 	if("wings" in dna.species.mutant_bodyparts)
 		dna.species.mutant_bodyparts -= "wings"
 		dna.species.mutant_bodyparts |= "wingsopen"
+		if("wingsdetail" in dna.species.mutant_bodyparts)
+			dna.species.mutant_bodyparts -= "wingsdetail"
+			dna.species.mutant_bodyparts |= "wingsdetailopen"
 	if("moth_wings" in dna.species.mutant_bodyparts)
 		dna.species.mutant_bodyparts |= "moth_wingsopen"
 		dna.features["moth_wingsopen"] = "moth_wings"
@@ -234,6 +239,9 @@
 	if("wingsopen" in dna.species.mutant_bodyparts)
 		dna.species.mutant_bodyparts -= "wingsopen"
 		dna.species.mutant_bodyparts |= "wings"
+		if("wingsdetailopen" in dna.species.mutant_bodyparts)
+			dna.species.mutant_bodyparts -= "wingsdetailopen"
+			dna.species.mutant_bodyparts |= "wingsdetail"
 	if("moth_wingsopen" in dna.species.mutant_bodyparts)
 		dna.species.mutant_bodyparts -= "moth_wingsopen"
 		dna.species.mutant_bodyparts |= "moth_wings"

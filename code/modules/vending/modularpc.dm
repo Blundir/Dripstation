@@ -2,6 +2,7 @@
 	name = "\improper Deluxe Silicate Selections"
 	desc = "All the parts you need to build your own custom pc."
 	icon_state = "modularpc"
+	icon_vend = "modularpc-vend"
 	icon_deny = "modularpc-deny"
 	product_ads = "Get your gamer gear!;The best GPUs for all of your space-crypto needs!;The most robust cooling!;The finest RGB in space!"
 	vend_reply = "Game on!"
@@ -27,6 +28,7 @@
 	default_price = 30
 	extra_price = 250
 	payment_department = ACCOUNT_SCI
+	light_mask = "modularpc-light-mask"	
 
 /obj/item/vending_refill/modularpc
 	machine_name = "Deluxe Silicon Selections"
