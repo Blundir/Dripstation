@@ -548,12 +548,14 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	. = ..()
 
 /datum/antagonist/devil/apply_innate_effects(mob/living/mob_override)
+	update_devil_icons_added()
 	give_appropriate_spells()
 	owner.current.grant_all_languages(TRUE, TRUE, TRUE, LANGUAGE_DEVIL)
 	update_hud()
 	.=..()
 
 /datum/antagonist/devil/remove_innate_effects(mob/living/mob_override)
+	update_devil_icons_removed()
 	for(var/datum/action/cooldown/spell/spells in owner.current.actions)
 		if(is_type_in_typecache(spells, devil_spells))
 			spells.Remove(owner.current)
@@ -600,3 +602,13 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	devil_icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 
 	return devil_icon
+
+/datum/antagonist/devil/proc/update_devil_icons_added(datum/mind/devil_mind)
+	var/datum/atom_hud/antag/devilhud = GLOB.huds[ANTAG_HUD_DEVIL]
+	devilhud.join_hud(owner.current)
+	set_antag_hud(owner.current, "devil")
+
+/datum/antagonist/devil/proc/update_devil_icons_removed(datum/mind/devil_mind)
+	var/datum/atom_hud/antag/devilhud = GLOB.huds[ANTAG_HUD_DEVIL]
+	devilhud.leave_hud(owner.current)
+	set_antag_hud(owner.current, null)

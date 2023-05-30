@@ -191,6 +191,15 @@
 	parts += printobjectives(objectives)
 	return parts.Join("<br>")
 
+/datum/antagonist/sinfuldemon/apply_innate_effects(mob/living/mob_override)
+	. = ..()
+	update_sinfuldemon_icons_added()
+
+/datum/antagonist/sinfuldemon/remove_innate_effects(mob/living/mob_override)
+	. = ..()
+	update_sinfuldemon_icons_removed()
+
+
 #undef SIN_ENVY
 #undef SIN_GLUTTONY
 #undef SIN_GREED
@@ -204,3 +213,13 @@
 	sinfuldemon_icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 
 	return sinfuldemon_icon
+
+/datum/antagonist/sinfuldemon/proc/update_sinfuldemon_icons_added(datum/mind/sinfuldemon_mind)
+	var/datum/atom_hud/antag/sinfuldemonhud = GLOB.huds[ANTAG_HUD_DEVIL]
+	sinfuldemonhud.join_hud(owner.current)
+	set_antag_hud(owner.current, "sinfuldemon")
+
+/datum/antagonist/sinfuldemon/proc/update_sinfuldemon_icons_removed(datum/mind/sinfuldemon_mind)
+	var/datum/atom_hud/antag/sinfuldemonhud = GLOB.huds[ANTAG_HUD_DEVIL]
+	sinfuldemonhud.leave_hud(owner.current)
+	set_antag_hud(owner.current, null)

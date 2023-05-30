@@ -88,10 +88,6 @@
 		var/obj/item/card/id/identification_card = mob_poi.get_idcard()
 		if(identification_card)
 			serialized["role_icon"] = "hud[ckey(identification_card.GetJobName())]"
-		else if(SSjob.name_occupations[mind.assigned_role])
-			var/datum/job/located_job = SSjob.GetJob(mind.assigned_role)
-			if(located_job)
-				serialized["role_icon"] = "hud[ckey(located_job.title)]"
 
 		var/was_antagonist = FALSE
 		for(var/_A in mind.antag_datums)
@@ -103,11 +99,12 @@
 					serialized["antag"] = antag_team.get_team_name()
 				else
 					serialized["antag"] = A.get_antag_name()
-					if(mind.antag_hud_icon_state)
-						serialized["antag_icon"] = mind.antag_hud_icon_state
+				if(mind.antag_hud_icon_state)
+					serialized["antag_icon"] = mind.antag_hud_icon_state
 				antagonists += list(serialized)
 			else if((user.client.has_antag_hud()) && mind.antag_hud_icon_state)
 				serialized["antag_icon"] = mind.antag_hud_icon_state
+				antagonists += list(serialized)
 				break
 
 		if(!was_antagonist)

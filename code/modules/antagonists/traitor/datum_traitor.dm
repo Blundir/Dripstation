@@ -248,6 +248,16 @@
 		give_codewords()
 	to_chat(owner.current, span_notice("Your employer [initial(company.name)] will be paying you an extra [initial(company.paymodifier)]x your nanotrasen paycheck."))
 
+/datum/antagonist/traitor/proc/update_traitor_icons_added(datum/mind/traitor_mind)
+	var/datum/atom_hud/antag/traitorhud = GLOB.huds[ANTAG_HUD_TRAITOR]
+	traitorhud.join_hud(owner.current)
+	set_antag_hud(owner.current, "synd")
+
+/datum/antagonist/traitor/proc/update_traitor_icons_removed(datum/mind/traitor_mind)
+	var/datum/atom_hud/antag/traitorhud = GLOB.huds[ANTAG_HUD_TRAITOR]
+	traitorhud.leave_hud(owner.current)
+	set_antag_hud(owner.current, null)
+
 /datum/antagonist/traitor/proc/finalize_traitor()
 	switch(traitor_kind)
 		if(TRAITOR_AI)

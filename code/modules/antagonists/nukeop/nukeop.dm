@@ -17,6 +17,16 @@
 	/// In the preview icon, the nukies who are behind the leader
 	var/preview_outfit_behind = /datum/outfit/nuclear_operative
 
+/datum/antagonist/nukeop/proc/update_synd_icons_added(mob/living/M)
+	var/datum/atom_hud/antag/opshud = GLOB.huds[ANTAG_HUD_OPS]
+	opshud.join_hud(M)
+	set_antag_hud(M, "operative")
+
+/datum/antagonist/nukeop/proc/update_synd_icons_removed(mob/living/M)
+	var/datum/atom_hud/antag/opshud = GLOB.huds[ANTAG_HUD_OPS]
+	opshud.leave_hud(M)
+	set_antag_hud(M, null)
+
 /datum/antagonist/nukeop/apply_innate_effects(mob/living/mob_override)
 	add_team_hud(mob_override || owner.current)
 	ADD_TRAIT(owner, TRAIT_DISK_VERIFIER, NUKEOP_TRAIT)
