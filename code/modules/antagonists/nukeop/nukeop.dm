@@ -3,7 +3,7 @@
 	roundend_category = "syndicate operatives" //just in case
 	antagpanel_category = "NukeOp"
 	job_rank = ROLE_OPERATIVE
-	antag_hud_name = "synd"
+	antag_hud_name = "operative"
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	var/datum/team/nuclear/nuke_team

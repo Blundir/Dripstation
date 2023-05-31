@@ -30,6 +30,9 @@
 	new_objective2.explanation_text = "[objective_verb] everyone[summoner ? " else while you're at it":""]."
 	objectives += new_objective2
 
+/datum/antagonist/slaughter/get_antag_name() // makes laughter demon in the same category with slaughter demon in orbit panel
+	return "Slaughter demon"
+
 /datum/antagonist/slaughter/ui_static_data(mob/user)
 	var/list/data = list()
 	data["fluff"] = fluff
@@ -40,3 +43,4 @@
 /datum/antagonist/slaughter/laughter
 	name = "Laughter demon"
 	objective_verb = "Hug and Tickle"
+

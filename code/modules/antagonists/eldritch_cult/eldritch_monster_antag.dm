@@ -5,6 +5,7 @@
 	antagpanel_category = "Heretic Beast"
 	antag_moodlet = /datum/mood_event/heretics
 	job_rank = ROLE_HERETIC
+	show_to_ghosts = TRUE
 	var/datum/antagonist/master
 
 /datum/antagonist/heretic_monster/admin_add(datum/mind/new_owner,mob/admin)
@@ -35,3 +36,8 @@
 	owner.announce_objectives()
 	to_chat(owner, span_boldannounce("Your master is [master.owner.current.real_name]"))
 	return
+
+/datum/antagonist/heretic_monster/get_antag_name() // good to recognise who's responsible with these monsters
+	if(!master)
+		return "Unchained Eldritch Horror"
+	return "Eldritch Horror of [master.owner.name]"

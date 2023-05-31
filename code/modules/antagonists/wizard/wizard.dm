@@ -30,6 +30,9 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 	if(allow_rename)
 		rename_wizard()
 
+/datum/antagonist/wizard/get_antag_name() // wizards are not in the same team
+	return "Space Wizard [owner.name]"
+
 /datum/antagonist/wizard/proc/register()
 	SSticker.mode.wizards |= owner
 

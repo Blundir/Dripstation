@@ -88,17 +88,22 @@
 		var/obj/item/card/id/identification_card = mob_poi.get_idcard()
 		if(identification_card)
 			serialized["role_icon"] = "hud[ckey(identification_card.GetJobName())]"
-		else
-			var/datum/job/located_job = SSjob.GetJob(mind.assigned_role)
-			if(located_job)
-				serialized["role_icon"] = "hud[ckey(located_job.title)]"
 
 		var/was_antagonist = FALSE
 		for(var/_A in mind.antag_datums)
 			var/datum/antagonist/A = _A
 			if(A.show_to_ghosts)
 				was_antagonist = TRUE
-				serialized["antag"] = A.name
+				var/datum/team/antag_team = A.get_team()
+				if(antag_team)
+					serialized["antag"] = antag_team.get_team_name()
+				else
+					serialized["antag"] = A.get_antag_name()
+				if(A.antag_hud_name)
+					serialized["antag_icon"] = A.antag_hud_name
+				antagonists += list(serialized)
+			else if((user.client.combo_hud_enabled) && A.antag_hud_name)
+				serialized["antag_icon"] = A.antag_hud_name
 				antagonists += list(serialized)
 				break
 
@@ -119,9 +124,13 @@
 	. = ..() || list()
 	. += get_asset_datum(/datum/asset/simple/orbit)
 	. += get_asset_datum(/datum/asset/spritesheet/job_icons)
+	. += get_asset_datum(/datum/asset/spritesheet/antag_hud)
 
 /datum/asset/spritesheet/job_icons
 	name = "job-icon"
+
+/datum/asset/spritesheet/antag_hud
+	name = "antag-hud"
 
 
 /datum/asset/spritesheet/job_icons/create_spritesheets()
@@ -131,3 +140,11 @@
 	// Scale it up
 	I.Scale(16, 16)
 	InsertAll("job-icon", I)
+
+/datum/asset/spritesheet/antag_hud/create_spritesheets()
+	var/icon/I = icon('yogstation/icons/mob/antag_hud.dmi')
+	// Get the antag hud part
+	I.Crop(25, 17, 32, 24)
+	// Scale it up
+	I.Scale(16, 16)
+	InsertAll("antag-hud", I)
