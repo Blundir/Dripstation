@@ -3677,6 +3677,7 @@
 #include "dripstation\code\bureaucracy\papershredder.dm"
 #include "dripstation\code\bureaucracy\pens.dm"
 #include "dripstation\code\bureaucracy\stamps.dm"
+#include "dripstation\code\datums\components\cleaner.dm"
 #include "dripstation\code\items\garment.dm"
 #include "dripstation\code\items\ids.dm"
 #include "dripstation\code\items\toolbox.dm"

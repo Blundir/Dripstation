@@ -42,6 +42,9 @@
 #define LOW_OBJ_LAYER 2.5
 #define LOW_SIGIL_LAYER 2.52
 #define SIGIL_LAYER 2.54
+// Anything above this layer is not "on" a turf for the purposes of washing
+// I hate this life of ours
+#define FLOOR_CLEAN_LAYER 2.55
 #define HIGH_SIGIL_LAYER 2.56
 #define BELOW_OPEN_DOOR_LAYER 2.6
 #define GAS_METER_LAYER 2.61

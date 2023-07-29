@@ -21,6 +21,7 @@
 
 /obj/item/mop/Initialize()
 	. = ..()
+	AddComponent(/datum/component/cleaner, mopspeed)
 	create_reagents(mopcap)
 
 
@@ -36,8 +37,6 @@
 	if(!proximity)
 		return
 
-	var/turf/T = get_turf(A)
-
 	if(istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/mopbucket))
 		return
 
@@ -45,17 +44,8 @@
 		to_chat(user, span_warning("Your mop is dry!"))
 		return
 
-	if(T)
-		user.visible_message("[user] begins to clean \the [T] with [src].", span_notice("You begin to clean \the [T] with [src]..."))
-
-		var/realspeed = mopspeed
-		if(IS_JOB(user, "Janitor"))
-			realspeed *= 0.8
-
-		if(do_after(user, realspeed, T))
-			to_chat(user, span_notice("You finish mopping."))
-			clean(T)
-
+	if(istype(A, /turf))
+		start_cleaning(src, A, user)
 
 /obj/effect/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/mop) || istype(I, /obj/item/soap))
