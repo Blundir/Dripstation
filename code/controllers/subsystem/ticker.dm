@@ -409,6 +409,8 @@ SUBSYSTEM_DEF(ticker)
 				no_bartender = FALSE
 			if(player.mind.assigned_role != player.mind.special_role)
 				SSjob.EquipRank(N, player.mind.assigned_role, FALSE)
+				for(var/datum/loadout_item/item as anything in loadout_list_to_datums(N.client.prefs.loadout_list))
+					item.post_equip_item(N.client.prefs, N.new_character)
 				if(CONFIG_GET(flag/roundstart_traits) && ishuman(N.new_character))
 					SSquirks.AssignQuirks(N.new_character, N.client, TRUE)
 		CHECK_TICK

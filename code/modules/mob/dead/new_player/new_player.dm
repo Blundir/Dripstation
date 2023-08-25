@@ -411,6 +411,9 @@
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
 
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
+			item.post_equip_item(humanc.client.prefs, humanc)
+
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)
 

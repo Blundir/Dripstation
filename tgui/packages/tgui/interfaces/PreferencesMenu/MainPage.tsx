@@ -1,6 +1,6 @@
 import { classes } from "common/react";
 import { sendAct, useBackend, useLocalState } from "../../backend";
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks } from "../../components";
+import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from "../../components";
 import { createSetPreference, PreferencesMenuData, RandomSetting } from "./data";
 import { CharacterPreview } from "./CharacterPreview";
 import { RandomizationButton } from "./RandomizationButton";
@@ -23,6 +23,7 @@ const CharacterControls = (props: {
   handleRotate: () => void,
   handleOpenSpecies: () => void,
   handleCycleBackground: () => void,
+  handleLoadout: () => void,
   gender: Gender,
   setGender: (gender: Gender) => void,
   showGender: boolean,
@@ -64,6 +65,17 @@ const CharacterControls = (props: {
           <GenderButton
             gender={props.gender}
             handleSetGender={props.setGender}
+          />
+        </Stack.Item>
+      )}
+      {props.handleLoadout && (
+        <Stack.Item>
+          <Button
+            onClick={props.handleLoadout}
+            fontSize="22px"
+            icon="suitcase"
+            tooltip="Show Loadout Menu"
+            tooltipPosition="top"
           />
         </Stack.Item>
       )}
@@ -512,6 +524,9 @@ export const MainPage = (props: {
                     }}
                     handleCycleBackground={() => {
                       act("cycle");
+                    }}
+                    handleLoadout={() => {
+                      act('open_loadout');
                     }}
                     setGender={createSetPreference(act, "gender")}
                     showGender={

@@ -12,6 +12,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/last_ip
 	var/last_id
 
+	/// Loadout prefs. Assoc list of [typepaths] to [associated list of item info].
+	var/list/loadout_list
+
+	/// Preference of how the preview should show the character.
+	var/preview_pref = PREVIEW_PREF_JOB
+
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 
@@ -288,6 +294,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				return FALSE
 
 			return TRUE
+
+		if ("open_loadout")
+			if(parent.open_loadout_ui)
+				parent.open_loadout_ui.ui_interact(usr)
+			else
+				var/datum/loadout_manager/tgui = new(usr)
+				tgui.ui_interact(usr)
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]
